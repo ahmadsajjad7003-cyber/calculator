@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🔥 SEO META TAGS (Calculator.net Style) 🔥 -->
+    <title>Percentage Calculator - Calculate Percentages, Increases & Decreases</title>
+    <meta name="description" content="Free online Percentage Calculator. Calculate what percent of a number, percentage increase, decrease, and difference instantly. Easy and accurate.">
+    <meta name="keywords" content="percentage calculator, percent calculator, calculate percentage, percentage increase, percentage decrease, what is x percent of y">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Free Online Percentage Calculator">
+    <meta property="og:description" content="Calculate percentages, increases, and decreases instantly. Free and easy to use!">
+    <meta property="og:type" content="website">
+
+    <!-- Schema.org Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Percentage Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator",
+      "description": "Free online tool to calculate percentages, percentage increase, and decrease.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <!-- Google Verification Tag -->
+    <meta name="google-site-verification" content="5y7fU7dMuf_rTgR8Z8pErviofF3KQ-SpGQHkxhAc3w" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
+    <!-- Header -->
+    <header class="bg-blue-700 text-white p-4 shadow-md">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tight hover:underline">CalcMaster.net</a>
+            <nav class="text-sm space-x-4 hidden md:block">
+                <a href="#" class="hover:underline">Financial</a>
+                <a href="#" class="hover:underline">Fitness & Health</a>
+                <a href="#" class="hover:underline">Math</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto p-4 md:p-8">
+        
+        <!-- 🔥 PERCENTAGE CALCULATOR TOOL 🔥 -->
+        <section class="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-100 mb-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b pb-2">Percentage Calculator</h2>
+            
+            <div class="space-y-8">
+                <!-- Calculator 1: What is X% of Y? -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">1. What is <span class="text-blue-600">X%</span> of <span class="text-blue-600">Y</span>?</h3>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="font-medium">What is</span>
+                        <input type="number" id="p1-x" class="w-20 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="X">
+                        <span class="font-medium">% of</span>
+                        <input type="number" id="p1-y" class="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="Y">
+                        <button onclick="calc1()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">Calculate</button>
+                        <span class="font-medium">=</span>
+                        <span id="p1-result" class="text-xl font-bold text-blue-700 min-w-[60px]">?</span>
+                    </div>
+                </div>
+
+                <!-- Calculator 2: X is what percent of Y? -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">2. <span class="text-blue-600">X</span> is what percent of <span class="text-blue-600">Y</span>?</h3>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <input type="number" id="p2-x" class="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="X">
+                        <span class="font-medium">is what % of</span>
+                        <input type="number" id="p2-y" class="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="Y">
+                        <button onclick="calc2()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">Calculate</button>
+                        <span class="font-medium">=</span>
+                        <span id="p2-result" class="text-xl font-bold text-blue-700 min-w-[60px]">?</span>
+                        <span class="font-medium">%</span>
+                    </div>
+                </div>
+
+                <!-- Calculator 3: Percentage Increase/Decrease -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-3">3. Percentage Increase/Decrease from <span class="text-blue-600">X</span> to <span class="text-blue-600">Y</span></h3>
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="font-medium">From</span>
+                        <input type="number" id="p3-x" class="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="X">
+                        <span class="font-medium">to</span>
+                        <input type="number" id="p3-y" class="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 outline-none text-center" placeholder="Y">
+                        <button onclick="calc3()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition">Calculate</button>
+                        <span class="font-medium">=</span>
+                        <span id="p3-result" class="text-xl font-bold text-blue-700 min-w-[80px]">?</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🔥 SEO LONG-FORM CONTENT 🔥 -->
+        <article class="prose max-w-none text-gray-700 bg-white p-6 md:p-8 rounded-xl shadow-sm">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">How to Calculate Percentages</h2>
+            <p class="mb-4">A percentage is a number or ratio expressed as a fraction of 100. It is often denoted using the percent sign, "%". Our free Percentage Calculator helps you solve three of the most common percentage problems instantly.</p>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Percentage Formulas</h3>
+            <div class="space-y-4 mb-6">
+                <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-bold text-gray-900">1. What is X% of Y?</h4>
+                    <p class="font-mono text-lg mt-1">Formula: (X / 100) * Y = Result</p>
+                    <p class="text-sm text-gray-600 mt-1">Example: What is 20% of 80? → (20 / 100) * 80 = 16</p>
+                </div>
+                <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-gray-900">2. X is what percent of Y?</h4>
+                    <p class="font-mono text-lg mt-1">Formula: (X / Y) * 100 = Result%</p>
+                    <p class="text-sm text-gray-600 mt-1">Example: 15 is what percent of 60? → (15 / 60) * 100 = 25%</p>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-500">
+                    <h4 class="font-bold text-gray-900">3. Percentage Increase or Decrease</h4>
+                    <p class="font-mono text-lg mt-1">Formula: ((Y - X) / X) * 100 = Result%</p>
+                    <p class="text-sm text-gray-600 mt-1">Example: Increase from 50 to 75 → ((75 - 50) / 50) * 100 = 50% Increase</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-3">Frequently Asked Questions</h3>
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold text-gray-900">How do I calculate a 10% discount?</h4>
+                    <p>Divide the original price by 10 (or multiply by 0.10). For example, a 10% discount on $50 is $5. The final price would be $45.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900">Can a percentage be more than 100%?</h4>
+                    <p>Yes! If a value increases beyond its original amount, the percentage will be greater than 100%. For example, if a $100 item increases to $150, that is a 150% of the original value (or a 50% increase).</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Internal Linking (Crucial for SEO) -->
+        <div class="mt-8 p-6 bg-gray-100 rounded-xl">
+            <h4 class="font-bold text-gray-900 mb-3">Other Popular Calculators:</h4>
+            <div class="flex flex-wrap gap-3">
+                <a href="index.html" class="text-blue-600 hover:underline font-semibold">BMI Calculator</a> •
+                <a href="age-calculator.html" class="text-blue-600 hover:underline font-semibold">Age Calculator</a> •
+                <a href="#" class="text-blue-600 hover:underline">Loan Calculator</a> •
+                <a href="#" class="text-blue-600 hover:underline">Calorie Calculator</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center p-6 mt-12 text-sm">
+        <p>&copy; 2026 CalcMaster.net. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Disclaimer</a></p>
+    </footer>
+
+    <!-- 🔥 JAVASCRIPT LOGIC 🔥 -->
+    <script>
+        function calc1() {
+            const x = parseFloat(document.getElementById('p1-x').value);
+            const y = parseFloat(document.getElementById('p1-y').value);
+            if (isNaN(x) || isNaN(y)) {
+                document.getElementById('p1-result').innerText = "Error";
+                return;
+            }
+            const result = (x / 100) * y;
+            document.getElementById('p1-result').innerText = Number.isInteger(result) ? result : result.toFixed(2);
+        }
+
+        function calc2() {
+            const x = parseFloat(document.getElementById('p2-x').value);
+            const y = parseFloat(document.getElementById('p2-y').value);
+            if (isNaN(x) || isNaN(y) || y === 0) {
+                document.getElementById('p2-result').innerText = "Error";
+                return;
+            }
+            const result = (x / y) * 100;
+            document.getElementById('p2-result').innerText = Number.isInteger(result) ? result : result.toFixed(2);
+        }
+
+        function calc3() {
+            const x = parseFloat(document.getElementById('p3-x').value);
+            const y = parseFloat(document.getElementById('p3-y').value);
+            if (isNaN(x) || isNaN(y) || x === 0) {
+                document.getElementById('p3-result').innerText = "Error";
+                return;
+            }
+            const result = ((y - x) / Math.abs(x)) * 100;
+            const prefix = result > 0 ? "+" : "";
+            document.getElementById('p3-result').innerText = prefix + (Number.isInteger(result) ? result : result.toFixed(2)) + "%";
+        }
+    </script>
+</body>
+</html>
