@@ -3,45 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Loan/EMI Calculator - Calculate monthly EMI, total interest, and total payment for home, car, and personal loans. Accurate and instant results.">
-    <meta name="keywords" content="loan calculator, EMI calculator, mortgage calculator, home loan calculator, car loan calculator, monthly payment calculator">
+    <meta name="description" content="Free Loan Calculator - Calculate your monthly loan payment (EMI), total interest, and total cost for personal, home, or any type of loan.">
+    <meta name="keywords" content="loan calculator, EMI calculator, monthly payment calculator, personal loan calculator, loan interest calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html">
     <title>Loan Calculator - Calculate Monthly EMI & Interest | CalcMaster</title>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Loan Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is EMI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "EMI stands for Equated Monthly Installment. It is the fixed amount you pay your lender every month until the loan is fully repaid. Each EMI includes both principal and interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is loan interest calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion of each payment decreases while the principal portion increases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What affects my monthly loan payment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three factors affect your monthly payment: the loan amount, the interest rate, and the loan term. A longer term means lower monthly payments but higher total interest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I choose a longer or shorter loan term?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A shorter loan term means higher monthly payments but much less total interest. A longer term means lower monthly payments but more total interest paid."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Loan Calculator",
+      "step": [
+        { "@type": "HowToStep", "name": "Enter loan amount", "text": "Enter the total amount you want to borrow." },
+        { "@type": "HowToStep", "name": "Enter interest rate", "text": "Enter the annual interest rate offered by your lender." },
+        { "@type": "HowToStep", "name": "Enter loan term", "text": "Enter the loan term in years." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your monthly EMI, total interest, and total payment." }
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
         header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
+        p, li { color: #555; margin-bottom: 10px; }
+        ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
         input[type="number"]:focus { border-color: #3498db; outline: none; }
-        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
-        button:hover { background: #2980b9; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
-        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
-        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
-        .content p, .content li { color: #555; margin-bottom: 10px; }
-        .content ul { padding-left: 25px; }
+        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
         .other-tools ul { list-style: none; padding: 0; }
         .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
@@ -55,63 +115,101 @@
     </header>
 
     <div class="container">
-        <h1>Loan / EMI Calculator</h1>
-        <p>Apni monthly EMI, total interest, aur total payment calculate karein.</p>
+        <h1>Loan Calculator</h1>
+        <p>Calculate your monthly loan payment (EMI), total interest, and total cost.</p>
 
         <div class="input-group">
-            <label for="amount">Loan Amount (₨):</label>
-            <input type="number" id="amount" placeholder="e.g. 500000" min="1">
+            <label for="amount">Loan Amount ($):</label>
+            <input type="number" id="amount" placeholder="e.g. 50000" min="1">
         </div>
-
         <div class="input-group">
             <label for="rate">Annual Interest Rate (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 10" min="0" step="0.01">
+            <input type="number" id="rate" placeholder="e.g. 7.5" min="0" step="0.01">
         </div>
-
         <div class="input-group">
             <label for="years">Loan Term (Years):</label>
             <input type="number" id="years" placeholder="e.g. 5" min="1" max="50">
         </div>
 
-        <button onclick="calculateLoan()">Calculate EMI</button>
+        <button class="calc-btn" onclick="calculateLoan()">Calculate EMI</button>
 
         <div class="result" id="result">
             <h2>Your Loan Summary:</h2>
-            <div class="result-item highlight">Monthly EMI: <strong id="emi">₨ 0</strong></div>
-            <div class="result-item">Total Interest: <strong id="totalInterest">₨ 0</strong></div>
-            <div class="result-item">Total Payment: <strong id="totalPayment">₨ 0</strong></div>
-            <div class="result-item">Loan Amount: <strong id="loanAmount">₨ 0</strong></div>
+            <div class="result-item highlight">Monthly EMI: <strong id="emi">$0</strong></div>
+            <div class="result-item">Total Interest: <strong id="totalInterest">$0</strong></div>
+            <div class="result-item">Total Payment: <strong id="totalPayment">$0</strong></div>
+            <div class="result-item">Loan Amount: <strong id="loanAmount">$0</strong></div>
             <div class="result-item">Total Months: <strong id="totalMonths">0</strong></div>
         </div>
 
-        <div class="content">
-            <h2>About Loan Calculator</h2>
-            <p>Yeh free loan calculator aapki monthly EMI (Equated Monthly Installment), total interest, aur total payment calculate karta hai. Home loan, car loan, personal loan — kisi bhi loan ke liye use kar sakte hain.</p>
+        <h2>What is a Loan Calculator?</h2>
+        <p>A loan calculator is a tool that computes your monthly payment (also called EMI — Equated Monthly Installment), the total interest you'll pay, and the total cost of the loan. Whether you're taking a personal loan, student loan, or business loan, this calculator helps you understand the true cost before signing any agreement.</p>
 
-            <h2>How to Use</h2>
-            <ul>
-                <li>Loan Amount enter karein</li>
-                <li>Annual Interest Rate (%) enter karein</li>
-                <li>Loan Term (Years) enter karein</li>
-                <li>"Calculate EMI" button dabayein</li>
+        <h2>How to Use This Loan Calculator</h2>
+        <ol>
+            <li><strong>Enter the loan amount</strong> — how much you need to borrow.</li>
+            <li><strong>Enter the annual interest rate</strong> — offered by your lender.</li>
+            <li><strong>Enter the loan term</strong> — in years.</li>
+            <li><strong>Click "Calculate EMI"</strong> to see your monthly payment and total cost.</li>
+        </ol>
+
+        <h2>EMI Formula</h2>
+        <div class="formula-box">
+            <p><code>EMI = P × r × (1+r)^n / [(1+r)^n − 1]</code></p>
+            <p style="margin-top:10px;"><strong>Where:</strong></p>
+            <ul style="margin:8px 0 0 0;">
+                <li><strong>P</strong> = Principal loan amount</li>
+                <li><strong>r</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100)</li>
+                <li><strong>n</strong> = Total number of monthly payments (Years × 12)</li>
             </ul>
-
-            <h2>EMI Formula</h2>
-            <p><strong>EMI = P × r × (1+r)^n / [(1+r)^n - 1]</strong></p>
-            <p>Jahan: P = Loan Amount, r = Monthly Interest Rate, n = Total Months</p>
-
-            <h2>FAQs</h2>
-            <h3>EMI kya hai?</h3>
-            <p>EMI (Equated Monthly Installment) wo fixed amount hai jo aap har mahine bank ko dete hain loan wapas karne ke liye.</p>
-            <h3>Kya yeh calculator free hai?</h3>
-            <p>Ji haan, yeh 100% free hai aur koi sign-up nahi chahiye.</p>
         </div>
+
+        <h3>Worked Example</h3>
+        <p>A $50,000 loan at 7.5% annual interest for 5 years:</p>
+        <ol>
+            <li>Monthly rate: 7.5 ÷ 12 ÷ 100 = <strong>0.00625</strong></li>
+            <li>Total months: 5 × 12 = <strong>60</strong></li>
+            <li>Monthly EMI: <strong>$1,002.11</strong></li>
+            <li>Total interest paid: <strong>$10,126.60</strong></li>
+        </ol>
+
+        <h2>Types of Loans</h2>
+        <ul>
+            <li><strong>Personal Loan:</strong> Unsecured loan for any personal use. Higher interest rates.</li>
+            <li><strong>Student Loan:</strong> For education. Often lower interest rates and deferred payments.</li>
+            <li><strong>Business Loan:</strong> For starting or expanding a business.</li>
+            <li><strong>Home Equity Loan:</strong> Borrowing against the equity in your home.</li>
+            <li><strong>Payday Loan:</strong> Short-term, very high interest — usually not recommended.</li>
+        </ul>
+
+        <h2>How Loan Interest Works</h2>
+        <p>When you take a loan, your monthly payment covers both principal and interest. In the beginning, most of your payment goes toward interest. As the loan matures, more of each payment goes toward the principal. This is called <strong>amortization</strong>.</p>
+        <p>For example, in a 30-year mortgage, you might pay more in interest than the actual loan amount over the life of the loan. This is why it's important to compare interest rates and consider shorter terms when possible.</p>
+
+        <h2>Frequently Asked Questions (FAQ)</h2>
+
+        <h3>What is EMI?</h3>
+        <p>EMI stands for Equated Monthly Installment. It's the fixed amount you pay your lender every month until the loan is repaid.</p>
+
+        <h3>How is loan interest calculated?</h3>
+        <p>Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion decreases while the principal portion increases.</p>
+
+        <h3>What affects my monthly loan payment?</h3>
+        <p>Three factors: loan amount, interest rate, and loan term. A longer term means lower monthly payments but higher total interest.</p>
+
+        <h3>Should I choose a longer or shorter loan term?</h3>
+        <p>A shorter term means higher monthly payments but less total interest. A longer term means lower monthly payments but more total interest.</p>
+
+        <h3>Is my data private?</h3>
+        <p>Yes. All calculations run in your browser. No data is sent to any server.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+                <li><a href="interest-calculator.html">Interest Calculator</a></li>
+                <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
                 <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
             </ul>
         </div>
@@ -128,24 +226,22 @@
             const years = parseFloat(document.getElementById('years').value);
 
             if (!amount || !rate || !years || amount <= 0 || rate < 0 || years <= 0) {
-                alert('Please saari fields sahi values ke saath fill karein');
+                alert('Please fill in all fields with valid values');
                 return;
             }
 
             const monthlyRate = rate / 100 / 12;
             const totalMonths = years * 12;
-
-            // EMI formula: P * r * (1+r)^n / [(1+r)^n - 1]
             const emi = amount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
             const totalPayment = emi * totalMonths;
             const totalInterest = totalPayment - amount;
 
-            const formatNum = (n) => '₨ ' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            document.getElementById('emi').textContent = formatNum(emi);
-            document.getElementById('totalInterest').textContent = formatNum(totalInterest);
-            document.getElementById('totalPayment').textContent = formatNum(totalPayment);
-            document.getElementById('loanAmount').textContent = formatNum(amount);
+            document.getElementById('emi').textContent = fmt(emi);
+            document.getElementById('totalInterest').textContent = fmt(totalInterest);
+            document.getElementById('totalPayment').textContent = fmt(totalPayment);
+            document.getElementById('loanAmount').textContent = fmt(amount);
             document.getElementById('totalMonths').textContent = totalMonths;
             document.getElementById('result').style.display = 'block';
         }
