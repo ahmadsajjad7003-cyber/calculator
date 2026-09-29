@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free BMR Calculator - Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Find out how many calories your body burns at rest.">
+    <meta name="keywords" content="BMR calculator, basal metabolic rate, BMR formula, how many calories at rest, metabolism calculator">
+    <title>BMR Calculator - Basal Metabolic Rate | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BMR Calculator",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
+        input[type="number"]:focus, select:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>BMR Calculator</h1>
+        <p>Apni Basal Metabolic Rate (BMR) calculate karein — body ki resting calorie burn rate.</p>
+
+        <div class="input-group">
+            <label for="age">Age (Years):</label>
+            <input type="number" id="age" placeholder="e.g. 25" min="1" max="120">
+        </div>
+
+        <div class="input-group">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="e.g. 175" min="50" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="activity">Activity Level:</label>
+            <select id="activity">
+                <option value="1.2">Sedentary (Little or no exercise)</option>
+                <option value="1.375">Lightly Active (1-3 days/week)</option>
+                <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
+                <option value="1.725">Very Active (6-7 days/week)</option>
+                <option value="1.9">Extra Active (Athlete)</option>
+            </select>
+        </div>
+
+        <button onclick="calculateBMR()">Calculate BMR</button>
+
+        <div class="result" id="result">
+            <h2>Your BMR Results:</h2>
+            <div class="result-item highlight">BMR: <strong id="bmr">0 cal/day</strong></div>
+            <div class="result-item">TDEE (Maintain Weight): <strong id="tdee">0 cal/day</strong></div>
+            <div class="result-item">Weight Loss (0.5 kg/week): <strong id="loss">0 cal/day</strong></div>
+            <div class="result-item">Weight Gain (0.5 kg/week): <strong id="gain">0 cal/day</strong></div>
+            <div class="result-item">BMR per Hour: <strong id="bmrHour">0 cal/hr</strong></div>
+        </div>
+
+        <div class="content">
+            <h2>About BMR Calculator</h2>
+            <p>Yeh free BMR calculator aapki Basal Metabolic Rate calculate karta hai — yani wo calories jo aapka body aaram ki halat mein bhi burn karta hai (sirf saans lene, heart beat, body temperature maintain karne ke liye).</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Age aur Gender enter karein</li>
+                <li>Weight (kg) aur Height (cm) enter karein</li>
+                <li>Activity Level select karein</li>
+                <li>"Calculate BMR" button dabayein</li>
+            </ul>
+
+            <h2>BMR Formula (Mifflin-St Jeor)</h2>
+            <p><strong>Men:</strong> BMR = 10 × weight + 6.25 × height - 5 × age + 5</p>
+            <p><strong>Women:</strong> BMR = 10 × weight + 6.25 × height - 5 × age - 161</p>
+            <p><strong>TDEE:</strong> BMR × Activity Multiplier</p>
+
+            <h2>FAQs</h2>
+            <h3>BMR aur TDEE mein farq kya hai?</h3>
+            <p>BMR sirf resting calories hain. TDEE (Total Daily Energy Expenditure) aapki daily activity ke saath total burn calories hain.</p>
+            <h3>BMR kam kaise karein?</h3>
+            <p>BMR naturally age ke saath kam hota hai. Muscle mass barhane se BMR barhta hai. Extreme dieting se BMR kam ho jata hai.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
+                <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateBMR() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+
+            if (!age || !weight || !height) {
+                alert('Please saari fields sahi values ke saath fill karein');
+                return;
+            }
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
+            const tdee = bmr * activity;
+            const loss = tdee - 550;
+            const gain = tdee + 550;
+            const bmrHour = bmr / 24;
+
+            document.getElementById('bmr').textContent = Math.round(bmr) + ' cal/day';
+            document.getElementById('tdee').textContent = Math.round(tdee) + ' cal/day';
+            document.getElementById('loss').textContent = Math.round(loss) + ' cal/day';
+            document.getElementById('gain').textContent = Math.round(gain) + ' cal/day';
+            document.getElementById('bmrHour').textContent = Math.round(bmrHour) + ' cal/hr';
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
