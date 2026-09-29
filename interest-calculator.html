@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Interest Calculator - Calculate simple and compound interest on your savings, investments, and loans. See how your money grows over time.">
+    <meta name="keywords" content="interest calculator, simple interest calculator, compound interest calculator, savings calculator, investment calculator">
+    <title>Interest Calculator - Simple & Compound Interest | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Interest Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
+        input[type="number"]:focus, select:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Interest Calculator</h1>
+        <p>Simple aur Compound interest calculate karein apni savings ya investment par.</p>
+
+        <div class="input-group">
+            <label for="principal">Principal Amount (₨):</label>
+            <input type="number" id="principal" placeholder="e.g. 100000" min="1">
+        </div>
+
+        <div class="input-group">
+            <label for="rate">Annual Interest Rate (%):</label>
+            <input type="number" id="rate" placeholder="e.g. 8" min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="years">Time Period (Years):</label>
+            <input type="number" id="years" placeholder="e.g. 5" min="0.1" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="type">Interest Type:</label>
+            <select id="type">
+                <option value="compound">Compound Interest (Monthly Compounded)</option>
+                <option value="simple">Simple Interest</option>
+            </select>
+        </div>
+
+        <button onclick="calculateInterest()">Calculate Interest</button>
+
+        <div class="result" id="result">
+            <h2>Your Interest Summary:</h2>
+            <div class="result-item highlight">Total Amount: <strong id="totalAmount">₨ 0</strong></div>
+            <div class="result-item">Interest Earned: <strong id="interest">₨ 0</strong></div>
+            <div class="result-item">Principal: <strong id="principalOut">₨ 0</strong></div>
+            <div class="result-item">Interest Type: <strong id="typeOut">-</strong></div>
+        </div>
+
+        <div class="content">
+            <h2>About Interest Calculator</h2>
+            <p>Yeh free interest calculator aapki savings ya investment par milne wala simple aur compound interest calculate karta hai. Dono types ka result aap instantly dekh sakte hain.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Principal Amount enter karein</li>
+                <li>Annual Interest Rate (%) enter karein</li>
+                <li>Time Period (Years) enter karein</li>
+                <li>Interest Type select karein (Simple ya Compound)</li>
+                <li>"Calculate Interest" button dabayein</li>
+            </ul>
+
+            <h2>Interest Formulas</h2>
+            <p><strong>Simple Interest:</strong> SI = P × R × T / 100</p>
+            <p><strong>Compound Interest:</strong> A = P × (1 + r/n)^(nt)</p>
+            <p>Jahan: P = Principal, R = Annual Rate, T = Time (years), r = Rate/100, n = Compounding frequency (monthly = 12)</p>
+
+            <h2>FAQs</h2>
+            <h3>Simple aur Compound interest mein farq kya hai?</h3>
+            <p>Simple interest sirf principal par milta hai. Compound interest principal + pichla interest dono par milta hai, isliye yeh zyada return deta hai.</p>
+            <h3>Kya yeh calculator free hai?</h3>
+            <p>Ji haan, yeh 100% free hai.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
+                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateInterest() {
+            const principal = parseFloat(document.getElementById('principal').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+            const years = parseFloat(document.getElementById('years').value);
+            const type = document.getElementById('type').value;
+
+            if (!principal || !rate || !years || principal <= 0 || rate < 0 || years <= 0) {
+                alert('Please saari fields sahi values ke saath fill karein');
+                return;
+            }
+
+            let totalAmount, interest;
+
+            if (type === 'simple') {
+                interest = (principal * rate * years) / 100;
+                totalAmount = principal + interest;
+            } else {
+                // Compound interest - monthly compounding
+                const r = rate / 100;
+                const n = 12;
+                totalAmount = principal * Math.pow(1 + r/n, n * years);
+                interest = totalAmount - principal;
+            }
+
+            const formatNum = (n) => '₨ ' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            document.getElementById('totalAmount').textContent = formatNum(totalAmount);
+            document.getElementById('interest').textContent = formatNum(interest);
+            document.getElementById('principalOut').textContent = formatNum(principal);
+            document.getElementById('typeOut').textContent = type === 'simple' ? 'Simple Interest' : 'Compound Interest (Monthly)';
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
