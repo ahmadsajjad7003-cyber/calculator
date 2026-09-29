@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online calculators for health, finance, math and everyday use. BMI, Age, Calorie, Percentage, Loan, Mortgage, Interest, Retirement calculators and more.">
-    <meta name="keywords" content="online calculator, free calculator, BMI calculator, age calculator, calorie calculator, percentage calculator, loan calculator, mortgage calculator, interest calculator, retirement calculator">
-    <title>Free Online Calculators - Health, Finance, Math | CalcMaster</title>
+    <meta name="description" content="Free online calculators for health, finance, math and everyday use. BMI, Age, Percentage, Loan, Mortgage, Calorie, Scientific, and 20+ calculators. Fast, accurate, 100% free.">
+    <meta name="keywords" content="online calculator, free calculator, BMI calculator, age calculator, percentage calculator, loan calculator, mortgage calculator, auto loan calculator, interest calculator, retirement calculator, calorie calculator, body fat calculator, BMR calculator, scientific calculator, fraction calculator, average calculator, triangle calculator, date calculator, time calculator, password generator, random number generator, unit converter">
+    <title>Free Online Calculators - Health, Finance, Math, Other | CalcMaster</title>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -33,8 +33,10 @@
         .category li { margin-bottom: 10px; }
         .category a { color: #3498db; text-decoration: none; font-size: 15px; display: block; padding: 6px 0; transition: 0.2s; }
         .category a:hover { color: #2c3e50; padding-left: 5px; }
-        .category a.disabled { color: #aaa; cursor: not-allowed; }
-        .category a.disabled:hover { padding-left: 0; color: #aaa; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-top: 40px; }
+        .stat-box { background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .stat-box .num { font-size: 32px; font-weight: bold; color: #3498db; }
+        .stat-box .label { color: #777; font-size: 14px; margin-top: 5px; }
         .info-section { margin-top: 40px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         .info-section h2 { color: #2c3e50; margin-bottom: 15px; }
         .info-section p { color: #555; margin-bottom: 12px; }
@@ -49,7 +51,7 @@
 
     <div class="hero">
         <h1>Free Online Calculators</h1>
-        <p>Health, Finance, Math aur daily use ke liye 100% free calculators</p>
+        <p>20+ free calculators — Health, Finance, Math, aur daily use ke liye</p>
         <div class="search-box">
             <input type="text" placeholder="Search calculator..." id="searchInput">
         </div>
@@ -63,8 +65,8 @@
                     <li><a href="bmi-calculator.html">BMI Calculator</a></li>
                     <li><a href="age-calculator.html">Age Calculator</a></li>
                     <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
-                    <li><a href="#" class="disabled">Body Fat Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">BMR Calculator (Coming Soon)</a></li>
+                    <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+                    <li><a href="bmr-calculator.html">BMR Calculator</a></li>
                 </ul>
             </div>
 
@@ -83,32 +85,40 @@
                 <h2>📐 Math</h2>
                 <ul>
                     <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-                    <li><a href="#" class="disabled">Scientific Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Fraction Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Average Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Triangle Calculator (Coming Soon)</a></li>
+                    <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+                    <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+                    <li><a href="average-calculator.html">Average Calculator</a></li>
+                    <li><a href="triangle-calculator.html">Triangle Calculator</a></li>
                 </ul>
             </div>
 
             <div class="category">
                 <h2>🔧 Other</h2>
                 <ul>
-                    <li><a href="#" class="disabled">Date Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Time Calculator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Password Generator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Random Number Generator (Coming Soon)</a></li>
-                    <li><a href="#" class="disabled">Conversion Calculator (Coming Soon)</a></li>
+                    <li><a href="date-calculator.html">Date Calculator</a></li>
+                    <li><a href="time-calculator.html">Time Calculator</a></li>
+                    <li><a href="password-generator.html">Password Generator</a></li>
+                    <li><a href="random-number-generator.html">Random Number Generator</a></li>
+                    <li><a href="conversion-calculator.html">Unit Converter</a></li>
                 </ul>
             </div>
         </div>
 
+        <div class="stats">
+            <div class="stat-box"><div class="num">20</div><div class="label">Calculators</div></div>
+            <div class="stat-box"><div class="num">4</div><div class="label">Categories</div></div>
+            <div class="stat-box"><div class="num">100%</div><div class="label">Free</div></div>
+            <div class="stat-box"><div class="num">0</div><div class="label">Sign-ups</div></div>
+        </div>
+
         <div class="info-section">
             <h2>About CalcMaster</h2>
-            <p>CalcMaster provides free, accurate, and easy-to-use online calculators for health, finance, math, and everyday conversions. Our tools are designed to give you instant, reliable results without any sign-ups or hidden fees.</p>
+            <p>CalcMaster provides 20+ free, accurate, and easy-to-use online calculators for health, finance, math, and everyday conversions. Our tools are designed to give you instant, reliable results without any sign-ups or hidden fees.</p>
             <p>Har calculator browser mein hi chalta hai — koi data server par nahi jata. Aapki privacy 100% safe hai.</p>
             <p><strong>Why Choose Us?</strong></p>
             <ul style="padding-left: 25px; color: #555;">
                 <li>100% Free - No sign-up required</li>
+                <li>20+ Calculators in one place</li>
                 <li>Fast & Accurate results</li>
                 <li>Mobile-friendly design</li>
                 <li>Privacy-focused (client-side calculations)</li>
