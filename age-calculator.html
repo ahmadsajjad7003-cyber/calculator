@@ -24,10 +24,11 @@
         .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
         .input-group { margin-bottom: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-        input[type="date"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        input[type="date"]:focus { border-color: #3498db; outline: none; }
-        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        label { display: block; margin-bottom: 10px; font-weight: 600; color: #555; }
+        .date-row { display: grid; grid-template-columns: 1fr 1.5fr 1.2fr; gap: 10px; }
+        .date-row select { padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; cursor: pointer; }
+        .date-row select:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
         button:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
         .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
@@ -45,6 +46,10 @@
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
         .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+        @media (max-width: 500px) {
+            .date-row { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+            .date-row select { padding: 10px 5px; font-size: 14px; }
+        }
     </style>
 </head>
 <body>
@@ -57,8 +62,30 @@
         <p>Apni exact age calculate karein — years, months, days, hours, aur minutes mein.</p>
 
         <div class="input-group">
-            <label for="dob">Apni Date of Birth select karein:</label>
-            <input type="date" id="dob">
+            <label>Apni Date of Birth select karein:</label>
+            <div class="date-row">
+                <select id="day">
+                    <option value="">Day</option>
+                </select>
+                <select id="month">
+                    <option value="">Month</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select id="year">
+                    <option value="">Year</option>
+                </select>
+            </div>
         </div>
         <button onclick="calculateAge()">Calculate Age</button>
 
@@ -77,7 +104,7 @@
 
             <h2>How to Use</h2>
             <ul>
-                <li>Apni date of birth select karein</li>
+                <li>Apna Day, Month, aur Year select karein</li>
                 <li>"Calculate Age" button dabayein</li>
                 <li>Aapki exact age foran dikhai degi</li>
             </ul>
@@ -106,14 +133,42 @@
     </footer>
 
     <script>
-        function calculateAge() {
-            const dob = document.getElementById('dob').value;
-            if (!dob) { alert('Please apni date of birth select karein'); return; }
+        // Days populate karein (1-31)
+        const daySelect = document.getElementById('day');
+        for (let i = 1; i <= 31; i++) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = i;
+            daySelect.appendChild(opt);
+        }
 
-            const birthDate = new Date(dob);
+        // Years populate karein (current year se 1900 tak)
+        const yearSelect = document.getElementById('year');
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= 1900; i--) {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = i;
+            yearSelect.appendChild(opt);
+        }
+
+        function calculateAge() {
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+
+            if (!day || !month || !year) {
+                alert('Please Day, Month, aur Year teeno select karein');
+                return;
+            }
+
+            const birthDate = new Date(year, month - 1, day);
             const today = new Date();
 
-            if (birthDate > today) { alert('Date of birth future mein nahi ho sakti'); return; }
+            if (birthDate > today) {
+                alert('Date of birth future mein nahi ho sakti');
+                return;
+            }
 
             let years = today.getFullYear() - birthDate.getFullYear();
             let months = today.getMonth() - birthDate.getMonth();
