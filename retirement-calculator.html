@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Retirement Calculator - Calculate how much you need to save for retirement. See your retirement savings growth and monthly income needs.">
+    <meta name="keywords" content="retirement calculator, retirement savings calculator, pension calculator, retirement planning, how much to save for retirement">
+    <title>Retirement Calculator - Plan Your Retirement Savings | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Retirement Calculator",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        input[type="number"]:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Retirement Calculator</h1>
+        <p>Apni retirement ke liye kitna save karna hai, calculate karein.</p>
+
+        <div class="input-group">
+            <label for="currentAge">Current Age (Years):</label>
+            <input type="number" id="currentAge" placeholder="e.g. 30" min="18" max="80">
+        </div>
+
+        <div class="input-group">
+            <label for="retireAge">Retirement Age (Years):</label>
+            <input type="number" id="retireAge" placeholder="e.g. 60" min="30" max="90">
+        </div>
+
+        <div class="input-group">
+            <label for="currentSavings">Current Savings (₨):</label>
+            <input type="number" id="currentSavings" placeholder="e.g. 500000" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="monthlySave">Monthly Savings (₨):</label>
+            <input type="number" id="monthlySave" placeholder="e.g. 10000" min="0">
+        </div>
+
+        <div class="input-group">
+            <label for="rate">Expected Annual Return (%):</label>
+            <input type="number" id="rate" placeholder="e.g. 10" min="0" step="0.01">
+        </div>
+
+        <div class="input-group">
+            <label for="lifeExpect">Life Expectancy (Years):</label>
+            <input type="number" id="lifeExpect" placeholder="e.g. 85" min="50" max="120">
+        </div>
+
+        <button onclick="calculateRetirement()">Calculate Retirement</button>
+
+        <div class="result" id="result">
+            <h2>Your Retirement Summary:</h2>
+            <div class="result-item highlight">Corpus at Retirement: <strong id="corpus">₨ 0</strong></div>
+            <div class="result-item">Total Contributions: <strong id="totalContrib">₨ 0</strong></div>
+            <div class="result-item">Investment Growth: <strong id="growth">₨ 0</strong></div>
+            <div class="result-item">Years to Retirement: <strong id="yearsToRetire">0</strong></div>
+            <div class="result-item">Retirement Duration: <strong id="retireDuration">0</strong></div>
+            <div class="result-item">Monthly Income After Retirement: <strong id="monthlyIncome">₨ 0</strong></div>
+        </div>
+
+        <div class="content">
+            <h2>About Retirement Calculator</h2>
+            <p>Yeh free retirement calculator aapko batata hai ke aapki retirement ke waqt kitni raqam (corpus) jama hogi, aur retirement ke baad aap kitni monthly income expect kar sakte hain.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Apni Current Age enter karein</li>
+                <li>Retirement Age enter karein</li>
+                <li>Current Savings enter karein</li>
+                <li>Monthly Savings enter karein</li>
+                <li>Expected Annual Return (%) enter karein</li>
+                <li>Life Expectancy enter karein</li>
+                <li>"Calculate Retirement" button dabayein</li>
+            </ul>
+
+            <h2>Retirement Formula</h2>
+            <p><strong>Future Value = P × (1+r)^n + PMT × [((1+r)^n - 1) / r]</strong></p>
+            <p>Jahan: P = Current Savings, PMT = Monthly Savings, r = Monthly Rate, n = Total Months</p>
+
+            <h2>FAQs</h2>
+            <h3>Corpus kya hai?</h3>
+            <p>Corpus wo total raqam hai jo aapki retirement tak jama ho jati hai — current savings + monthly savings + investment growth.</p>
+            <h3>Kya yeh calculator free hai?</h3>
+            <p>Ji haan, yeh 100% free hai.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
+                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+                <li><a href="interest-calculator.html">Interest Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateRetirement() {
+            const currentAge = parseFloat(document.getElementById('currentAge').value);
+            const retireAge = parseFloat(document.getElementById('retireAge').value);
+            const currentSavings = parseFloat(document.getElementById('currentSavings').value) || 0;
+            const monthlySave = parseFloat(document.getElementById('monthlySave').value) || 0;
+            const rate = parseFloat(document.getElementById('rate').value);
+            const lifeExpect = parseFloat(document.getElementById('lifeExpect').value);
+
+            if (!currentAge || !retireAge || !rate || !lifeExpect) {
+                alert('Please saari fields sahi values ke saath fill karein');
+                return;
+            }
+
+            if (retireAge <= currentAge) {
+                alert('Retirement age current age se zyada honi chahiye');
+                return;
+            }
+
+            if (lifeExpect <= retireAge) {
+                alert('Life expectancy retirement age se zyada honi chahiye');
+                return;
+            }
+
+            const yearsToRetire = retireAge - currentAge;
+            const monthsToRetire = yearsToRetire * 12;
+            const monthlyRate = rate / 100 / 12;
+
+            // Future value of current savings
+            const fvCurrent = currentSavings * Math.pow(1 + monthlyRate, monthsToRetire);
+            
+            // Future value of monthly savings (annuity)
+            let fvMonthly;
+            if (monthlyRate > 0) {
+                fvMonthly = monthlySave * (Math.pow(1 + monthlyRate, monthsToRetire) - 1) / monthlyRate;
+            } else {
+                fvMonthly = monthlySave * monthsToRetire;
+            }
+
+            const corpus = fvCurrent + fvMonthly;
+            const totalContrib = currentSavings + (monthlySave * monthsToRetire);
+            const growth = corpus - totalContrib;
+            const retireDuration = lifeExpect - retireAge;
+
+            // Monthly income after retirement (assuming corpus lasts till life expectancy with same return)
+            const monthsAfterRetire = retireDuration * 12;
+            let monthlyIncome;
+            if (monthlyRate > 0) {
+                monthlyIncome = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -monthsAfterRetire));
+            } else {
+                monthlyIncome = corpus / monthsAfterRetire;
+            }
+
+            const formatNum = (n) => '₨ ' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+            document.getElementById('corpus').textContent = formatNum(corpus);
+            document.getElementById('totalContrib').textContent = formatNum(totalContrib);
+            document.getElementById('growth').textContent = formatNum(growth);
+            document.getElementById('yearsToRetire').textContent = yearsToRetire + ' years';
+            document.getElementById('retireDuration').textContent = retireDuration + ' years';
+            document.getElementById('monthlyIncome').textContent = formatNum(monthlyIncome);
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
