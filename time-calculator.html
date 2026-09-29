@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Time Calculator - Add or subtract hours, minutes, and seconds. Also calculate duration between two times.">
+    <meta name="keywords" content="time calculator, add time, subtract time, time duration calculator, hours minutes seconds calculator">
+    <title>Time Calculator - Add, Subtract, Duration | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Time Calculator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab { flex: 1; padding: 12px 20px; border: 2px solid #ddd; background: white; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: 600; color: #555; min-width: 130px; }
+        .tab.active { background: #3498db; color: white; border-color: #3498db; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .time-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
+        .time-row input { text-align: center; }
+        .time-label { font-size: 13px; text-align: center; color: #777; margin-bottom: 4px; font-weight: 600; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        button.calc-btn:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Time Calculator</h1>
+        <p>Time add/subtract karein ya do times ke beech duration calculate karein.</p>
+
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('duration')">Time Duration</button>
+            <button class="tab" onclick="switchTab('math')">Add/Subtract</button>
+        </div>
+
+        <!-- DURATION -->
+        <div class="section active" id="durationSection">
+            <div class="input-group">
+                <label>Start Time:</label>
+                <div class="time-row">
+                    <div><div class="time-label">Hours</div><input type="number" id="sH" placeholder="0" min="0" max="23" value="9"></div>
+                    <div><div class="time-label">Minutes</div><input type="number" id="sM" placeholder="0" min="0" max="59" value="0"></div>
+                    <div><div class="time-label">Seconds</div><input type="number" id="sS" placeholder="0" min="0" max="59" value="0"></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>End Time:</label>
+                <div class="time-row">
+                    <div><div class="time-label">Hours</div><input type="number" id="eH" placeholder="0" min="0" max="23" value="17"></div>
+                    <div><div class="time-label">Minutes</div><input type="number" id="eM" placeholder="0" min="0" max="59" value="30"></div>
+                    <div><div class="time-label">Seconds</div><input type="number" id="eS" placeholder="0" min="0" max="59" value="0"></div>
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculateDuration()">Calculate Duration</button>
+        </div>
+
+        <!-- ADD/SUBTRACT -->
+        <div class="section" id="mathSection">
+            <div class="input-group">
+                <label>Time 1:</label>
+                <div class="time-row">
+                    <div><div class="time-label">Hours</div><input type="number" id="h1" placeholder="0" min="0" value="0"></div>
+                    <div><div class="time-label">Minutes</div><input type="number" id="m1" placeholder="0" min="0" value="0"></div>
+                    <div><div class="time-label">Seconds</div><input type="number" id="s1" placeholder="0" min="0" value="0"></div>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Operation:</label>
+                <select id="op">
+                    <option value="add">Add (+)</option>
+                    <option value="subtract">Subtract (−)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Time 2:</label>
+                <div class="time-row">
+                    <div><div class="time-label">Hours</div><input type="number" id="h2" placeholder="0" min="0" value="0"></div>
+                    <div><div class="time-label">Minutes</div><input type="number" id="m2" placeholder="0" min="0" value="0"></div>
+                    <div><div class="time-label">Seconds</div><input type="number" id="s2" placeholder="0" min="0" value="0"></div>
+                </div>
+            </div>
+            <button class="calc-btn" onclick="calculateMath()">Calculate</button>
+        </div>
+
+        <div class="result" id="result">
+            <h2>Result:</h2>
+            <div id="resultContent"></div>
+        </div>
+
+        <div class="content">
+            <h2>About Time Calculator</h2>
+            <p>Yeh free time calculator do kaam karta hai: (1) Do times ke beech duration calculate karna, aur (2) Time values ko add ya subtract karna.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li><strong>Time Duration:</strong> Start aur End time enter karein → Calculate dabayein</li>
+                <li><strong>Add/Subtract:</strong> Time 1, Operation, Time 2 enter karein → Calculate dabayein</li>
+            </ul>
+
+            <h2>FAQs</h2>
+            <h3>Kya 24-hour format use hota hai?</h3>
+            <p>Ji haan, hours 0-23 enter karein (jaise 5:00 PM = 17:00).</p>
+            <h3>Kya seconds bhi calculate hote hain?</h3>
+            <p>Ji haan, seconds bhi add/subtract aur duration calculate hote hain.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="date-calculator.html">Date Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="average-calculator.html">Average Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab').forEach((t, i) => {
+                t.classList.remove('active');
+                if ((tab === 'duration' && i === 0) || (tab === 'math' && i === 1)) t.classList.add('active');
+            });
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(tab === 'duration' ? 'durationSection' : 'mathSection').classList.add('active');
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function formatTime(h, m, s) {
+            return `${h} hours, ${m} minutes, ${s} seconds`;
+        }
+
+        function calculateDuration() {
+            const sH = parseInt(document.getElementById('sH').value) || 0;
+            const sM = parseInt(document.getElementById('sM').value) || 0;
+            const sS = parseInt(document.getElementById('sS').value) || 0;
+            const eH = parseInt(document.getElementById('eH').value) || 0;
+            const eM = parseInt(document.getElementById('eM').value) || 0;
+            const eS = parseInt(document.getElementById('eS').value) || 0;
+
+            let start = sH * 3600 + sM * 60 + sS;
+            let end = eH * 3600 + eM * 60 + eS;
+
+            if (end < start) end += 24 * 3600; // Next day
+
+            const diff = end - start;
+            const h = Math.floor(diff / 3600);
+            const m = Math.floor((diff % 3600) / 60);
+            const s = diff % 60;
+
+            document.getElementById('resultContent').innerHTML = `
+                <div class="result-item highlight">Duration: <strong>${h}h ${m}m ${s}s</strong></div>
+                <div class="result-item">Total Hours: <strong>${(diff / 3600).toFixed(4)}</strong></div>
+                <div class="result-item">Total Minutes: <strong>${(diff / 60).toFixed(2)}</strong></div>
+                <div class="result-item">Total Seconds: <strong>${diff.toLocaleString()}</strong></div>
+                <div class="result-item">Start Time: <strong>${sH}:${String(sM).padStart(2, '0')}:${String(sS).padStart(2, '0')}</strong></div>
+                <div class="result-item">End Time: <strong>${eH}:${String(eM).padStart(2, '0')}:${String(eS).padStart(2, '0')}</strong></div>
+            `;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function calculateMath() {
+            const h1 = parseInt(document.getElementById('h1').value) || 0;
+            const m1 = parseInt(document.getElementById('m1').value) || 0;
+            const s1 = parseInt(document.getElementById('s1').value) || 0;
+            const h2 = parseInt(document.getElementById('h2').value) || 0;
+            const m2 = parseInt(document.getElementById('m2').value) || 0;
+            const s2 = parseInt(document.getElementById('s2').value) || 0;
+            const op = document.getElementById('op').value;
+
+            let t1 = h1 * 3600 + m1 * 60 + s1;
+            let t2 = h2 * 3600 + m2 * 60 + s2;
+
+            let result;
+            if (op === 'add') {
+                result = t1 + t2;
+            } else {
+                result = t1 - t2;
+                if (result < 0) {
+                    alert('Result negative ho raha hai. Time 1 ko Time 2 se bara rakhein.');
+                    return;
+                }
+            }
+
+            const h = Math.floor(result / 3600);
+            const m = Math.floor((result % 3600) / 60);
+            const s = result % 60;
+
+            document.getElementById('resultContent').innerHTML = `
+                <div class="result-item highlight">Result: <strong>${h}h ${m}m ${s}s</strong></div>
+                <div class="result-item">Operation: <strong>${op === 'add' ? 'Added' : 'Subtracted'}</strong></div>
+                <div class="result-item">Time 1: <strong>${h1}h ${m1}m ${s1}s</strong></div>
+                <div class="result-item">Time 2: <strong>${h2}h ${m2}m ${s2}s</strong></div>
+                <div class="result-item">Total Hours: <strong>${(result / 3600).toFixed(4)}</strong></div>
+                <div class="result-item">Total Minutes: <strong>${(result / 60).toFixed(2)}</strong></div>
+                <div class="result-item">Total Seconds: <strong>${result.toLocaleString()}</strong></div>
+            `;
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
