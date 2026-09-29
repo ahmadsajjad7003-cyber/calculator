@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Body Fat Calculator - Calculate your body fat percentage using the U.S. Navy method. Get accurate results based on height, weight, and measurements.">
+    <meta name="keywords" content="body fat calculator, body fat percentage, navy body fat calculator, fat percentage calculator, how to calculate body fat">
+    <title>Body Fat Calculator - Calculate Body Fat Percentage | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Body Fat Calculator",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
+        input[type="number"]:focus, select:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Body Fat Calculator</h1>
+        <p>Apni body fat percentage calculate karein U.S. Navy method se.</p>
+
+        <div class="input-group">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="e.g. 175" min="50" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="neck">Neck Circumference (cm):</label>
+            <input type="number" id="neck" placeholder="e.g. 38" min="20" step="0.1">
+        </div>
+
+        <div class="input-group">
+            <label for="waist">Waist Circumference (cm):</label>
+            <input type="number" id="waist" placeholder="e.g. 85" min="40" step="0.1">
+        </div>
+
+        <div class="input-group" id="hipGroup" style="display:none;">
+            <label for="hip">Hip Circumference (cm):</label>
+            <input type="number" id="hip" placeholder="e.g. 95" min="50" step="0.1">
+        </div>
+
+        <button onclick="calculateBodyFat()">Calculate Body Fat</button>
+
+        <div class="result" id="result">
+            <h2>Your Body Fat Results:</h2>
+            <div class="result-item highlight">Body Fat: <strong id="bodyFat">0%</strong></div>
+            <div class="result-item">Category: <strong id="category">-</strong></div>
+            <div class="result-item">Fat Mass: <strong id="fatMass">0 kg</strong></div>
+            <div class="result-item">Lean Mass: <strong id="leanMass">0 kg</strong></div>
+            <div class="result-item">BMI: <strong id="bmi">0</strong></div>
+        </div>
+
+        <div class="content">
+            <h2>About Body Fat Calculator</h2>
+            <p>Yeh free body fat calculator aapki body fat percentage calculate karta hai U.S. Navy Method se. Iske liye aapko neck, waist, aur (females ke liye) hip ka measurement chahiye.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Gender select karein</li>
+                <li>Weight aur Height enter karein</li>
+                <li>Neck circumference enter karein</li>
+                <li>Waist circumference enter karein</li>
+                <li>Females: Hip circumference bhi enter karein</li>
+                <li>"Calculate Body Fat" button dabayein</li>
+            </ul>
+
+            <h2>U.S. Navy Body Fat Formula</h2>
+            <p><strong>Men:</strong> Body Fat% = 495 / (1.0324 - 0.19077 × log10(waist - neck) + 0.15456 × log10(height)) - 450</p>
+            <p><strong>Women:</strong> Body Fat% = 495 / (1.29579 - 0.35004 × log10(waist + hip - neck) + 0.22100 × log10(height)) - 450</p>
+
+            <h2>Body Fat Categories</h2>
+            <ul>
+                <li><strong>Essential Fat:</strong> Men 2-5%, Women 10-13%</li>
+                <li><strong>Athletes:</strong> Men 6-13%, Women 14-20%</li>
+                <li><strong>Fitness:</strong> Men 14-17%, Women 21-24%</li>
+                <li><strong>Average:</strong> Men 18-24%, Women 25-31%</li>
+                <li><strong>Obese:</strong> Men 25%+, Women 32%+</li>
+            </ul>
+
+            <h2>FAQs</h2>
+            <h3>Body fat percentage kya hai?</h3>
+            <p>Yeh aapke total weight ka wo percentage hai jo fat se aata hai. Lean mass (muscle, bone, water) baqi hoti hai.</p>
+            <h3>Kya yeh accurate hai?</h3>
+            <p>Navy method ~3-4% accurate hota hai. Best accuracy ke liye DEXA scan ya hydrostatic weighing use hoti hai.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
+                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        // Female select karne par hip field dikhayein
+        document.getElementById('gender').addEventListener('change', function() {
+            document.getElementById('hipGroup').style.display = this.value === 'female' ? 'block' : 'none';
+        });
+
+        function calculateBodyFat() {
+            const gender = document.getElementById('gender').value;
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const neck = parseFloat(document.getElementById('neck').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const hip = parseFloat(document.getElementById('hip').value) || 0;
+
+            if (!weight || !height || !neck || !waist) {
+                alert('Please saari fields sahi values ke saath fill karein');
+                return;
+            }
+
+            if (gender === 'female' && !hip) {
+                alert('Females ke liye hip circumference zaroori hai');
+                return;
+            }
+
+            let bodyFat;
+            if (gender === 'male') {
+                bodyFat = 495 / (1.0324 - 0.19077 * Math.log10(waist - neck) + 0.15456 * Math.log10(height)) - 450;
+            } else {
+                bodyFat = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
+            }
+
+            if (bodyFat < 0) bodyFat = 0;
+            if (bodyFat > 70) bodyFat = 70;
+
+            // Category determine karein
+            let category;
+            if (gender === 'male') {
+                if (bodyFat < 6) category = 'Essential Fat';
+                else if (bodyFat < 14) category = 'Athletes';
+                else if (bodyFat < 18) category = 'Fitness';
+                else if (bodyFat < 25) category = 'Average';
+                else category = 'Obese';
+            } else {
+                if (bodyFat < 14) category = 'Essential Fat';
+                else if (bodyFat < 21) category = 'Athletes';
+                else if (bodyFat < 25) category = 'Fitness';
+                else if (bodyFat < 32) category = 'Average';
+                else category = 'Obese';
+            }
+
+            const fatMass = weight * bodyFat / 100;
+            const leanMass = weight - fatMass;
+            const bmi = weight / Math.pow(height / 100, 2);
+
+            document.getElementById('bodyFat').textContent = bodyFat.toFixed(1) + '%';
+            document.getElementById('category').textContent = category;
+            document.getElementById('fatMass').textContent = fatMass.toFixed(2) + ' kg';
+            document.getElementById('leanMass').textContent = leanMass.toFixed(2) + ' kg';
+            document.getElementById('bmi').textContent = bmi.toFixed(1);
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
