@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Random Number Generator - Generate random numbers within any range. Choose how many numbers, with or without duplicates.">
+    <meta name="keywords" content="random number generator, random number, pick a number, lottery number generator, random integer">
+    <title>Random Number Generator - Pick Random Numbers | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Random Number Generator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
+        input[type="number"]:focus, select:focus { border-color: #3498db; outline: none; }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        button.calc-btn:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .number-box { background: #3498db; color: white; padding: 15px; border-radius: 5px; text-align: center; font-size: 20px; font-weight: bold; }
+        .copy-btn { background: #16a085; color: white; padding: 12px 20px; border: none; border-radius: 5px; font-size: 15px; font-weight: 600; cursor: pointer; width: 100%; }
+        .copy-btn:hover { background: #138d75; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Random Number Generator</h1>
+        <p>Kisi bhi range mein random numbers generate karein.</p>
+
+        <div class="row">
+            <div class="input-group">
+                <label for="min">Minimum:</label>
+                <input type="number" id="min" value="1">
+            </div>
+            <div class="input-group">
+                <label for="max">Maximum:</label>
+                <input type="number" id="max" value="100">
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="count">How many numbers?</label>
+            <input type="number" id="count" value="1" min="1" max="1000">
+        </div>
+
+        <div class="input-group">
+            <label for="unique">Duplicates:</label>
+            <select id="unique">
+                <option value="no">Allow duplicates</option>
+                <option value="yes">No duplicates (unique)</option>
+            </select>
+        </div>
+
+        <button class="calc-btn" onclick="generateNumbers()">Generate Numbers</button>
+
+        <div class="result" id="result">
+            <h2>Generated Numbers:</h2>
+            <div class="numbers-grid" id="numbersGrid"></div>
+            <button class="copy-btn" onclick="copyNumbers()">Copy All Numbers</button>
+        </div>
+
+        <div class="content">
+            <h2>About Random Number Generator</h2>
+            <p>Yeh free random number generator aapko kisi bhi range (minimum se maximum) mein random numbers deta hai. Aap chahein to duplicates allow karein ya unique numbers generate karein.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Minimum aur Maximum values enter karein</li>
+                <li>Kitne numbers chahiye, wo enter karein</li>
+                <li>Duplicates allow karne ya nahi, select karein</li>
+                <li>"Generate Numbers" button dabayein</li>
+            </ul>
+
+            <h2>Use Cases</h2>
+            <ul>
+                <li>Lottery numbers pick karna</li>
+                <li>Random teams banana</li>
+                <li>Games mein random dice rolls</li>
+                <li>Giveaway winners select karna</li>
+                <li>Random sampling for surveys</li>
+            </ul>
+
+            <h2>FAQs</h2>
+            <h3>Kya yeh truly random hai?</h3>
+            <p>Yeh cryptographically secure random numbers use karta hai (browser ka crypto API), jo truly random ke qareeb tareen hai.</p>
+            <h3>Maximum kitne numbers generate kar sakte hain?</h3>
+            <p>Ek waqt mein 1000 tak numbers generate kar sakte hain.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="password-generator.html">Password Generator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="average-calculator.html">Average Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        let lastNumbers = [];
+
+        function generateNumbers() {
+            const min = parseInt(document.getElementById('min').value);
+            const max = parseInt(document.getElementById('max').value);
+            const count = parseInt(document.getElementById('count').value);
+            const unique = document.getElementById('unique').value === 'yes';
+
+            if (isNaN(min) || isNaN(max) || isNaN(count)) {
+                alert('Please saari values enter karein');
+                return;
+            }
+
+            if (min > max) {
+                alert('Minimum maximum se chota hona chahiye');
+                return;
+            }
+
+            if (count < 1) {
+                alert('Kam se kam 1 number generate karein');
+                return;
+            }
+
+            const rangeSize = max - min + 1;
+
+            if (unique && count > rangeSize) {
+                alert(`Is range mein sirf ${rangeSize} unique numbers possible hain`);
+                return;
+            }
+
+            let numbers = [];
+
+            if (unique) {
+                const pool = [];
+                for (let i = min; i <= max; i++) pool.push(i);
+                // Fisher-Yates shuffle
+                for (let i = pool.length - 1; i > 0; i--) {
+                    const arr = new Uint32Array(1);
+                    crypto.getRandomValues(arr);
+                    const j = arr[0] % (i + 1);
+                    [pool[i], pool[j]] = [pool[j], pool[i]];
+                }
+                numbers = pool.slice(0, count);
+            } else {
+                for (let i = 0; i < count; i++) {
+                    const arr = new Uint32Array(1);
+                    crypto.getRandomValues(arr);
+                    numbers.push(min + (arr[0] % rangeSize));
+                }
+            }
+
+            lastNumbers = numbers;
+
+            const grid = document.getElementById('numbersGrid');
+            grid.innerHTML = numbers.map(n => `<div class="number-box">${n}</div>`).join('');
+
+            document.getElementById('result').style.display = 'block';
+        }
+
+        function copyNumbers() {
+            if (lastNumbers.length === 0) return;
+            navigator.clipboard.writeText(lastNumbers.join(', ')).then(() => {
+                const btn = event.target;
+                const old = btn.textContent;
+                btn.textContent = '✓ Copied!';
+                setTimeout(() => btn.textContent = old, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
