@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Average Calculator - Calculate mean, median, mode, range, sum, and count of any set of numbers. Instant and accurate results.">
+    <meta name="keywords" content="average calculator, mean calculator, median calculator, mode calculator, statistics calculator, mean median mode">
+    <title>Average Calculator - Mean, Median, Mode | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Average Calculator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0" }
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
+        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        textarea { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; font-family: 'Segoe UI', Arial, sans-serif; min-height: 120px; resize: vertical; }
+        textarea:focus { border-color: #3498db; outline: none; }
+        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 22px; }
+        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
+        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
+        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
+        .content p, .content li { color: #555; margin-bottom: 10px; }
+        .content ul { padding-left: 25px; }
+        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
+        .other-tools ul { list-style: none; padding: 0; }
+        .other-tools li { margin-bottom: 10px; }
+        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
+        .other-tools a:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">CalcMaster</a>
+    </header>
+
+    <div class="container">
+        <h1>Average Calculator</h1>
+        <p>Numbers ka mean, median, mode, range, sum, aur count calculate karein.</p>
+
+        <div class="input-group">
+            <label for="numbers">Numbers enter karein (comma, space, ya new line se separate karein):</label>
+            <textarea id="numbers" placeholder="e.g. 10, 20, 30, 40, 50&#10;ya&#10;10 20 30 40 50"></textarea>
+        </div>
+
+        <button onclick="calculateAverage()">Calculate</button>
+
+        <div class="result" id="result">
+            <h2>Your Statistics:</h2>
+            <div class="result-item highlight">Mean (Average): <strong id="mean">0</strong></div>
+            <div class="result-item">Median: <strong id="median">0</strong></div>
+            <div class="result-item">Mode: <strong id="mode">-</strong></div>
+            <div class="result-item">Range: <strong id="range">0</strong></div>
+            <div class="result-item">Sum: <strong id="sum">0</strong></div>
+            <div class="result-item">Count: <strong id="count">0</strong></div>
+            <div class="result-item">Min: <strong id="min">0</strong></div>
+            <div class="result-item">Max: <strong id="max">0</strong></div>
+        </div>
+
+        <div class="content">
+            <h2>About Average Calculator</h2>
+            <p>Yeh free average calculator aapko numbers ke set ka mean (average), median, mode, range, sum, aur count calculate kar ke deta hai. Statistics students, data analysts, aur daily life mein kaam aata hai.</p>
+
+            <h2>How to Use</h2>
+            <ul>
+                <li>Numbers ko comma (,), space, ya new line se separate kar ke enter karein</li>
+                <li>"Calculate" button dabayein</li>
+                <li>Saare statistical results foran show ho jayenge</li>
+            </ul>
+
+            <h2>Definitions</h2>
+            <ul>
+                <li><strong>Mean:</strong> Sum ÷ Count (average)</li>
+                <li><strong>Median:</strong> Middle value jab numbers sorted hon</li>
+                <li><strong>Mode:</strong> Sab se zyada baar aane wala number</li>
+                <li><strong>Range:</strong> Max − Min</li>
+            </ul>
+
+            <h2>FAQs</h2>
+            <h3>Kya main decimal numbers use kar sakta hoon?</h3>
+            <p>Ji haan, aap 10.5, 20.75 jaise decimals bhi enter kar sakte hain.</p>
+            <h3>Kitne numbers enter kar sakte hain?</h3>
+            <p>Koi limit nahi — aap jitne chahein numbers enter kar sakte hain.</p>
+        </div>
+
+        <div class="other-tools">
+            <h2>Other Popular Calculators:</h2>
+            <ul>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+                <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 CalcMaster. All rights reserved.
+    </footer>
+
+    <script>
+        function calculateAverage() {
+            const input = document.getElementById('numbers').value.trim();
+            if (!input) {
+                alert('Please kuch numbers enter karein');
+                return;
+            }
+
+            const nums = input.split(/[\s,]+/).map(Number).filter(n => !isNaN(n));
+            if (nums.length === 0) {
+                alert('Please valid numbers enter karein');
+                return;
+            }
+
+            // Sum
+            const sum = nums.reduce((a, b) => a + b, 0);
+            const count = nums.length;
+
+            // Mean
+            const mean = sum / count;
+
+            // Sorted for median and mode
+            const sorted = [...nums].sort((a, b) => a - b);
+
+            // Median
+            let median;
+            if (count % 2 === 0) {
+                median = (sorted[count / 2 - 1] + sorted[count / 2]) / 2;
+            } else {
+                median = sorted[Math.floor(count / 2)];
+            }
+
+            // Mode
+            const freq = {};
+            let maxFreq = 0;
+            nums.forEach(n => {
+                freq[n] = (freq[n] || 0) + 1;
+                if (freq[n] > maxFreq) maxFreq = freq[n];
+            });
+            const modes = Object.keys(freq).filter(k => freq[k] === maxFreq).map(Number);
+            let modeText;
+            if (maxFreq === 1) {
+                modeText = 'No mode (all unique)';
+            } else if (modes.length > 5) {
+                modeText = `${modes.length} modes`;
+            } else {
+                modeText = modes.join(', ');
+            }
+
+            // Range
+            const minVal = sorted[0];
+            const maxVal = sorted[count - 1];
+            const range = maxVal - minVal;
+
+            const fmt = (n) => Number.isInteger(n) ? n : n.toFixed(4);
+
+            document.getElementById('mean').textContent = fmt(mean);
+            document.getElementById('median').textContent = fmt(median);
+            document.getElementById('mode').textContent = modeText;
+            document.getElementById('range').textContent = fmt(range);
+            document.getElementById('sum').textContent = fmt(sum);
+            document.getElementById('count').textContent = count;
+            document.getElementById('min').textContent = fmt(minVal);
+            document.getElementById('max').textContent = fmt(maxVal);
+            document.getElementById('result').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
