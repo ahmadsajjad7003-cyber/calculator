@@ -3,45 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Retirement Calculator - Calculate how much you need to save for retirement. See your retirement savings growth and monthly income needs.">
+    <meta name="description" content="Free Retirement Calculator - Calculate how much you need to save for retirement. See your retirement corpus and monthly income after retirement.">
     <meta name="keywords" content="retirement calculator, retirement savings calculator, pension calculator, retirement planning, how much to save for retirement">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html">
     <title>Retirement Calculator - Plan Your Retirement Savings | CalcMaster</title>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Retirement Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much should I save for retirement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most experts recommend saving 15% of your income for retirement. However, the exact amount depends on your current age, retirement age, expected expenses, and lifestyle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a retirement corpus?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A retirement corpus is the total amount of money you accumulate by the time you retire. It includes your current savings, future monthly savings, and investment growth."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "At what age should I start saving for retirement?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The earlier, the better. Starting in your 20s gives compound interest more time to work. However, it's never too late to start — even starting at 40 can make a significant difference."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long will my retirement corpus last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on your retirement corpus, monthly expenses, and life expectancy. Our calculator estimates monthly income based on these factors."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Retirement Calculator",
+      "step": [
+        { "@type": "HowToStep", "name": "Enter current age", "text": "Enter your current age in years." },
+        { "@type": "HowToStep", "name": "Enter retirement age", "text": "Enter the age at which you plan to retire." },
+        { "@type": "HowToStep", "name": "Enter current savings", "text": "Enter the amount you have already saved for retirement." },
+        { "@type": "HowToStep", "name": "Enter monthly savings", "text": "Enter how much you save each month for retirement." },
+        { "@type": "HowToStep", "name": "Enter expected return", "text": "Enter the expected annual return on your investments." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your retirement corpus and monthly income." }
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
         header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
+        p, li { color: #555; margin-bottom: 10px; }
+        ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
         input[type="number"]:focus { border-color: #3498db; outline: none; }
-        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
-        button:hover { background: #2980b9; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
-        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
-        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
-        .content p, .content li { color: #555; margin-bottom: 10px; }
-        .content ul { padding-left: 25px; }
+        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
         .other-tools ul { list-style: none; padding: 0; }
         .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
@@ -56,86 +118,110 @@
 
     <div class="container">
         <h1>Retirement Calculator</h1>
-        <p>Apni retirement ke liye kitna save karna hai, calculate karein.</p>
+        <p>Calculate how much you need to save for retirement and your monthly income after retirement.</p>
 
         <div class="input-group">
             <label for="currentAge">Current Age (Years):</label>
             <input type="number" id="currentAge" placeholder="e.g. 30" min="18" max="80">
         </div>
-
         <div class="input-group">
             <label for="retireAge">Retirement Age (Years):</label>
-            <input type="number" id="retireAge" placeholder="e.g. 60" min="30" max="90">
+            <input type="number" id="retireAge" placeholder="e.g. 65" min="30" max="90">
         </div>
-
         <div class="input-group">
-            <label for="currentSavings">Current Savings (₨):</label>
-            <input type="number" id="currentSavings" placeholder="e.g. 500000" min="0">
+            <label for="currentSavings">Current Savings ($):</label>
+            <input type="number" id="currentSavings" placeholder="e.g. 50000" min="0">
         </div>
-
         <div class="input-group">
-            <label for="monthlySave">Monthly Savings (₨):</label>
-            <input type="number" id="monthlySave" placeholder="e.g. 10000" min="0">
+            <label for="monthlySave">Monthly Savings ($):</label>
+            <input type="number" id="monthlySave" placeholder="e.g. 1000" min="0">
         </div>
-
         <div class="input-group">
             <label for="rate">Expected Annual Return (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 10" min="0" step="0.01">
+            <input type="number" id="rate" placeholder="e.g. 7" min="0" step="0.01">
         </div>
-
         <div class="input-group">
             <label for="lifeExpect">Life Expectancy (Years):</label>
             <input type="number" id="lifeExpect" placeholder="e.g. 85" min="50" max="120">
         </div>
 
-        <button onclick="calculateRetirement()">Calculate Retirement</button>
+        <button class="calc-btn" onclick="calculateRetirement()">Calculate Retirement</button>
 
         <div class="result" id="result">
             <h2>Your Retirement Summary:</h2>
-            <div class="result-item highlight">Corpus at Retirement: <strong id="corpus">₨ 0</strong></div>
-            <div class="result-item">Total Contributions: <strong id="totalContrib">₨ 0</strong></div>
-            <div class="result-item">Investment Growth: <strong id="growth">₨ 0</strong></div>
+            <div class="result-item highlight">Corpus at Retirement: <strong id="corpus">$0</strong></div>
+            <div class="result-item">Total Contributions: <strong id="totalContrib">$0</strong></div>
+            <div class="result-item">Investment Growth: <strong id="growth">$0</strong></div>
             <div class="result-item">Years to Retirement: <strong id="yearsToRetire">0</strong></div>
             <div class="result-item">Retirement Duration: <strong id="retireDuration">0</strong></div>
-            <div class="result-item">Monthly Income After Retirement: <strong id="monthlyIncome">₨ 0</strong></div>
+            <div class="result-item">Monthly Income After Retirement: <strong id="monthlyIncome">$0</strong></div>
         </div>
 
-        <div class="content">
-            <h2>About Retirement Calculator</h2>
-            <p>Yeh free retirement calculator aapko batata hai ke aapki retirement ke waqt kitni raqam (corpus) jama hogi, aur retirement ke baad aap kitni monthly income expect kar sakte hain.</p>
+        <h2>What is Retirement Planning?</h2>
+        <p>Retirement planning is the process of determining your retirement income goals and the actions needed to achieve them. It involves identifying sources of income, estimating expenses, and implementing a savings program to build a retirement corpus that will support you after you stop working.</p>
+        <p>With rising life expectancy, people now spend 20-30 years in retirement. Proper planning is essential to maintain your lifestyle without financial stress.</p>
 
-            <h2>How to Use</h2>
-            <ul>
-                <li>Apni Current Age enter karein</li>
-                <li>Retirement Age enter karein</li>
-                <li>Current Savings enter karein</li>
-                <li>Monthly Savings enter karein</li>
-                <li>Expected Annual Return (%) enter karein</li>
-                <li>Life Expectancy enter karein</li>
-                <li>"Calculate Retirement" button dabayein</li>
-            </ul>
+        <h2>How to Use This Retirement Calculator</h2>
+        <ol>
+            <li><strong>Enter your current age</strong>.</li>
+            <li><strong>Enter your desired retirement age</strong>.</li>
+            <li><strong>Enter your current retirement savings</strong>.</li>
+            <li><strong>Enter your monthly savings amount</strong>.</li>
+            <li><strong>Enter expected annual return</strong> on your investments.</li>
+            <li><strong>Enter life expectancy</strong> for retirement duration.</li>
+            <li><strong>Click "Calculate Retirement"</strong> to see your corpus and monthly income.</li>
+        </ol>
 
-            <h2>Retirement Formula</h2>
-            <p><strong>Future Value = P × (1+r)^n + PMT × [((1+r)^n - 1) / r]</strong></p>
-            <p>Jahan: P = Current Savings, PMT = Monthly Savings, r = Monthly Rate, n = Total Months</p>
-
-            <h2>FAQs</h2>
-            <h3>Corpus kya hai?</h3>
-            <p>Corpus wo total raqam hai jo aapki retirement tak jama ho jati hai — current savings + monthly savings + investment growth.</p>
-            <h3>Kya yeh calculator free hai?</h3>
-            <p>Ji haan, yeh 100% free hai.</p>
+        <h2>Retirement Formula</h2>
+        <div class="formula-box">
+            <p><strong>Future Value of Current Savings:</strong> <code>FV = PV × (1+r)^n</code></p>
+            <p style="margin-top:10px;"><strong>Future Value of Monthly Savings:</strong> <code>FV = PMT × [(1+r)^n − 1] / r</code></p>
+            <p style="margin-top:10px;"><strong>Total Corpus:</strong> FV of current savings + FV of monthly savings</p>
+            <p style="margin-top:10px;"><strong>Where:</strong> PV = Present savings, PMT = Monthly savings, r = Monthly rate, n = Total months</p>
         </div>
+
+        <h3>Worked Example</h3>
+        <p>Age 30, retiring at 65, $50,000 saved, $1,000/month savings, 7% return:</p>
+        <ol>
+            <li>Years to retirement: 65 − 30 = <strong>35 years</strong></li>
+            <li>Monthly rate: 7 ÷ 12 ÷ 100 = <strong>0.005833</strong></li>
+            <li>Total months: 35 × 12 = <strong>420</strong></li>
+            <li>Future value of $50,000: <strong>$557,000+</strong></li>
+            <li>Future value of $1,000/month: <strong>$1,560,000+</strong></li>
+            <li>Total corpus: <strong>~$2.1 million</strong></li>
+        </ol>
+
+        <h2>Key Retirement Planning Rules</h2>
+        <ul>
+            <li><strong>Save 15% of income:</strong> A common rule for retirement savings.</li>
+            <li><strong>Rule of 25:</strong> Multiply desired annual retirement income by 25 to estimate needed corpus. Example: $50,000/year × 25 = $1,250,000 corpus.</li>
+            <li><strong>4% Rule:</strong> Withdraw 4% of your corpus annually — historically sustainable for 30 years.</li>
+            <li><strong>Start early:</strong> Compound interest rewards those who start saving in their 20s.</li>
+            <li><strong>Diversify:</strong> Mix stocks, bonds, and other investments.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions (FAQ)</h2>
+
+        <h3>How much should I save for retirement?</h3>
+        <p>Most experts recommend saving 15% of your income for retirement. The exact amount depends on your current age, retirement age, expenses, and lifestyle.</p>
+
+        <h3>What is a retirement corpus?</h3>
+        <p>A retirement corpus is the total amount you accumulate by retirement — including current savings, future monthly savings, and investment growth.</p>
+
+        <h3>At what age should I start saving for retirement?</h3>
+        <p>The earlier, the better. Starting in your 20s gives compound interest more time to work. But it's never too late — even starting at 40 helps.</p>
+
+        <h3>How long will my retirement corpus last?</h3>
+        <p>It depends on your corpus, monthly expenses, and life expectancy. Our calculator estimates monthly income based on these factors.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
                 <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan Calculator</a></li>
                 <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
                 <li><a href="interest-calculator.html">Interest Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
             </ul>
         </div>
     </div>
@@ -154,17 +240,15 @@
             const lifeExpect = parseFloat(document.getElementById('lifeExpect').value);
 
             if (!currentAge || !retireAge || !rate || !lifeExpect) {
-                alert('Please saari fields sahi values ke saath fill karein');
+                alert('Please fill in all fields with valid values');
                 return;
             }
-
             if (retireAge <= currentAge) {
-                alert('Retirement age current age se zyada honi chahiye');
+                alert('Retirement age must be greater than current age');
                 return;
             }
-
             if (lifeExpect <= retireAge) {
-                alert('Life expectancy retirement age se zyada honi chahiye');
+                alert('Life expectancy must be greater than retirement age');
                 return;
             }
 
@@ -172,24 +256,19 @@
             const monthsToRetire = yearsToRetire * 12;
             const monthlyRate = rate / 100 / 12;
 
-            // Future value of current savings
             const fvCurrent = currentSavings * Math.pow(1 + monthlyRate, monthsToRetire);
-            
-            // Future value of monthly savings (annuity)
             let fvMonthly;
             if (monthlyRate > 0) {
                 fvMonthly = monthlySave * (Math.pow(1 + monthlyRate, monthsToRetire) - 1) / monthlyRate;
             } else {
                 fvMonthly = monthlySave * monthsToRetire;
             }
-
             const corpus = fvCurrent + fvMonthly;
             const totalContrib = currentSavings + (monthlySave * monthsToRetire);
             const growth = corpus - totalContrib;
             const retireDuration = lifeExpect - retireAge;
-
-            // Monthly income after retirement (assuming corpus lasts till life expectancy with same return)
             const monthsAfterRetire = retireDuration * 12;
+
             let monthlyIncome;
             if (monthlyRate > 0) {
                 monthlyIncome = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -monthsAfterRetire));
@@ -197,14 +276,14 @@
                 monthlyIncome = corpus / monthsAfterRetire;
             }
 
-            const formatNum = (n) => '₨ ' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            document.getElementById('corpus').textContent = formatNum(corpus);
-            document.getElementById('totalContrib').textContent = formatNum(totalContrib);
-            document.getElementById('growth').textContent = formatNum(growth);
+            document.getElementById('corpus').textContent = fmt(corpus);
+            document.getElementById('totalContrib').textContent = fmt(totalContrib);
+            document.getElementById('growth').textContent = fmt(growth);
             document.getElementById('yearsToRetire').textContent = yearsToRetire + ' years';
             document.getElementById('retireDuration').textContent = retireDuration + ' years';
-            document.getElementById('monthlyIncome').textContent = formatNum(monthlyIncome);
+            document.getElementById('monthlyIncome').textContent = fmt(monthlyIncome);
             document.getElementById('result').style.display = 'block';
         }
     </script>
