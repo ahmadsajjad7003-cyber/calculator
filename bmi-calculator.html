@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free BMI Calculator - Calculate your Body Mass Index instantly. Find out if you're underweight, normal, overweight, or obese. Includes BMI chart, formula, and healthy weight range.">
     <meta name="keywords" content="BMI calculator, body mass index, BMI chart, healthy weight calculator, obesity calculator, BMI formula, BMI categories">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="CalcMaster">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html">
     <title>BMI Calculator - Free Body Mass Index Calculator | CalcMaster</title>
-
-    <!-- Open Graph for Social Media -->
-    <meta property="og:title" content="BMI Calculator - Free Body Mass Index Calculator">
-    <meta property="og:description" content="Calculate your BMI instantly. Find out if you're at a healthy weight.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html">
-
-    <!-- Schema 1: WebApplication (NO fake rating) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -28,50 +27,18 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
-
-    <!-- Schema 2: FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Is BMI accurate for everyone?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "BMI is a general screening tool and may not be accurate for athletes, pregnant women, elderly people, or children. For personalized health advice, consult a doctor."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is a healthy BMI range?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A BMI between 18.5 and 24.9 is considered healthy for most adults. Below 18.5 is underweight, 25-29.9 is overweight, and 30+ is obese."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is BMI calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "BMI = weight (kg) / height (m)². In imperial units: BMI = 703 × weight (lb) / height (in)²."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is BMI Prime?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "BMI Prime is your BMI divided by 25 (the upper limit of normal BMI). A value below 1.0 indicates a healthy weight."
-          }
-        }
+        { "@type": "Question", "name": "Is BMI accurate for everyone?", "acceptedAnswer": { "@type": "Answer", "text": "BMI is a general screening tool and may not be accurate for athletes, pregnant women, elderly people, or children. For personalized health advice, consult a doctor." } },
+        { "@type": "Question", "name": "What is a healthy BMI range?", "acceptedAnswer": { "@type": "Answer", "text": "A BMI between 18.5 and 24.9 is considered healthy for most adults." } },
+        { "@type": "Question", "name": "How is BMI calculated?", "acceptedAnswer": { "@type": "Answer", "text": "BMI = weight (kg) / height (m)². In imperial units: BMI = 703 × weight (lb) / height (in)²." } },
+        { "@type": "Question", "name": "What is BMI Prime?", "acceptedAnswer": { "@type": "Answer", "text": "BMI Prime is your BMI divided by 25. A value below 1.0 indicates a healthy weight." } }
       ]
     }
     </script>
-
-    <!-- Schema 3: HowTo -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -81,11 +48,10 @@
         { "@type": "HowToStep", "name": "Enter your details", "text": "Select your gender and enter your age." },
         { "@type": "HowToStep", "name": "Enter weight", "text": "Enter your weight and select kg or lb." },
         { "@type": "HowToStep", "name": "Enter height", "text": "Enter your height and select cm, inches, or feet." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click 'Calculate BMI' to see your BMI, category, and healthy weight range." }
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click 'Calculate BMI' to see your result." }
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -100,7 +66,7 @@
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
-        input[type="number"]:focus, select:focus { border-color: #3498db; outline: none; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
         button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
         button:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
@@ -111,153 +77,57 @@
         .result-item.highlight strong { color: white; font-size: 22px; }
         .bmi-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
         .bmi-table th, .bmi-table td { padding: 12px; text-align: left; border: 1px solid #ddd; }
-        .bmi-table th { background: #2c3e50; color: white; font-weight: 600; }
+        .bmi-table th { background: #2c3e50; color: white; }
         .bmi-table tr:nth-child(even) { background: #f8f9fa; }
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>BMI Calculator</h1>
         <p>Calculate your Body Mass Index (BMI) and find out if you are at a healthy weight.</p>
-
-        <div class="input-group">
-            <label for="gender">Gender:</label>
-            <select id="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-        </div>
-
-        <div class="input-group">
-            <label for="age">Age (Years):</label>
-            <input type="number" id="age" placeholder="e.g. 30" min="1" max="120">
-        </div>
-
-        <div class="input-group">
-            <label for="weight">Weight:</label>
-            <input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1">
-        </div>
-
-        <div class="input-group">
-            <label for="weightUnit">Weight Unit:</label>
-            <select id="weightUnit">
-                <option value="kg">Kilograms (kg)</option>
-                <option value="lb">Pounds (lb)</option>
-            </select>
-        </div>
-
-        <div class="input-group">
-            <label for="height">Height:</label>
-            <input type="number" id="height" placeholder="e.g. 175" min="1" step="0.1">
-        </div>
-
-        <div class="input-group">
-            <label for="heightUnit">Height Unit:</label>
-            <select id="heightUnit">
-                <option value="cm">Centimeters (cm)</option>
-                <option value="in">Inches (in)</option>
-                <option value="ft">Feet (ft)</option>
-            </select>
-        </div>
-
+        <div class="input-group"><label for="gender">Gender:</label><select id="gender"><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div class="input-group"><label for="age">Age (Years):</label><input type="number" id="age" placeholder="e.g. 30" min="1" max="120"></div>
+        <div class="input-group"><label for="weight">Weight:</label><input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1"></div>
+        <div class="input-group"><label for="weightUnit">Weight Unit:</label><select id="weightUnit"><option value="kg">Kilograms (kg)</option><option value="lb">Pounds (lb)</option></select></div>
+        <div class="input-group"><label for="height">Height:</label><input type="number" id="height" placeholder="e.g. 175" min="1" step="0.1"></div>
+        <div class="input-group"><label for="heightUnit">Height Unit:</label><select id="heightUnit"><option value="cm">Centimeters (cm)</option><option value="in">Inches (in)</option><option value="ft">Feet (ft)</option></select></div>
         <button onclick="calculateBMI()">Calculate BMI</button>
-
         <div class="result" id="result">
             <h2>Your BMI Results:</h2>
             <div class="result-item highlight">BMI: <strong id="bmiValue">0</strong></div>
             <div class="result-item">Category: <strong id="category">-</strong></div>
             <div class="result-item">Healthy Weight Range: <strong id="healthyRange">-</strong></div>
             <div class="result-item">BMI Prime: <strong id="bmiPrime">-</strong></div>
-            <div class="result-item">Ponderal Index: <strong id="ponderal">-</strong></div>
         </div>
-
         <h2>What is BMI?</h2>
-        <p>BMI stands for <strong>Body Mass Index</strong>. It is a simple numerical value calculated from a person's weight and height. BMI is widely used by healthcare professionals around the world as a quick screening tool to categorize adults into weight ranges: underweight, normal weight, overweight, and obese. While BMI does not directly measure body fat, it correlates strongly with more direct measures of body fatness and is an inexpensive and easy-to-perform method of screening for weight categories that may lead to health problems.</p>
-        <p>Developed in the early 19th century by Belgian mathematician Adolphe Quetelet, BMI has become the standard for population-level weight assessment. The World Health Organization (WHO) uses BMI as the primary metric for obesity classification worldwide.</p>
-
-        <h2>How to Use This BMI Calculator</h2>
-        <ol>
-            <li><strong>Select your gender</strong> from the dropdown menu.</li>
-            <li><strong>Enter your age</strong> in years.</li>
-            <li><strong>Enter your weight</strong> — you can use kilograms (kg) or pounds (lb).</li>
-            <li><strong>Enter your height</strong> — you can use centimeters (cm), inches (in), or feet (ft).</li>
-            <li><strong>Click "Calculate BMI"</strong> to instantly see your BMI value, weight category, and healthy weight range.</li>
-        </ol>
-
+        <p>BMI stands for <strong>Body Mass Index</strong>. It's a numerical value calculated from a person's weight and height. BMI is widely used as a screening tool to categorize adults into weight ranges: underweight, normal, overweight, and obese.</p>
         <h2>BMI Formula</h2>
         <div class="formula-box">
-            <p><strong>Metric Formula:</strong> <code>BMI = weight (kg) / [height (m)]²</code></p>
-            <p style="margin-top:10px;"><strong>Imperial Formula:</strong> <code>BMI = 703 × weight (lb) / [height (in)]²</code></p>
+            <p><strong>Metric:</strong> <code>BMI = weight (kg) / [height (m)]²</code></p>
+            <p style="margin-top:10px;"><strong>Imperial:</strong> <code>BMI = 703 × weight (lb) / [height (in)]²</code></p>
         </div>
-
-        <h3>Worked Example</h3>
-        <p>Let's say a person weighs <strong>70 kg</strong> and is <strong>175 cm</strong> tall.</p>
-        <ol>
-            <li>Convert height to meters: 175 cm ÷ 100 = <strong>1.75 m</strong></li>
-            <li>Square the height: 1.75 × 1.75 = <strong>3.0625 m²</strong></li>
-            <li>Divide weight by height²: 70 ÷ 3.0625 = <strong>22.86</strong></li>
-        </ol>
-        <p>So this person's BMI is <strong>22.86</strong>, which falls in the <strong>normal weight</strong> category.</p>
-
-        <h2>BMI Categories (WHO Standard)</h2>
+        <h2>BMI Categories (WHO)</h2>
         <table class="bmi-table">
-            <thead>
-                <tr><th>BMI Range</th><th>Category</th><th>Health Risk</th></tr>
-            </thead>
+            <thead><tr><th>BMI Range</th><th>Category</th></tr></thead>
             <tbody>
-                <tr><td>Below 16.0</td><td>Severe Thinness</td><td>Very High</td></tr>
-                <tr><td>16.0 – 16.9</td><td>Moderate Thinness</td><td>High</td></tr>
-                <tr><td>17.0 – 18.4</td><td>Mild Thinness</td><td>Moderate</td></tr>
-                <tr><td>18.5 – 24.9</td><td>Normal Weight</td><td>Low</td></tr>
-                <tr><td>25.0 – 29.9</td><td>Overweight</td><td>Moderate</td></tr>
-                <tr><td>30.0 – 34.9</td><td>Obese Class I</td><td>High</td></tr>
-                <tr><td>35.0 – 39.9</td><td>Obese Class II</td><td>Very High</td></tr>
-                <tr><td>40.0 and above</td><td>Obese Class III</td><td>Extremely High</td></tr>
+                <tr><td>Below 18.5</td><td>Underweight</td></tr>
+                <tr><td>18.5 – 24.9</td><td>Normal Weight</td></tr>
+                <tr><td>25.0 – 29.9</td><td>Overweight</td></tr>
+                <tr><td>30.0 and above</td><td>Obese</td></tr>
             </tbody>
         </table>
-
-        <h2>Health Implications of BMI</h2>
-        <h3>Underweight (BMI below 18.5)</h3>
-        <p>Being underweight can indicate malnutrition, eating disorders, or underlying health conditions. It is associated with weakened immune system, osteoporosis, anemia, and fertility issues.</p>
-
-        <h3>Normal Weight (BMI 18.5 – 24.9)</h3>
-        <p>This range is associated with the lowest risk of chronic disease. Maintaining a BMI in this range through a balanced diet and regular exercise is recommended.</p>
-
-        <h3>Overweight (BMI 25 – 29.9)</h3>
-        <p>Being overweight increases the risk of developing type 2 diabetes, high blood pressure, heart disease, and certain cancers. Lifestyle changes such as diet and exercise can help reduce this risk.</p>
-
-        <h3>Obese (BMI 30 and above)</h3>
-        <p>Obesity significantly increases the risk of numerous health conditions including cardiovascular disease, stroke, type 2 diabetes, sleep apnea, osteoarthritis, and certain cancers. Medical intervention is often recommended.</p>
-
-        <h2>Frequently Asked Questions (FAQ)</h2>
-        
+        <h2>Frequently Asked Questions</h2>
         <h3>Is BMI accurate for everyone?</h3>
-        <p>BMI is a general screening tool and may not be accurate for athletes (who have high muscle mass), pregnant women, elderly people, or children. For personalized health advice, consult a doctor.</p>
-
+        <p>BMI may not be accurate for athletes, pregnant women, elderly people, or children.</p>
         <h3>What is a healthy BMI range?</h3>
-        <p>A BMI between 18.5 and 24.9 is considered healthy for most adults. Below 18.5 is underweight, 25-29.9 is overweight, and 30+ is obese.</p>
-
-        <h3>How is BMI calculated?</h3>
-        <p>BMI = weight (kg) / height (m)². In imperial units: BMI = 703 × weight (lb) / height (in)².</p>
-
-        <h3>What is BMI Prime?</h3>
-        <p>BMI Prime is your BMI divided by 25 (the upper limit of normal BMI). A value below 1.0 indicates a healthy weight.</p>
-
-        <h3>Can BMI tell me my body fat percentage?</h3>
-        <p>No, BMI does not measure body fat directly. For a more accurate body fat estimate, use our <a href="body-fat-calculator.html">Body Fat Calculator</a>.</p>
-
+        <p>A BMI between 18.5 and 24.9 is considered healthy.</p>
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
@@ -269,48 +139,32 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateBMI() {
             const weight = parseFloat(document.getElementById('weight').value);
             const height = parseFloat(document.getElementById('height').value);
             const weightUnit = document.getElementById('weightUnit').value;
             const heightUnit = document.getElementById('heightUnit').value;
-
-            if (!weight || !height || weight <= 0 || height <= 0) {
-                alert('Please enter valid weight and height');
-                return;
-            }
-
+            if (!weight || !height || weight <= 0 || height <= 0) { alert('Please enter valid weight and height'); return; }
             let weightKg = weightUnit === 'kg' ? weight : weight * 0.453592;
             let heightM;
             if (heightUnit === 'cm') heightM = height / 100;
             else if (heightUnit === 'in') heightM = height * 0.0254;
             else heightM = height * 0.3048;
-
             const bmi = weightKg / (heightM * heightM);
             const bmiPrime = bmi / 25;
-            const ponderal = weightKg / Math.pow(heightM, 3);
-
             let category;
             if (bmi < 18.5) category = 'Underweight';
             else if (bmi < 25) category = 'Normal weight';
             else if (bmi < 30) category = 'Overweight';
             else category = 'Obese';
-
             const minHealthy = 18.5 * heightM * heightM;
             const maxHealthy = 24.9 * heightM * heightM;
-            const healthyRange = `${minHealthy.toFixed(1)} - ${maxHealthy.toFixed(1)} kg`;
-
             document.getElementById('bmiValue').textContent = bmi.toFixed(2);
             document.getElementById('category').textContent = category;
-            document.getElementById('healthyRange').textContent = healthyRange;
+            document.getElementById('healthyRange').textContent = minHealthy.toFixed(1) + ' - ' + maxHealthy.toFixed(1) + ' kg';
             document.getElementById('bmiPrime').textContent = bmiPrime.toFixed(2);
-            document.getElementById('ponderal').textContent = ponderal.toFixed(2) + ' kg/m³';
             document.getElementById('result').style.display = 'block';
         }
     </script>
