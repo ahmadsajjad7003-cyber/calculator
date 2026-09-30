@@ -3,26 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Date Calculator - Add or subtract days, weeks, months, and years from any date. Also calculate the difference between two dates.">
-    <meta name="keywords" content="date calculator, days between dates, add days to date, date difference calculator, age in days">
+    <meta name="description" content="Free Date Calculator - Add or subtract days, weeks, months, and years from any date. Also calculate the exact difference between two dates.">
+    <meta name="keywords" content="date calculator, days between dates, add days to date, date difference calculator, how many days until">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/date-calculator.html">
     <title>Date Calculator - Add/Subtract Days & Date Difference | CalcMaster</title>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Date Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/date-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate the number of days between two dates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter the start and end dates in the Date Difference tab. The calculator will show the exact number of days, weeks, months, and years between them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator account for leap years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the date calculator automatically handles leap years (February 29) for accurate results."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I add days to a date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Switch to the Add/Subtract tab, select your base date, choose Add or Subtract, and enter the years, months, or days you want to add or subtract."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate future or past dates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the calculator works with any date — past, present, or future."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Date Calculator",
+      "step": [
+        { "@type": "HowToStep", "name": "Choose mode", "text": "Select Date Difference or Add/Subtract tab." },
+        { "@type": "HowToStep", "name": "Enter dates", "text": "Enter start and end dates (or base date and offset)." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see the result." }
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
         header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
+        p, li { color: #555; margin-bottom: 10px; }
+        ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
         .tab { flex: 1; padding: 12px 20px; border: 2px solid #ddd; background: white; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: 600; color: #555; min-width: 150px; }
         .tab.active { background: #3498db; color: white; border-color: #3498db; }
@@ -35,18 +98,13 @@
         button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
-        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
-        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
-        .content p, .content li { color: #555; margin-bottom: 10px; }
-        .content ul { padding-left: 25px; }
+        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
         .other-tools ul { list-style: none; padding: 0; }
         .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
@@ -61,14 +119,13 @@
 
     <div class="container">
         <h1>Date Calculator</h1>
-        <p>Dates ke beech difference calculate karein, ya kisi date mein days add/subtract karein.</p>
+        <p>Calculate the difference between two dates, or add/subtract days, months, and years.</p>
 
         <div class="tabs">
-            <button class="tab active" onclick="switchTab('diff')">Date Difference</button>
-            <button class="tab" onclick="switchTab('add')">Add/Subtract</button>
+            <button class="tab active" onclick="switchTab('diff', this)">Date Difference</button>
+            <button class="tab" onclick="switchTab('add', this)">Add / Subtract</button>
         </div>
 
-        <!-- DATE DIFFERENCE -->
         <div class="section active" id="diffSection">
             <div class="input-group">
                 <label>Start Date:</label>
@@ -81,7 +138,6 @@
             <button class="calc-btn" onclick="calculateDifference()">Calculate Difference</button>
         </div>
 
-        <!-- ADD/SUBTRACT -->
         <div class="section" id="addSection">
             <div class="input-group">
                 <label>Base Date:</label>
@@ -114,31 +170,72 @@
             <div id="resultContent"></div>
         </div>
 
-        <div class="content">
-            <h2>About Date Calculator</h2>
-            <p>Yeh free date calculator do kaam karta hai: (1) Do dates ke beech difference calculate karna (din, hafte, mahine, saal), aur (2) Kisi date mein years, months, days add ya subtract karna.</p>
+        <h2>What is a Date Calculator?</h2>
+        <p>A date calculator helps you perform two common calculations: finding the difference between two dates, and adding or subtracting days, months, or years from a specific date. These calculations are useful for planning events, calculating deadlines, tracking project timelines, or counting down to special occasions.</p>
 
-            <h2>How to Use</h2>
-            <ul>
-                <li><strong>Date Difference:</strong> Start aur End date select karein → difference dekhne ke liye Calculate dabayein</li>
-                <li><strong>Add/Subtract:</strong> Base date select karein → operation select karein → years/months/days enter karein</li>
-            </ul>
+        <h2>How to Use This Date Calculator</h2>
+        <p><strong>Date Difference Mode:</strong></p>
+        <ol>
+            <li>Enter a start date.</li>
+            <li>Enter an end date.</li>
+            <li>Click "Calculate Difference" to see total days, weeks, months, and years between them.</li>
+        </ol>
+        <p><strong>Add/Subtract Mode:</strong></p>
+        <ol>
+            <li>Enter a base date.</li>
+            <li>Choose Add or Subtract.</li>
+            <li>Enter years, months, and/or days to add or subtract.</li>
+            <li>Click "Calculate" to see the result.</li>
+        </ol>
 
-            <h2>FAQs</h2>
-            <h3>Kya leap year consider hoti hai?</h3>
-            <p>Ji haan, yeh calculator leap year (February 29) ko sahi tareeqe se handle karta hai.</p>
-            <h3>Kya main future dates use kar sakta hoon?</h3>
-            <p>Ji haan, aap koi bhi date — past, present, ya future — use kar sakte hain.</p>
-        </div>
+        <h3>Worked Examples</h3>
+        <p><strong>Date Difference:</strong> From January 1, 2025 to December 31, 2025</p>
+        <p>Total: <strong>364 days</strong> (2025 is not a leap year)</p>
+
+        <p><strong>Add Days:</strong> January 1, 2025 + 100 days</p>
+        <p>Result: <strong>April 11, 2025</strong></p>
+
+        <h2>Common Uses of Date Calculations</h2>
+        <ul>
+            <li><strong>Project Planning:</strong> Calculate deadlines and milestones</li>
+            <li><strong>Event Countdown:</strong> How many days until a wedding, birthday, or holiday</li>
+            <li><strong>Legal &amp; Contracts:</strong> Notice periods and contract end dates</li>
+            <li><strong>Pregnancy Tracking:</strong> Due date calculation (40 weeks)</li>
+            <li><strong>Loan &amp; Investment Maturity:</strong> When a fixed deposit matures</li>
+            <li><strong>Age Calculation:</strong> Exact age between two dates</li>
+            <li><strong>Vacation Planning:</strong> How many days until your trip</li>
+        </ul>
+
+        <h2>Date Facts</h2>
+        <ul>
+            <li><strong>Leap Year:</strong> Every 4 years (with some exceptions in century years).</li>
+            <li><strong>Days per Month:</strong> 28-31 days depending on the month.</li>
+            <li><strong>Weeks per Year:</strong> 52 weeks + 1 or 2 extra days.</li>
+            <li><strong>365.25 Days:</strong> The actual length of a solar year.</li>
+        </ul>
+
+        <h2>Frequently Asked Questions (FAQ)</h2>
+
+        <h3>How do I calculate the number of days between two dates?</h3>
+        <p>Enter the start and end dates in the Date Difference tab. You'll see exact days, weeks, months, and years between them.</p>
+
+        <h3>Does the calculator account for leap years?</h3>
+        <p>Yes, the date calculator automatically handles leap years (February 29) for accurate results.</p>
+
+        <h3>How do I add days to a date?</h3>
+        <p>Switch to the Add/Subtract tab, select your base date, choose Add or Subtract, and enter the years, months, or days.</p>
+
+        <h3>Can I calculate future or past dates?</h3>
+        <p>Yes, the calculator works with any date — past, present, or future.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
                 <li><a href="age-calculator.html">Age Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
                 <li><a href="time-calculator.html">Time Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
                 <li><a href="average-calculator.html">Average Calculator</a></li>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
             </ul>
         </div>
     </div>
@@ -148,14 +245,10 @@
     </footer>
 
     <script>
-        function switchTab(tab) {
+        function switchTab(tab, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.querySelectorAll('.tab').forEach(t => {
-                if (t.textContent.toLowerCase().includes(tab === 'diff' ? 'difference' : 'add')) {
-                    t.classList.add('active');
-                }
-            });
+            btn.classList.add('active');
             document.getElementById(tab === 'diff' ? 'diffSection' : 'addSection').classList.add('active');
             document.getElementById('result').style.display = 'none';
         }
@@ -167,23 +260,22 @@
         }
 
         function calculateDifference() {
-            const start = new Date(document.getElementById('startDate').value);
-            const end = new Date(document.getElementById('endDate').value);
-
-            if (!document.getElementById('startDate').value || !document.getElementById('endDate').value) {
-                alert('Please dono dates select karein');
+            const startVal = document.getElementById('startDate').value;
+            const endVal = document.getElementById('endDate').value;
+            if (!startVal || !endVal) {
+                alert('Please select both dates');
                 return;
             }
 
-            const diffMs = Math.abs(end - start);
-            const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+            let d1 = new Date(startVal);
+            let d2 = new Date(endVal);
+            if (d1 > d2) { const t = d1; d1 = d2; d2 = t; }
+
+            const diffMs = d2 - d1;
+            const totalDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             const totalWeeks = Math.floor(totalDays / 7);
             const totalHours = totalDays * 24;
             const totalMinutes = totalHours * 60;
-
-            // Years, months, days breakdown
-            let d1 = start < end ? start : end;
-            let d2 = start < end ? end : start;
 
             let years = d2.getFullYear() - d1.getFullYear();
             let months = d2.getMonth() - d1.getMonth();
@@ -210,10 +302,7 @@
 
         function calculateAddSubtract() {
             const baseVal = document.getElementById('baseDate').value;
-            if (!baseVal) {
-                alert('Please base date select karein');
-                return;
-            }
+            if (!baseVal) { alert('Please select a base date'); return; }
 
             const op = document.getElementById('operation').value;
             const years = parseInt(document.getElementById('yearsAdd').value) || 0;
@@ -221,7 +310,7 @@
             const days = parseInt(document.getElementById('daysAdd').value) || 0;
 
             if (years === 0 && months === 0 && days === 0) {
-                alert('Please kuch years, months, ya days enter karein');
+                alert('Please enter at least one value to add or subtract');
                 return;
             }
 
@@ -242,7 +331,6 @@
             document.getElementById('result').style.display = 'block';
         }
 
-        // Set defaults
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('startDate').value = today;
         document.getElementById('baseDate').value = today;
