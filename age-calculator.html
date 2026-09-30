@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Age Calculator - Calculate your exact age in years, months, days, hours, and minutes from your date of birth. Includes age in days, weeks, and heartbeats.">
-    <meta name="keywords" content="age calculator, calculate age, date of birth calculator, how old am I, age in days, age in months">
+    <meta name="description" content="Free Age Calculator - Calculate your exact age in years, months, days, hours, and minutes from your date of birth. 100% free and accurate.">
+    <meta name="keywords" content="age calculator, calculate age, date of birth calculator, how old am I, age in days">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/age-calculator.html">
     <title>Age Calculator - Calculate Your Exact Age | CalcMaster</title>
-
-    <!-- Schema 1: WebApplication (NO fake rating) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -21,50 +27,18 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
-
-    <!-- Schema 2: FAQPage -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How is age calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Age is calculated by subtracting your date of birth from the current date, accounting for actual month lengths (28, 30, or 31 days) and leap years."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the calculator account for leap years?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, the calculator automatically accounts for leap years (February 29) for accurate results."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I calculate age for a future date?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, the date of birth cannot be in the future. The calculator uses today's date as the reference point."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What formats can I see my age in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can see your age in years, months, days, and also in total days, hours, and minutes."
-          }
-        }
+        { "@type": "Question", "name": "How is age calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Age is calculated by subtracting your date of birth from the current date, accounting for actual month lengths and leap years." } },
+        { "@type": "Question", "name": "Does the calculator account for leap years?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, the calculator automatically accounts for leap years (February 29) for accurate results." } },
+        { "@type": "Question", "name": "Can I calculate age for a future date?", "acceptedAnswer": { "@type": "Answer", "text": "No, the date of birth cannot be in the future. The calculator uses today's date as the reference point." } },
+        { "@type": "Question", "name": "What formats can I see my age in?", "acceptedAnswer": { "@type": "Answer", "text": "You can see your age in years, months, days, and also in total days, hours, and minutes." } }
       ]
     }
     </script>
-
-    <!-- Schema 3: HowTo -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -77,7 +51,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -98,16 +71,12 @@
         button:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
         .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; }
+        .result-item { padding: 10px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; }
         .result-item strong { color: #3498db; font-size: 20px; }
-        .result-item.highlight { background: #3498db; color: white; }
-        .result-item.highlight strong { color: white; }
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
         @media (max-width: 500px) {
             .date-row { grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
@@ -116,10 +85,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Age Calculator</h1>
         <p>Calculate your exact age in years, months, days, hours, and minutes.</p>
@@ -144,7 +110,7 @@
 
         <div class="result" id="result">
             <h2>Your Age:</h2>
-            <div class="result-item highlight">You are <strong id="years">0</strong> years old</div>
+            <div class="result-item">You are <strong id="years">0</strong> years old</div>
             <div class="result-item">Or <strong id="months">0</strong> months and <strong id="days">0</strong> days</div>
             <div class="result-item">Total: <strong id="totalDays">0</strong> days</div>
             <div class="result-item">Total: <strong id="totalHours">0</strong> hours</div>
@@ -152,8 +118,7 @@
         </div>
 
         <h2>What is an Age Calculator?</h2>
-        <p>An age calculator is a tool that calculates your exact age based on your date of birth. Unlike just knowing your age in years, an age calculator gives you a precise breakdown in years, months, days, hours, and even minutes. This is useful for filling out official forms, applying for jobs, or simply satisfying your curiosity about how long you've been alive.</p>
-        <p>Our free age calculator uses your browser's clock to determine the current date, then computes the exact difference from your date of birth, accounting for varying month lengths and leap years.</p>
+        <p>An age calculator is a tool that calculates your exact age based on your date of birth. Unlike just knowing your age in years, an age calculator gives you a precise breakdown in years, months, days, hours, and even minutes.</p>
 
         <h2>How to Use This Age Calculator</h2>
         <ol>
@@ -186,40 +151,19 @@
         <h2>Common Uses of Age Calculator</h2>
         <ul>
             <li><strong>Job Applications:</strong> Many employers require exact age.</li>
-            <li><strong>Government Forms:</strong> Passport, driving license, and visa applications need precise age.</li>
+            <li><strong>Government Forms:</strong> Passport, driving license, and visa applications.</li>
             <li><strong>Medical Records:</strong> Doctors use exact age to assess growth and health.</li>
             <li><strong>School Admissions:</strong> Age cutoff dates matter for grade placement.</li>
-            <li><strong>Retirement Planning:</strong> Knowing exact age helps plan retirement benefits.</li>
-            <li><strong>Fun Facts:</strong> Find out how many days, hours, or minutes you've lived!</li>
+            <li><strong>Retirement Planning:</strong> Knowing exact age helps plan retirement.</li>
         </ul>
 
-        <h2>Age in Different Units</h2>
-        <p>Once you calculate your age, you can view it in multiple units:</p>
-        <ul>
-            <li><strong>Years:</strong> Standard age</li>
-            <li><strong>Months:</strong> Years × 12</li>
-            <li><strong>Weeks:</strong> Total days ÷ 7</li>
-            <li><strong>Days:</strong> Exact number of days lived</li>
-            <li><strong>Hours:</strong> Days × 24</li>
-            <li><strong>Minutes:</strong> Hours × 60</li>
-        </ul>
-
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How is age calculated?</h3>
-        <p>Age is calculated by subtracting your date of birth from the current date, accounting for actual month lengths (28, 30, or 31 days) and leap years.</p>
-
+        <p>Age is calculated by subtracting your date of birth from the current date, accounting for actual month lengths and leap years.</p>
         <h3>Does the calculator account for leap years?</h3>
-        <p>Yes, the calculator automatically accounts for leap years (February 29) for accurate results.</p>
-
+        <p>Yes, it automatically accounts for leap years.</p>
         <h3>Can I calculate age for a future date?</h3>
-        <p>No, the date of birth cannot be in the future. The calculator uses today's date as the reference point.</p>
-
-        <h3>What formats can I see my age in?</h3>
-        <p>You can see your age in years, months, days, and also in total days, hours, and minutes.</p>
-
-        <h3>Is my data private?</h3>
-        <p>Yes. All calculations happen in your browser. No data is sent to any server.</p>
+        <p>No, the date of birth cannot be in the future.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
@@ -232,11 +176,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         const daySelect = document.getElementById('day');
         for (let i = 1; i <= 31; i++) {
@@ -262,11 +202,7 @@
             let years = today.getFullYear() - birthDate.getFullYear();
             let months = today.getMonth() - birthDate.getMonth();
             let days = today.getDate() - birthDate.getDate();
-            if (days < 0) {
-                months--;
-                const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
-                days += lastMonth.getDate();
-            }
+            if (days < 0) { months--; const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0); days += lastMonth.getDate(); }
             if (months < 0) { years--; months += 12; }
             const diffMs = today - birthDate;
             const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
