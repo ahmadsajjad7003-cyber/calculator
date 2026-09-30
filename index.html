@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online calculators for health, finance, math, and everyday use. Use our scientific calculator and 20+ other tools. Fast, accurate, 100% free.">
+    <meta name="description" content="Free online calculators for health, finance, math, and everyday use. Scientific Calculator plus 20+ other tools. Fast, accurate, 100% free.">
     <meta name="keywords" content="online calculator, free calculator, scientific calculator, BMI calculator, age calculator, percentage calculator, loan calculator, mortgage calculator, calorie calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/">
     <title>Free Online Calculators - Scientific, Health, Financial | CalcMaster</title>
     <script type="application/ld+json">
     {
@@ -32,7 +34,7 @@
         .hero { background: linear-gradient(180deg, #e8f1f8 0%, #f5f7fa 100%); padding: 18px 20px 22px; }
         .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 460px 1fr; gap: 30px; align-items: start; }
 
-        /* ===== SCIENTIFIC CALCULATOR (compact) ===== */
+        /* ===== SCIENTIFIC CALCULATOR ===== */
         .sci-calc { background: #dfe9f3; border: 2px solid #b0c4de; border-radius: 5px; padding: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
         .sci-display { background: #1a3a5c; color: white; padding: 8px 12px; border-radius: 3px; text-align: right; margin-bottom: 7px; min-height: 42px; }
         .sci-display .expression { font-size: 11px; color: #a8c5e0; min-height: 14px; word-wrap: break-word; }
@@ -79,15 +81,14 @@
         .cat-block a { color: #1a5490; text-decoration: none; font-size: 13px; transition: color 0.2s; }
         .cat-block a:hover { color: #3498db; text-decoration: underline; }
 
-        /* ===== ABOUT ===== */
-        .info-section { max-width: 1100px; margin: 25px auto; background: white; padding: 20px 25px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        .info-section h2 { color: #1a5490; margin-bottom: 10px; font-size: 18px; }
-        .info-section p { color: #555; margin-bottom: 8px; font-size: 13px; }
-        .info-section ul { padding-left: 22px; color: #555; font-size: 13px; }
-
-        /* ===== FOOTER ===== */
-        footer { text-align: center; padding: 18px; color: #ccc; font-size: 12px; margin-top: 20px; background: #1a5490; }
-        footer a { color: #7cb342; text-decoration: none; }
+        /* ===== ABOUT FOOTER ===== */
+        .about-footer { background: #e8e8e8; border-top: 1px solid #ccc; padding: 25px 20px 15px; margin-top: 40px; font-size: 13px; color: #333; line-height: 1.6; }
+        .about-inner { max-width: 1100px; margin: 0 auto 15px; }
+        .about-inner p { margin-bottom: 12px; text-align: justify; color: #333; }
+        .about-inner em { font-style: italic; }
+        .footer-links { max-width: 1100px; margin: 0 auto; text-align: center; padding-top: 12px; border-top: 1px solid #ccc; color: #555; font-size: 13px; }
+        .footer-links a { color: #1a5490; text-decoration: none; margin: 0 4px; }
+        .footer-links a:hover { text-decoration: underline; }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 850px) {
@@ -118,10 +119,9 @@
         </div>
     </header>
 
-    <!-- HERO: Calculator + Search -->
+    <!-- HERO: Scientific Calculator + Search -->
     <section class="hero">
         <div class="hero-inner">
-            <!-- Scientific Calculator (Compact) -->
             <div class="sci-calc">
                 <div class="sci-mode">
                     <label><input type="radio" name="mode" value="deg" checked> Deg</label>
@@ -137,44 +137,47 @@
                     <button class="fn" onclick="addFunc('tan(')">tan</button>
                     <button onclick="addNum('7')">7</button>
                     <button onclick="addNum('8')">8</button>
+
                     <button class="fn" onclick="addFunc('asin(')">sin⁻¹</button>
                     <button class="fn" onclick="addFunc('acos(')">cos⁻¹</button>
                     <button class="fn" onclick="addFunc('atan(')">tan⁻¹</button>
                     <button onclick="addNum('9')">9</button>
                     <button class="op" onclick="addOp('/')">÷</button>
-                    
+
                     <button class="fn" onclick="addFunc('pi')">π</button>
                     <button class="fn" onclick="addFunc('e')">e</button>
                     <button class="fn" onclick="addFunc('^')">xʸ</button>
                     <button onclick="addNum('4')">4</button>
                     <button onclick="addNum('5')">5</button>
+
                     <button class="fn" onclick="addFunc('log(')">log</button>
                     <button class="fn" onclick="addFunc('ln(')">ln</button>
                     <button class="fn" onclick="addFunc('sqrt(')">√</button>
                     <button onclick="addNum('6')">6</button>
                     <button class="op" onclick="addOp('*')">×</button>
-                    
+
                     <button class="fn" onclick="addFunc('(')">(</button>
                     <button class="fn" onclick="addFunc(')')">)</button>
                     <button class="fn" onclick="addFunc('!')">n!</button>
                     <button onclick="addNum('1')">1</button>
                     <button onclick="addNum('2')">2</button>
+
                     <button class="fn" onclick="addFunc('abs(')">|x|</button>
                     <button class="fn" onclick="addFunc('%')">%</button>
                     <button class="fn" onclick="toggleSign()">±</button>
                     <button onclick="addNum('3')">3</button>
                     <button class="op" onclick="addOp('-')">−</button>
-                    
+
                     <button class="clear" onclick="clearAll()">AC</button>
                     <button class="clear" onclick="backspace()">⌫</button>
                     <button onclick="addNum('0')">0</button>
                     <button onclick="addNum('.')">.</button>
                     <button class="op" onclick="addOp('+')">+</button>
+
                     <button class="equal" onclick="calculate()" style="grid-column: span 5;">=</button>
                 </div>
             </div>
-            
-            <!-- Search Area -->
+
             <div class="search-area">
                 <h1>Free Online Calculators</h1>
                 <form class="search-form" onsubmit="event.preventDefault(); searchCalc();">
@@ -195,7 +198,7 @@
         </div>
     </section>
 
-    <!-- Categories -->
+    <!-- CATEGORIES -->
     <section class="categories-section">
         <div class="categories-grid">
             <div class="cat-block">
@@ -209,10 +212,10 @@
                     <li><a href="retirement-calculator.html">Retirement</a></li>
                 </ul>
             </div>
-            
+
             <div class="cat-block">
                 <div class="cat-icon health">🏥</div>
-                <h2>Fitness & Health</h2>
+                <h2>Fitness &amp; Health</h2>
                 <ul>
                     <li><a href="bmi-calculator.html">BMI</a></li>
                     <li><a href="age-calculator.html">Age</a></li>
@@ -221,7 +224,7 @@
                     <li><a href="bmr-calculator.html">BMR</a></li>
                 </ul>
             </div>
-            
+
             <div class="cat-block">
                 <div class="cat-icon math">📐</div>
                 <h2>Math</h2>
@@ -233,7 +236,7 @@
                     <li><a href="triangle-calculator.html">Triangle</a></li>
                 </ul>
             </div>
-            
+
             <div class="cat-block">
                 <div class="cat-icon other">🔧</div>
                 <h2>Other</h2>
@@ -248,21 +251,24 @@
         </div>
     </section>
 
-    <!-- About -->
-    <section class="info-section">
-        <h2>About CalcMaster</h2>
-        <p>CalcMaster provides 20+ free, accurate, and easy-to-use online calculators for health, finance, math, and everyday conversions. No sign-ups. No hidden fees.</p>
-        <p><strong>Your Privacy is 100% Safe:</strong> All calculators run entirely in your browser. No data is ever sent to any server.</p>
+    <!-- ABOUT FOOTER (Calculator.net Style) -->
+    <section class="about-footer">
+        <div class="about-inner">
+            <p>CalcMaster's sole focus is to provide fast, comprehensive, convenient, free online calculators in a plethora of areas. Currently, we have around 20 calculators to help you "do the math" quickly in areas such as finance, fitness, health, math, and others, and we are still developing more. Our goal is to become the one-stop, go-to site for people who need to make quick calculations. Additionally, we believe the internet should be a source of free information. Therefore, all of our tools and services are completely free, with no registration required.</p>
+            <p>We coded and developed each calculator individually and put each one through strict, comprehensive testing. However, please inform us if you notice even the slightest error – your input is extremely valuable to us. While most calculators on CalcMaster are designed to be universally applicable for worldwide usage, some are for specific countries only. For example, the <em>Income Tax Calculator</em> is for United States residents only.</p>
+        </div>
+        <div class="footer-links">
+            <a href="about.html">about us</a> |
+            <a href="sitemap.xml">sitemap</a> |
+            <a href="terms.html">terms of use</a> |
+            <a href="privacy.html">privacy policy</a>
+            &nbsp;&copy; 2025 CalcMaster
+        </div>
     </section>
 
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
-    </footer>
-
     <script>
-        // ===== Scientific Calculator Logic =====
+        /* ===== Scientific Calculator ===== */
         let expr = '';
-        
         function updateDisplay() {
             document.getElementById('expression').textContent = expr || '';
             if (expr === '') document.getElementById('result').textContent = '0';
@@ -273,7 +279,6 @@
         function clearAll() { expr = ''; document.getElementById('result').textContent = '0'; updateDisplay(); }
         function backspace() { expr = expr.slice(0, -1); updateDisplay(); }
         function toggleSign() { expr += '-'; updateDisplay(); }
-        
         function factorial(n) {
             if (n < 0) return NaN;
             if (n === 0 || n === 1) return 1;
@@ -281,9 +286,7 @@
             for (let i = 2; i <= n; i++) r *= i;
             return r;
         }
-        
         function isDeg() { return document.querySelector('input[name="mode"]:checked').value === 'deg'; }
-        
         function calculate() {
             if (!expr) return;
             try {
@@ -315,7 +318,7 @@
                 e = e.replace(/\^/g, '**');
                 e = e.replace(/(\d+)!/g, 'factorial($1)');
                 e = e.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
-                
+
                 const result = eval(e);
                 document.getElementById('result').textContent = result;
                 document.getElementById('expression').textContent = expr + ' =';
@@ -324,7 +327,6 @@
                 document.getElementById('result').textContent = 'Error';
             }
         }
-        
         document.addEventListener('keydown', function(e) {
             if (e.target.tagName === 'INPUT') return;
             if (e.key >= '0' && e.key <= '9') addNum(e.key);
@@ -333,12 +335,11 @@
             else if (e.key === 'Backspace') backspace();
             else if (e.key === 'Escape') clearAll();
         });
-        
-        // ===== Search =====
+
+        /* ===== Search ===== */
         function searchCalc() {
             const q = document.getElementById('searchInput').value.toLowerCase().trim();
             if (!q) return;
-            
             const links = document.querySelectorAll('.cat-block a, .quick-links a');
             let found = null;
             links.forEach(link => {
@@ -346,12 +347,8 @@
                     found = link.href;
                 }
             });
-            
-            if (found) {
-                window.location.href = found;
-            } else {
-                alert('Calculator not found. Try keywords like "BMI", "loan", "age", "percentage"...');
-            }
+            if (found) window.location.href = found;
+            else alert('Calculator not found. Try keywords like "BMI", "loan", "age", "percentage"...');
         }
     </script>
 </body>
