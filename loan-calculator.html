@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Loan Calculator - Calculate your monthly loan payment (EMI), total interest, and total cost for personal, home, or any type of loan.">
@@ -8,7 +16,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html">
     <title>Loan Calculator - Calculate Monthly EMI & Interest | CalcMaster</title>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,48 +27,18 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is EMI?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "EMI stands for Equated Monthly Installment. It is the fixed amount you pay your lender every month until the loan is fully repaid. Each EMI includes both principal and interest."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is loan interest calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion of each payment decreases while the principal portion increases."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What affects my monthly loan payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Three factors affect your monthly payment: the loan amount, the interest rate, and the loan term. A longer term means lower monthly payments but higher total interest."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Should I choose a longer or shorter loan term?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A shorter loan term means higher monthly payments but much less total interest. A longer term means lower monthly payments but more total interest paid."
-          }
-        }
+        { "@type": "Question", "name": "What is EMI?", "acceptedAnswer": { "@type": "Answer", "text": "EMI stands for Equated Monthly Installment. It is the fixed amount you pay your lender every month until the loan is fully repaid." } },
+        { "@type": "Question", "name": "How is loan interest calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion decreases while the principal portion increases." } },
+        { "@type": "Question", "name": "What affects my monthly loan payment?", "acceptedAnswer": { "@type": "Answer", "text": "Three factors affect your monthly payment: the loan amount, the interest rate, and the loan term." } },
+        { "@type": "Question", "name": "Should I choose a longer or shorter loan term?", "acceptedAnswer": { "@type": "Answer", "text": "A shorter term means higher monthly payments but much less total interest. A longer term means lower monthly payments but more total interest." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -75,7 +52,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -103,17 +79,12 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Loan Calculator</h1>
         <p>Calculate your monthly loan payment (EMI), total interest, and total cost.</p>
@@ -179,29 +150,15 @@
             <li><strong>Student Loan:</strong> For education. Often lower interest rates and deferred payments.</li>
             <li><strong>Business Loan:</strong> For starting or expanding a business.</li>
             <li><strong>Home Equity Loan:</strong> Borrowing against the equity in your home.</li>
-            <li><strong>Payday Loan:</strong> Short-term, very high interest — usually not recommended.</li>
         </ul>
 
-        <h2>How Loan Interest Works</h2>
-        <p>When you take a loan, your monthly payment covers both principal and interest. In the beginning, most of your payment goes toward interest. As the loan matures, more of each payment goes toward the principal. This is called <strong>amortization</strong>.</p>
-        <p>For example, in a 30-year mortgage, you might pay more in interest than the actual loan amount over the life of the loan. This is why it's important to compare interest rates and consider shorter terms when possible.</p>
-
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>What is EMI?</h3>
-        <p>EMI stands for Equated Monthly Installment. It's the fixed amount you pay your lender every month until the loan is repaid.</p>
-
+        <p>EMI stands for Equated Monthly Installment. It's the fixed amount you pay your lender every month.</p>
         <h3>How is loan interest calculated?</h3>
-        <p>Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion decreases while the principal portion increases.</p>
-
-        <h3>What affects my monthly loan payment?</h3>
-        <p>Three factors: loan amount, interest rate, and loan term. A longer term means lower monthly payments but higher total interest.</p>
-
+        <p>Interest is calculated on the outstanding loan balance. As you pay off the loan, the interest portion decreases.</p>
         <h3>Should I choose a longer or shorter loan term?</h3>
         <p>A shorter term means higher monthly payments but less total interest. A longer term means lower monthly payments but more total interest.</p>
-
-        <h3>Is my data private?</h3>
-        <p>Yes. All calculations run in your browser. No data is sent to any server.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
@@ -214,30 +171,19 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateLoan() {
             const amount = parseFloat(document.getElementById('amount').value);
             const rate = parseFloat(document.getElementById('rate').value);
             const years = parseFloat(document.getElementById('years').value);
-
-            if (!amount || !rate || !years || amount <= 0 || rate < 0 || years <= 0) {
-                alert('Please fill in all fields with valid values');
-                return;
-            }
-
+            if (!amount || !rate || !years || amount <= 0 || rate < 0 || years <= 0) { alert('Please fill in all fields with valid values'); return; }
             const monthlyRate = rate / 100 / 12;
             const totalMonths = years * 12;
             const emi = amount * monthlyRate * Math.pow(1 + monthlyRate, totalMonths) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
             const totalPayment = emi * totalMonths;
             const totalInterest = totalPayment - amount;
-
             const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
             document.getElementById('emi').textContent = fmt(emi);
             document.getElementById('totalInterest').textContent = fmt(totalInterest);
             document.getElementById('totalPayment').textContent = fmt(totalPayment);
