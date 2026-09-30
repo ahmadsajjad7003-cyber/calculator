@@ -3,53 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Time Calculator - Add or subtract hours, minutes, and seconds. Also calculate duration between two times.">
+    <meta name="description" content="Free Time Calculator - Add or subtract hours, minutes, and seconds. Calculate the duration between two times instantly.">
     <meta name="keywords" content="time calculator, add time, subtract time, time duration calculator, hours minutes seconds calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html">
     <title>Time Calculator - Add, Subtract, Duration | CalcMaster</title>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Time Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I add time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Switch to the Add/Subtract tab, enter two time values (hours, minutes, seconds), select Add, and click Calculate. The result is your total time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the calculator use 12-hour or 24-hour format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use 24-hour format. For example, 5:00 PM = 17:00. Enter 17 in the hours field."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is time duration calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The duration between two times is calculated by subtracting the start time from the end time. If the end time is earlier, it assumes next day (24 hours added)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I calculate seconds?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The calculator supports hours, minutes, and seconds for accurate results."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Time Calculator",
+      "step": [
+        { "@type": "HowToStep", "name": "Choose mode", "text": "Select Time Duration or Add/Subtract." },
+        { "@type": "HowToStep", "name": "Enter times", "text": "Enter the hours, minutes, and seconds for the values." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see the result." }
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
         header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
+        p, li { color: #555; margin-bottom: 10px; }
+        ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab { flex: 1; padding: 12px 20px; border: 2px solid #ddd; background: white; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: 600; color: #555; min-width: 130px; }
+        .tab { flex: 1; padding: 12px 20px; border: 2px solid #ddd; background: white; border-radius: 5px; cursor: pointer; font-size: 15px; font-weight: 600; color: #555; min-width: 150px; }
         .tab.active { background: #3498db; color: white; border-color: #3498db; }
         .section { display: none; }
         .section.active { display: block; }
-        .time-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
         input:focus, select:focus { border-color: #3498db; outline: none; }
+        .time-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .time-row input { text-align: center; }
         .time-label { font-size: 13px; text-align: center; color: #777; margin-bottom: 4px; font-weight: 600; }
         button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
-        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
-        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
-        .content p, .content li { color: #555; margin-bottom: 10px; }
-        .content ul { padding-left: 25px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
         .other-tools ul { list-style: none; padding: 0; }
         .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
@@ -64,14 +121,13 @@
 
     <div class="container">
         <h1>Time Calculator</h1>
-        <p>Time add/subtract karein ya do times ke beech duration calculate karein.</p>
+        <p>Add or subtract time values, or calculate the duration between two times.</p>
 
         <div class="tabs">
-            <button class="tab active" onclick="switchTab('duration')">Time Duration</button>
-            <button class="tab" onclick="switchTab('math')">Add/Subtract</button>
+            <button class="tab active" onclick="switchTab('duration', this)">Time Duration</button>
+            <button class="tab" onclick="switchTab('math', this)">Add / Subtract</button>
         </div>
 
-        <!-- DURATION -->
         <div class="section active" id="durationSection">
             <div class="input-group">
                 <label>Start Time:</label>
@@ -92,7 +148,6 @@
             <button class="calc-btn" onclick="calculateDuration()">Calculate Duration</button>
         </div>
 
-        <!-- ADD/SUBTRACT -->
         <div class="section" id="mathSection">
             <div class="input-group">
                 <label>Time 1:</label>
@@ -125,31 +180,70 @@
             <div id="resultContent"></div>
         </div>
 
-        <div class="content">
-            <h2>About Time Calculator</h2>
-            <p>Yeh free time calculator do kaam karta hai: (1) Do times ke beech duration calculate karna, aur (2) Time values ko add ya subtract karna.</p>
+        <h2>What is a Time Calculator?</h2>
+        <p>A time calculator helps you add or subtract hours, minutes, and seconds, or calculate the total duration between two times. It's useful for tracking work hours, planning events, calculating flight times, and managing schedules.</p>
 
-            <h2>How to Use</h2>
-            <ul>
-                <li><strong>Time Duration:</strong> Start aur End time enter karein → Calculate dabayein</li>
-                <li><strong>Add/Subtract:</strong> Time 1, Operation, Time 2 enter karein → Calculate dabayein</li>
-            </ul>
+        <h2>How to Use This Time Calculator</h2>
+        <p><strong>Time Duration Mode:</strong></p>
+        <ol>
+            <li>Enter a start time (hours, minutes, seconds).</li>
+            <li>Enter an end time.</li>
+            <li>Click "Calculate Duration" to see total time elapsed.</li>
+        </ol>
+        <p><strong>Add/Subtract Mode:</strong></p>
+        <ol>
+            <li>Enter Time 1 and Time 2.</li>
+            <li>Choose Add or Subtract.</li>
+            <li>Click "Calculate" to see the result.</li>
+        </ol>
 
-            <h2>FAQs</h2>
-            <h3>Kya 24-hour format use hota hai?</h3>
-            <p>Ji haan, hours 0-23 enter karein (jaise 5:00 PM = 17:00).</p>
-            <h3>Kya seconds bhi calculate hote hain?</h3>
-            <p>Ji haan, seconds bhi add/subtract aur duration calculate hote hain.</p>
-        </div>
+        <h3>Worked Examples</h3>
+        <p><strong>Duration:</strong> From 9:00 AM to 5:30 PM</p>
+        <p>Result: <strong>8 hours 30 minutes</strong></p>
+
+        <p><strong>Addition:</strong> 2h 30m + 1h 45m</p>
+        <p>Result: <strong>4h 15m 0s</strong></p>
+
+        <h2>Time Units</h2>
+        <ul>
+            <li><strong>1 Minute:</strong> 60 seconds</li>
+            <li><strong>1 Hour:</strong> 60 minutes = 3,600 seconds</li>
+            <li><strong>1 Day:</strong> 24 hours = 1,440 minutes = 86,400 seconds</li>
+            <li><strong>1 Week:</strong> 7 days = 168 hours</li>
+        </ul>
+
+        <h2>Common Uses of Time Calculator</h2>
+        <ul>
+            <li><strong>Work Hours:</strong> Track employee hours for payroll</li>
+            <li><strong>Freelancing:</strong> Calculate billable hours</li>
+            <li><strong>Travel:</strong> Plan flight, train, and road trip times</li>
+            <li><strong>Cooking:</strong> Add recipe prep times</li>
+            <li><strong>Sports:</strong> Track race and workout times</li>
+            <li><strong>Project Management:</strong> Estimate task durations</li>
+        </ul>
+
+        <h2>Frequently Asked Questions (FAQ)</h2>
+
+        <h3>How do I add time?</h3>
+        <p>Switch to the Add/Subtract tab, enter two times, select Add, and click Calculate.</p>
+
+        <h3>Does the calculator use 12-hour or 24-hour format?</h3>
+        <p>Use 24-hour format. For example, 5:00 PM = 17:00.</p>
+
+        <h3>How is time duration calculated?</h3>
+        <p>The duration is calculated by subtracting start time from end time. If the end time is earlier, the calculator assumes it's the next day (adds 24 hours).</p>
+
+        <h3>Can I calculate seconds?</h3>
+        <p>Yes. The calculator supports hours, minutes, and seconds for accurate results.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
                 <li><a href="date-calculator.html">Date Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
                 <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
                 <li><a href="average-calculator.html">Average Calculator</a></li>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
             </ul>
         </div>
     </div>
@@ -159,18 +253,12 @@
     </footer>
 
     <script>
-        function switchTab(tab) {
-            document.querySelectorAll('.tab').forEach((t, i) => {
-                t.classList.remove('active');
-                if ((tab === 'duration' && i === 0) || (tab === 'math' && i === 1)) t.classList.add('active');
-            });
+        function switchTab(tab, btn) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            btn.classList.add('active');
             document.getElementById(tab === 'duration' ? 'durationSection' : 'mathSection').classList.add('active');
             document.getElementById('result').style.display = 'none';
-        }
-
-        function formatTime(h, m, s) {
-            return `${h} hours, ${m} minutes, ${s} seconds`;
         }
 
         function calculateDuration() {
@@ -183,8 +271,7 @@
 
             let start = sH * 3600 + sM * 60 + sS;
             let end = eH * 3600 + eM * 60 + eS;
-
-            if (end < start) end += 24 * 3600; // Next day
+            if (end < start) end += 24 * 3600;
 
             const diff = end - start;
             const h = Math.floor(diff / 3600);
@@ -211,18 +298,14 @@
             const s2 = parseInt(document.getElementById('s2').value) || 0;
             const op = document.getElementById('op').value;
 
-            let t1 = h1 * 3600 + m1 * 60 + s1;
-            let t2 = h2 * 3600 + m2 * 60 + s2;
+            const t1 = h1 * 3600 + m1 * 60 + s1;
+            const t2 = h2 * 3600 + m2 * 60 + s2;
 
             let result;
-            if (op === 'add') {
-                result = t1 + t2;
-            } else {
+            if (op === 'add') result = t1 + t2;
+            else {
                 result = t1 - t2;
-                if (result < 0) {
-                    alert('Result negative ho raha hai. Time 1 ko Time 2 se bara rakhein.');
-                    return;
-                }
+                if (result < 0) { alert('Result is negative. Time 1 must be greater than Time 2 for subtraction.'); return; }
             }
 
             const h = Math.floor(result / 3600);
