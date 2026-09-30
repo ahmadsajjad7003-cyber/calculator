@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Scientific Calculator - Perform advanced math calculations including trigonometry, logarithms, powers, roots, and factorials. Works offline.">
@@ -8,7 +16,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/scientific-calculator.html">
     <title>Scientific Calculator - Advanced Math Online | CalcMaster</title>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,48 +27,18 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Does the calculator use degrees or radians?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can switch between degrees (Deg) and radians (Rad) using the radio buttons at the top of the calculator. Degrees is the default."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I calculate sin, cos, and tan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Click the sin, cos, or tan button, then enter the angle value, then close the parenthesis. For example, sin(30) in degrees equals 0.5."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is a factorial?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A factorial (written as n!) is the product of all positive integers up to n. For example, 5! = 5 × 4 × 3 × 2 × 1 = 120."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use my keyboard with this calculator?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. You can type numbers, operators (+, −, ×, ÷), parentheses, and press Enter to calculate or Escape to clear."
-          }
-        }
+        { "@type": "Question", "name": "Does the calculator use degrees or radians?", "acceptedAnswer": { "@type": "Answer", "text": "You can switch between degrees (Deg) and radians (Rad) using the radio buttons at the top of the calculator." } },
+        { "@type": "Question", "name": "How do I calculate sin, cos, and tan?", "acceptedAnswer": { "@type": "Answer", "text": "Click the sin, cos, or tan button, then enter the angle value, then close the parenthesis." } },
+        { "@type": "Question", "name": "What is a factorial?", "acceptedAnswer": { "@type": "Answer", "text": "A factorial (n!) is the product of all positive integers up to n. For example, 5! = 120." } },
+        { "@type": "Question", "name": "Can I use my keyboard with this calculator?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Type numbers, operators, parentheses, and press Enter to calculate or Escape to clear." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -74,7 +51,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -106,9 +82,7 @@
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
         @media (max-width: 500px) {
             .buttons button { padding: 12px 2px; font-size: 13px; }
@@ -117,10 +91,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Scientific Calculator</h1>
         <p>Advanced math calculations — trigonometry, logarithms, powers, roots, factorials, and more.</p>
@@ -175,7 +146,7 @@
 
         <h2>What is a Scientific Calculator?</h2>
         <p>A scientific calculator is an advanced calculator designed to handle complex mathematical operations beyond basic arithmetic. It includes functions like trigonometry (sin, cos, tan), logarithms (log, ln), powers, roots, factorials, and mathematical constants like π (pi) and e (Euler's number).</p>
-        <p>Scientific calculators are essential for students, engineers, scientists, and anyone working with advanced math. Our free online scientific calculator works in your browser — no download required.</p>
+        <p>Scientific calculators are essential for students, engineers, scientists, and anyone working with advanced math.</p>
 
         <h2>How to Use This Scientific Calculator</h2>
         <ol>
@@ -190,7 +161,7 @@
             <li><strong>Basic:</strong> +, −, ×, ÷, decimal point</li>
             <li><strong>Trigonometry:</strong> sin, cos, tan (Degrees/Radians)</li>
             <li><strong>Logarithms:</strong> log (base 10), ln (natural log)</li>
-            <li><strong>Powers & Roots:</strong> x^y, √ (square root)</li>
+            <li><strong>Powers &amp; Roots:</strong> x^y, √ (square root)</li>
             <li><strong>Constants:</strong> π (3.14159...), e (2.71828...)</li>
             <li><strong>Factorial:</strong> n! (e.g., 5! = 120)</li>
             <li><strong>Parentheses:</strong> ( and ) for grouping</li>
@@ -199,7 +170,6 @@
         <h3>Worked Examples</h3>
         <ul>
             <li><strong>sin(30) in Degrees:</strong> = <strong>0.5</strong></li>
-            <li><strong>cos(60) in Degrees:</strong> = <strong>0.5</strong></li>
             <li><strong>log(100):</strong> = <strong>2</strong></li>
             <li><strong>ln(e):</strong> = <strong>1</strong></li>
             <li><strong>sqrt(16):</strong> = <strong>4</strong></li>
@@ -214,28 +184,13 @@
             <li><strong>Conversion:</strong> 180° = π radians ≈ 3.14159 radians</li>
         </ul>
 
-        <h2>Common Uses of Scientific Calculators</h2>
-        <ul>
-            <li><strong>Students:</strong> Algebra, trigonometry, calculus homework</li>
-            <li><strong>Engineers:</strong> Structural, electrical, and mechanical calculations</li>
-            <li><strong>Scientists:</strong> Physics, chemistry, and biology research</li>
-            <li><strong>Finance:</strong> Compound interest, logarithms for investments</li>
-            <li><strong>Everyday:</strong> Complex shopping calculations, tip splitting</li>
-        </ul>
-
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>Does the calculator use degrees or radians?</h3>
         <p>You can switch between degrees and radians using the radio buttons. Degrees is the default.</p>
-
         <h3>How do I calculate sin, cos, and tan?</h3>
         <p>Click the sin, cos, or tan button, then enter the angle value, then close the parenthesis.</p>
-
         <h3>What is a factorial?</h3>
         <p>A factorial (n!) is the product of all positive integers up to n. For example, 5! = 120.</p>
-
-        <h3>Can I use my keyboard with this calculator?</h3>
-        <p>Yes. Type numbers, operators, parentheses, and press Enter to calculate or Escape to clear.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
@@ -248,11 +203,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         let expr = '';
         function updateDisplay() {
