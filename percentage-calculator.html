@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Percentage Calculator - Calculate percentages, percentage increase/decrease, and percentage of a number. Includes formulas and examples.">
@@ -8,7 +16,6 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator.html">
     <title>Percentage Calculator - Free Online Percent Calculator | CalcMaster</title>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -20,61 +27,30 @@
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I calculate a percentage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "To find what percent X is of Y, use: (X / Y) × 100. For example, 25 is 50% of 50 because (25/50) × 100 = 50."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I find the percentage of a number?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Multiply the number by the percentage and divide by 100. For example, 20% of 150 = (150 × 20) / 100 = 30."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is percentage increase calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Percentage increase = [(New Value − Old Value) / Old Value] × 100."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between percent and percentage point?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A percent is a ratio out of 100. A percentage point is the difference between two percentages. For example, going from 10% to 15% is a 5 percentage point increase, but a 50% relative increase."
-          }
-        }
+        { "@type": "Question", "name": "How do I calculate a percentage?", "acceptedAnswer": { "@type": "Answer", "text": "To find what percent X is of Y, use: (X / Y) × 100." } },
+        { "@type": "Question", "name": "How do I find the percentage of a number?", "acceptedAnswer": { "@type": "Answer", "text": "Multiply the number by the percentage and divide by 100. For example, 20% of 150 = 30." } },
+        { "@type": "Question", "name": "How is percentage increase calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Percentage increase = [(New Value − Old Value) / Old Value] × 100." } },
+        { "@type": "Question", "name": "What is the difference between percent and percentage point?", "acceptedAnswer": { "@type": "Answer", "text": "A percent is a ratio out of 100. A percentage point is the difference between two percentages." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "How to Use the Percentage Calculator",
       "step": [
-        { "@type": "HowToStep", "name": "Choose calculation type", "text": "Select what you want to calculate: percent of a number, what percent, or percentage change." },
+        { "@type": "HowToStep", "name": "Choose calculation type", "text": "Select percent of a number, what percent, or percentage change." },
         { "@type": "HowToStep", "name": "Enter values", "text": "Enter the numbers in the input fields." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click the Calculate button to see the result instantly." }
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see the result instantly." }
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -106,17 +82,12 @@
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Percentage Calculator</h1>
         <p>Calculate percentages, percentage of a number, and percentage increase/decrease.</p>
@@ -161,8 +132,7 @@
         </div>
 
         <h2>What is a Percentage?</h2>
-        <p>A percentage is a way of expressing a number as a fraction of 100. The word "percent" comes from the Latin "per centum," meaning "by the hundred." Percentages are used everywhere — in finance (interest rates), shopping (discounts), statistics (data), and everyday life.</p>
-        <p>For example, 50% means 50 out of 100, which is the same as the fraction ½ or the decimal 0.5.</p>
+        <p>A percentage is a way of expressing a number as a fraction of 100. The word "percent" comes from the Latin "per centum," meaning "by the hundred." Percentages are used everywhere — in finance, shopping, statistics, and everyday life.</p>
 
         <h2>How to Use This Percentage Calculator</h2>
         <p>Our calculator has three modes:</p>
@@ -180,14 +150,9 @@
         </div>
 
         <h3>Worked Examples</h3>
-        <p><strong>Example 1:</strong> What is 20% of 150?</p>
-        <p>Result = (20 / 100) × 150 = <strong>30</strong></p>
-
-        <p><strong>Example 2:</strong> 25 is what percent of 50?</p>
-        <p>Result = (25 / 50) × 100 = <strong>50%</strong></p>
-
-        <p><strong>Example 3:</strong> Percentage change from 100 to 150:</p>
-        <p>Result = [(150 − 100) / 100] × 100 = <strong>50% increase</strong></p>
+        <p><strong>Example 1:</strong> What is 20% of 150? → Result = (20 / 100) × 150 = <strong>30</strong></p>
+        <p><strong>Example 2:</strong> 25 is what percent of 50? → Result = (25 / 50) × 100 = <strong>50%</strong></p>
+        <p><strong>Example 3:</strong> Percentage change from 100 to 150: → Result = [(150 − 100) / 100] × 100 = <strong>50% increase</strong></p>
 
         <h2>Common Percentage Uses</h2>
         <ul>
@@ -198,22 +163,13 @@
             <li><strong>Statistics:</strong> Polls, surveys, and data are often shown as percentages.</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How do I calculate a percentage?</h3>
-        <p>To find what percent X is of Y, use: (X / Y) × 100. For example, 25 is 50% of 50.</p>
-
+        <p>To find what percent X is of Y, use: (X / Y) × 100.</p>
         <h3>How do I find the percentage of a number?</h3>
-        <p>Multiply the number by the percentage and divide by 100. For example, 20% of 150 = (150 × 20) / 100 = 30.</p>
-
+        <p>Multiply the number by the percentage and divide by 100. For example, 20% of 150 = 30.</p>
         <h3>How is percentage increase calculated?</h3>
         <p>Percentage increase = [(New Value − Old Value) / Old Value] × 100.</p>
-
-        <h3>What is the difference between percent and percentage point?</h3>
-        <p>A percent is a ratio out of 100. A percentage point is the difference between two percentages. Going from 10% to 15% is a 5 percentage point increase, but a 50% relative increase.</p>
-
-        <h3>Is my data private?</h3>
-        <p>Yes. Everything runs in your browser — no data is sent to any server.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
@@ -226,11 +182,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function switchTab(tab, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -255,4 +207,16 @@
             const y = parseFloat(document.getElementById('p2_y').value);
             if (isNaN(x) || isNaN(y) || y === 0) { alert('Please enter valid numbers (Y cannot be 0)'); return; }
             const result = (x / y) * 100;
-            showResult(`${
+            showResult(`${x} is <strong>${result.toFixed(2)}%</strong> of ${y}`);
+        }
+        function calcP3() {
+            const oldV = parseFloat(document.getElementById('p3_old').value);
+            const newV = parseFloat(document.getElementById('p3_new').value);
+            if (isNaN(oldV) || isNaN(newV) || oldV === 0) { alert('Please enter valid numbers (Old value cannot be 0)'); return; }
+            const change = ((newV - oldV) / oldV) * 100;
+            const type = change >= 0 ? 'increase' : 'decrease';
+            showResult(`From ${oldV} to ${newV} = <strong>${Math.abs(change).toFixed(2)}% ${type}</strong>`);
+        }
+    </script>
+</body>
+</html>
