@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQMKGRX78"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-QQMKGRX78');
+      gtag('config', 'G-QQDMKGRX78');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -232,24 +232,14 @@
                          .replace(/cos\(/g, 'Math.cos(Math.PI/180*')
                          .replace(/tan\(/g, 'Math.tan(Math.PI/180*');
                 } else {
-                    e = e.replace(/sin\(/g, 'Math.sin(')
-                         .replace(/cos\(/g, 'Math.cos(')
-                         .replace(/tan\(/g, 'Math.tan(');
+                    e = e.replace(/sin\(/g, 'Math.sin(').replace(/cos\(/g, 'Math.cos(').replace(/tan\(/g, 'Math.tan(');
                 }
-                e = e.replace(/pi/g, 'Math.PI');
-                e = e.replace(/e(?![a-z])/g, 'Math.E');
-                e = e.replace(/log\(/g, 'Math.log10(');
-                e = e.replace(/ln\(/g, 'Math.log(');
-                e = e.replace(/sqrt\(/g, 'Math.sqrt(');
-                e = e.replace(/\^/g, '**');
-                e = e.replace(/(\d+)!/g, 'factorial($1)');
+                e = e.replace(/pi/g, 'Math.PI').replace(/e(?![a-z])/g, 'Math.E').replace(/log\(/g, 'Math.log10(').replace(/ln\(/g, 'Math.log(').replace(/sqrt\(/g, 'Math.sqrt(').replace(/\^/g, '**').replace(/(\d+)!/g, 'factorial($1)');
                 const result = eval(e);
                 document.getElementById('result').textContent = result;
                 document.getElementById('expression').textContent = expr + ' =';
                 expr = result.toString();
-            } catch (err) {
-                document.getElementById('result').textContent = 'Error';
-            }
+            } catch (err) { document.getElementById('result').textContent = 'Error'; }
         }
         document.addEventListener('keydown', function(e) {
             if (e.target.tagName === 'INPUT') return;
