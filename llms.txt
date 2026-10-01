@@ -1,32 +1,56 @@
 # CalcMaster
 
-> Free online calculators for health, finance, math, and everyday use. 20+ calculators, no sign-up required.
+> Free online calculators for health, finance, math, and everyday use. 20+ calculators, no sign-up required, 100% free.
+
+CalcMaster is a comprehensive collection of free online calculators designed to help you "do the math" quickly in areas such as finance, fitness, health, math, and everyday use. All calculators run entirely in your browser — your data is never sent to any server.
 
 ## Calculators
 
+### Fitness & Health
 - BMI Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html
 - Age Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/age-calculator.html
 - BMR Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/bmr-calculator.html
 - Body Fat Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/body-fat-calculator.html
 - Calorie Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/calorie-calculator.html
-- Percentage Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator.html
+
+### Financial
 - Mortgage Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/mortgage-calculator.html
 - Loan Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html
 - Auto Loan Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/auto-loan-calculator.html
 - Interest Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html
 - Retirement Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html
-- Date Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/date-calculator.html
-- Time Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html
+
+### Math
+- Percentage Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator.html
+- Scientific Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/scientific-calculator.html
 - Fraction Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/fraction-calculator.html
 - Average Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/average-calculator.html
 - Triangle Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html
-- Scientific Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/scientific-calculator.html
+
+### Other
+- Date Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/date-calculator.html
+- Time Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html
 - Password Generator: https://ahmadsajjad7003-cyber.github.io/calculator/password-generator.html
 - Random Number Generator: https://ahmadsajjad7003-cyber.github.io/calculator/random-number-generator.html
 - Unit Converter: https://ahmadsajjad7003-cyber.github.io/calculator/conversion-calculator.html
 
 ## About
 
-- About: https://ahmadsajjad7003-cyber.github.io/calculator/about.html
-- Privacy: https://ahmadsajjad7003-cyber.github.io/calculator/privacy.html
-- Terms: https://ahmadsajjad7003-cyber.github.io/calculator/terms.html
+- Homepage: https://ahmadsajjad7003-cyber.github.io/calculator/
+- About Us: https://ahmadsajjad7003-cyber.github.io/calculator/about.html
+- Privacy Policy: https://ahmadsajjad7003-cyber.github.io/calculator/privacy.html
+- Terms of Use: https://ahmadsajjad7003-cyber.github.io/calculator/terms.html
+- Sitemap: https://ahmadsajjad7003-cyber.github.io/calculator/sitemap.xml
+
+## Key Features
+
+- 100% Free — no sign-up required
+- 20+ calculators across 4 categories
+- Fast, accurate results
+- Mobile-friendly design
+- Privacy-focused: all calculations happen in your browser
+- No data collection, no tracking of calculation inputs
+
+## Contact
+
+- GitHub: https://github.com/ahmadsajjad7003-cyber
