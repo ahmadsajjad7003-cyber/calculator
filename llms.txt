@@ -1,0 +1,32 @@
+# CalcMaster
+
+> Free online calculators for health, finance, math, and everyday use. 20+ calculators, no sign-up required.
+
+## Calculators
+
+- BMI Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html
+- Age Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/age-calculator.html
+- BMR Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/bmr-calculator.html
+- Body Fat Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/body-fat-calculator.html
+- Calorie Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/calorie-calculator.html
+- Percentage Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator.html
+- Mortgage Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/mortgage-calculator.html
+- Loan Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html
+- Auto Loan Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/auto-loan-calculator.html
+- Interest Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html
+- Retirement Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html
+- Date Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/date-calculator.html
+- Time Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html
+- Fraction Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/fraction-calculator.html
+- Average Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/average-calculator.html
+- Triangle Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html
+- Scientific Calculator: https://ahmadsajjad7003-cyber.github.io/calculator/scientific-calculator.html
+- Password Generator: https://ahmadsajjad7003-cyber.github.io/calculator/password-generator.html
+- Random Number Generator: https://ahmadsajjad7003-cyber.github.io/calculator/random-number-generator.html
+- Unit Converter: https://ahmadsajjad7003-cyber.github.io/calculator/conversion-calculator.html
+
+## About
+
+- About: https://ahmadsajjad7003-cyber.github.io/calculator/about.html
+- Privacy: https://ahmadsajjad7003-cyber.github.io/calculator/privacy.html
+- Terms: https://ahmadsajjad7003-cyber.github.io/calculator/terms.html
