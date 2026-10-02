@@ -1,140 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Auto Loan Calculator - Calculate your monthly car payment, total interest, and total cost. Includes vehicle price, down payment, trade-in, and sales tax.">
+    <meta name="description" content="Free Auto Loan Calculator - Calculate your monthly car payment, total interest, and total cost. Includes vehicle price, down payment, trade-in value.">
     <meta name="keywords" content="auto loan calculator, car loan calculator, car payment calculator, vehicle loan calculator, auto finance calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/auto-loan-calculator.html">
     <title>Auto Loan Calculator - Calculate Car Payment | CalcMaster</title>
+
+    <meta property="og:title" content="Auto Loan Calculator - Calculate Car Payment">
+    <meta property="og:description" content="Calculate your monthly car payment, total interest, and total cost instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/auto-loan-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Auto Loan Calculator - Calculate Car Payment">
+    <meta name="twitter:description" content="Calculate your monthly car payment, total interest, and total cost.">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
       "name": "Auto Loan Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/auto-loan-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How is a car payment calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Monthly car payment = P × r × (1+r)^n / [(1+r)^n − 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of monthly payments." } },
+        { "@type": "Question", "name": "What is trade-in value?", "acceptedAnswer": { "@type": "Answer", "text": "Trade-in value is the amount a dealership offers for your current vehicle when you buy a new one." } },
+        { "@type": "Question", "name": "Is a longer auto loan term better?", "acceptedAnswer": { "@type": "Answer", "text": "A longer term means lower monthly payments but higher total interest." } },
+        { "@type": "Question", "name": "What is a good interest rate for a car loan?", "acceptedAnswer": { "@type": "Answer", "text": "Interest rates vary based on your credit score, loan term, and whether the car is new or used." } }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Use the Auto Loan Calculator",
+      "step": [
+        { "@type": "HowToStep", "name": "Enter vehicle price", "text": "Enter the total price of the car you want to buy." },
+        { "@type": "HowToStep", "name": "Enter down payment", "text": "Enter your down payment amount." },
+        { "@type": "HowToStep", "name": "Enter trade-in value", "text": "Enter your trade-in value, if any." },
+        { "@type": "HowToStep", "name": "Enter interest rate and term", "text": "Enter the annual interest rate and loan term in months." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your monthly car payment." }
+      ]
     }
     </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background: #f5f7fa; color: #333; line-height: 1.6; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
         header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
+        p, li { color: #555; margin-bottom: 10px; }
+        ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
         input[type="number"]:focus { border-color: #3498db; outline: none; }
-        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
-        button:hover { background: #2980b9; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; }
+        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .content { margin-top: 40px; padding-top: 25px; border-top: 2px solid #eee; }
-        .content h2 { color: #2c3e50; margin: 20px 0 12px; font-size: 22px; }
-        .content h3 { color: #34495e; margin: 18px 0 10px; font-size: 18px; }
-        .content p, .content li { color: #555; margin-bottom: 10px; }
-        .content ul { padding-left: 25px; }
+        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools h2 { color: #2c3e50; margin-bottom: 15px; font-size: 20px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Auto Loan Calculator</h1>
-        <p>Apni monthly car payment, total interest, aur total cost calculate karein.</p>
+        <p>Calculate your monthly car payment, total interest, and total cost.</p>
 
         <div class="input-group">
-            <label for="carPrice">Vehicle Price (₨):</label>
-            <input type="number" id="carPrice" placeholder="e.g. 3000000" min="1">
+            <label for="carPrice">Vehicle Price ($):</label>
+            <input type="number" id="carPrice" placeholder="e.g. 30000" min="1">
         </div>
-
         <div class="input-group">
-            <label for="downPayment">Down Payment (₨):</label>
-            <input type="number" id="downPayment" placeholder="e.g. 500000" min="0">
+            <label for="downPayment">Down Payment ($):</label>
+            <input type="number" id="downPayment" placeholder="e.g. 5000" min="0">
         </div>
-
         <div class="input-group">
-            <label for="tradeIn">Trade-in Value (₨):</label>
+            <label for="tradeIn">Trade-in Value ($):</label>
             <input type="number" id="tradeIn" placeholder="e.g. 0" min="0">
         </div>
-
         <div class="input-group">
             <label for="rate">Annual Interest Rate (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 12" min="0" step="0.01">
+            <input type="number" id="rate" placeholder="e.g. 6.5" min="0" step="0.01">
         </div>
-
         <div class="input-group">
             <label for="months">Loan Term (Months):</label>
             <input type="number" id="months" placeholder="e.g. 60" min="1" max="120">
         </div>
 
-        <button onclick="calculateAutoLoan()">Calculate Auto Loan</button>
+        <button class="calc-btn" onclick="calculateAutoLoan()">Calculate Auto Loan</button>
 
         <div class="result" id="result">
             <h2>Your Auto Loan Summary:</h2>
-            <div class="result-item highlight">Monthly Payment: <strong id="monthly">₨ 0</strong></div>
-            <div class="result-item">Loan Amount: <strong id="loanAmt">₨ 0</strong></div>
-            <div class="result-item">Total Interest: <strong id="totalInterest">₨ 0</strong></div>
-            <div class="result-item">Total Payment: <strong id="totalPayment">₨ 0</strong></div>
+            <div class="result-item highlight">Monthly Payment: <strong id="monthly">$0</strong></div>
+            <div class="result-item">Loan Amount: <strong id="loanAmt">$0</strong></div>
+            <div class="result-item">Total Interest: <strong id="totalInterest">$0</strong></div>
+            <div class="result-item">Total Payment: <strong id="totalPayment">$0</strong></div>
             <div class="result-item">Total Months: <strong id="totalMonths">0</strong></div>
         </div>
 
-        <div class="content">
-            <h2>About Auto Loan Calculator</h2>
-            <p>Yeh free auto loan calculator aapki monthly car payment calculate karta hai. Vehicle price, down payment, trade-in value, interest rate, aur loan term ke hisaab se aapki monthly payment, total interest, aur total cost pata chalti hai.</p>
+        <h2>What is an Auto Loan?</h2>
+        <p>An auto loan is a type of secured loan used to purchase a vehicle. The car itself acts as collateral — if you don't repay the loan, the lender can repossess the vehicle. Auto loans typically have lower interest rates than personal loans because they're secured.</p>
+        <p>Most auto loans are repaid over 36, 48, 60, or 72 months. Shorter terms have higher monthly payments but lower total interest.</p>
 
-            <h2>How to Use</h2>
-            <ul>
-                <li>Vehicle Price enter karein</li>
-                <li>Down Payment enter karein</li>
-                <li>Trade-in Value enter karein (agar koi purani car exchange kar rahe hain)</li>
-                <li>Annual Interest Rate (%) enter karein</li>
-                <li>Loan Term (Months) enter karein</li>
-                <li>"Calculate Auto Loan" button dabayein</li>
+        <h2>How to Use This Auto Loan Calculator</h2>
+        <ol>
+            <li><strong>Enter the vehicle price</strong> — the total cost of the car.</li>
+            <li><strong>Enter your down payment</strong> — how much cash you're putting down.</li>
+            <li><strong>Enter trade-in value</strong> — the value of your current car (if any).</li>
+            <li><strong>Enter the interest rate</strong> — offered by the dealer or bank.</li>
+            <li><strong>Enter the loan term in months</strong> — usually 36, 48, 60, or 72.</li>
+            <li><strong>Click "Calculate Auto Loan"</strong> to see your monthly payment.</li>
+        </ol>
+
+        <h2>Auto Loan Formula</h2>
+        <div class="formula-box">
+            <p><code>M = P × r × (1+r)^n / [(1+r)^n − 1]</code></p>
+            <p style="margin-top:10px;"><strong>Where:</strong></p>
+            <ul style="margin:8px 0 0 0;">
+                <li><strong>M</strong> = Monthly payment</li>
+                <li><strong>P</strong> = Loan amount (Vehicle price − Down payment − Trade-in)</li>
+                <li><strong>r</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100)</li>
+                <li><strong>n</strong> = Total number of monthly payments</li>
             </ul>
-
-            <h2>Auto Loan Formula</h2>
-            <p><strong>M = P × r × (1+r)^n / [(1+r)^n - 1]</strong></p>
-            <p>Jahan: P = Loan Amount (Vehicle Price - Down Payment - Trade-in), r = Monthly Interest Rate, n = Total Months</p>
-
-            <h2>FAQs</h2>
-            <h3>Trade-in value kya hai?</h3>
-            <p>Trade-in value wo raqam hai jo dealership aapki purani car ke badle deta hai. Yeh nayi car ki price se minus ho jati hai.</p>
-            <h3>Kya yeh calculator free hai?</h3>
-            <p>Ji haan, yeh 100% free hai aur koi sign-up nahi chahiye.</p>
         </div>
+
+        <h3>Worked Example</h3>
+        <p>$30,000 car, $5,000 down payment, 6.5% interest, 60-month term:</p>
+        <ol>
+            <li>Loan amount: $30,000 − $5,000 = <strong>$25,000</strong></li>
+            <li>Monthly rate: 6.5 ÷ 12 ÷ 100 = <strong>0.005417</strong></li>
+            <li>Monthly payment: <strong>$489.12</strong></li>
+            <li>Total interest: <strong>$4,347.20</strong></li>
+        </ol>
+
+        <h2>How to Get the Best Auto Loan</h2>
+        <ul>
+            <li><strong>Check your credit score</strong> — higher scores get lower rates.</li>
+            <li><strong>Get pre-approved</strong> — from your bank or credit union before visiting the dealer.</li>
+            <li><strong>Compare rates</strong> — from at least 3 lenders.</li>
+            <li><strong>Consider a shorter term</strong> — saves on total interest.</li>
+            <li><strong>Make a larger down payment</strong> — reduces loan amount and monthly payment.</li>
+            <li><strong>Avoid long terms</strong> — 72 or 84-month loans often lead to being "upside down."</li>
+        </ul>
+
+        <h2>Frequently Asked Questions</h2>
+        <h3>How is a car payment calculated?</h3>
+        <p>Monthly car payment = P × r × (1+r)^n / [(1+r)^n − 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of monthly payments.</p>
+        <h3>What is trade-in value?</h3>
+        <p>Trade-in value is the amount a dealership offers for your current vehicle when you buy a new one.</p>
+        <h3>Is a longer auto loan term better?</h3>
+        <p>A longer term means lower monthly payments but higher total interest.</p>
+        <h3>What is a good interest rate for a car loan?</h3>
+        <p>New car loans typically range from 3% to 10%, and used car loans from 5% to 15%.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-                <li><a href="loan-calculator.html">Loan / EMI Calculator</a></li>
                 <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                <li><a href="interest-calculator.html">Interest Calculator</a></li>
+                <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
+                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateAutoLoan() {
             const carPrice = parseFloat(document.getElementById('carPrice').value);
@@ -143,28 +212,19 @@
             const rate = parseFloat(document.getElementById('rate').value);
             const months = parseFloat(document.getElementById('months').value);
 
-            if (!carPrice || !rate || !months || carPrice <= 0 || rate < 0 || months <= 0) {
-                alert('Please saari fields sahi values ke saath fill karein');
-                return;
-            }
-
+            if (!carPrice || !rate || !months || carPrice <= 0 || rate < 0 || months <= 0) { alert('Please fill in all fields with valid values'); return; }
             const loanAmount = carPrice - downPayment - tradeIn;
-            if (loanAmount <= 0) {
-                alert('Down payment aur trade-in ki total value vehicle price se kam honi chahiye');
-                return;
-            }
-
+            if (loanAmount <= 0) { alert('Down payment and trade-in total must be less than vehicle price'); return; }
             const monthlyRate = rate / 100 / 12;
             const monthly = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
             const totalPayment = monthly * months;
             const totalInterest = totalPayment - loanAmount;
 
-            const formatNum = (n) => '₨ ' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-            document.getElementById('monthly').textContent = formatNum(monthly);
-            document.getElementById('loanAmt').textContent = formatNum(loanAmount);
-            document.getElementById('totalInterest').textContent = formatNum(totalInterest);
-            document.getElementById('totalPayment').textContent = formatNum(totalPayment);
+            const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            document.getElementById('monthly').textContent = fmt(monthly);
+            document.getElementById('loanAmt').textContent = fmt(loanAmount);
+            document.getElementById('totalInterest').textContent = fmt(totalInterest);
+            document.getElementById('totalPayment').textContent = fmt(totalPayment);
             document.getElementById('totalMonths').textContent = months;
             document.getElementById('result').style.display = 'block';
         }
