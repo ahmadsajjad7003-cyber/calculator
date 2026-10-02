@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Mortgage Calculator - Calculate your monthly mortgage payment, total interest, and amortization schedule. Includes home price, down payment, and loan term.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/mortgage-calculator.html">
     <title>Mortgage Calculator - Calculate Monthly Home Payment | CalcMaster</title>
+
+    <meta property="og:title" content="Mortgage Calculator - Calculate Monthly Home Payment">
+    <meta property="og:description" content="Calculate your monthly mortgage payment, total interest, and amortization schedule.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/mortgage-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mortgage Calculator - Calculate Monthly Home Payment">
+    <meta name="twitter:description" content="Calculate your monthly mortgage payment and total interest.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/mortgage-calculator.html",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How is a monthly mortgage payment calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Monthly payment = P × r × (1+r)^n / [(1+r)^n − 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of monthly payments."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is a down payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A down payment is the upfront cash you pay when buying a home. The remaining amount is financed through a mortgage loan. Common down payments are 5%, 10%, or 20% of the home price."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between a 15-year and 30-year mortgage?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A 15-year mortgage has higher monthly payments but lower total interest. A 30-year mortgage has lower monthly payments but higher total interest over the life of the loan."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does a larger down payment reduce my monthly payment?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. A larger down payment reduces the loan amount, which lowers both your monthly payment and total interest paid."
-          }
-        }
+        { "@type": "Question", "name": "How is a monthly mortgage payment calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Monthly payment = P × r × (1+r)^n / [(1+r)^n − 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of monthly payments." } },
+        { "@type": "Question", "name": "What is a down payment?", "acceptedAnswer": { "@type": "Answer", "text": "A down payment is the upfront cash you pay when buying a home. Common down payments are 5%, 10%, or 20% of the home price." } },
+        { "@type": "Question", "name": "What is the difference between a 15-year and 30-year mortgage?", "acceptedAnswer": { "@type": "Answer", "text": "A 15-year mortgage has higher monthly payments but lower total interest. A 30-year mortgage has lower monthly payments but higher total interest." } },
+        { "@type": "Question", "name": "Does a larger down payment reduce my monthly payment?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A larger down payment reduces the loan amount, which lowers both your monthly payment and total interest paid." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -72,11 +64,10 @@
         { "@type": "HowToStep", "name": "Enter down payment", "text": "Enter the down payment amount in dollars." },
         { "@type": "HowToStep", "name": "Enter interest rate", "text": "Enter the annual interest rate offered by your lender." },
         { "@type": "HowToStep", "name": "Enter loan term", "text": "Enter the loan term in years (e.g., 15 or 30)." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your monthly payment, total interest, and total payment." }
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your monthly payment and total interest." }
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -104,17 +95,12 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Mortgage Calculator</h1>
         <p>Calculate your monthly mortgage payment, total interest, and total payment.</p>
@@ -196,25 +182,18 @@
             <li><strong>Down Payment:</strong> Larger down payment = smaller loan</li>
             <li><strong>Interest Rate:</strong> Even 0.5% difference can add thousands over 30 years</li>
             <li><strong>Loan Term:</strong> Longer term = lower monthly payment but more total interest</li>
-            <li><strong>Property Taxes & Insurance:</strong> Usually included in monthly payment (escrow)</li>
+            <li><strong>Property Taxes &amp; Insurance:</strong> Usually included in monthly payment (escrow)</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How is a monthly mortgage payment calculated?</h3>
         <p>Monthly payment = P × r × (1+r)^n / [(1+r)^n − 1], where P is the loan amount, r is the monthly interest rate, and n is the total number of monthly payments.</p>
-
         <h3>What is a down payment?</h3>
         <p>A down payment is the upfront cash you pay when buying a home. Common down payments are 5%, 10%, or 20% of the home price.</p>
-
         <h3>What is the difference between a 15-year and 30-year mortgage?</h3>
         <p>A 15-year mortgage has higher monthly payments but lower total interest. A 30-year mortgage has lower monthly payments but higher total interest.</p>
-
         <h3>Does a larger down payment reduce my monthly payment?</h3>
         <p>Yes. A larger down payment reduces the loan amount, which lowers both your monthly payment and total interest paid.</p>
-
-        <h3>What is PMI?</h3>
-        <p>PMI (Private Mortgage Insurance) is usually required if your down payment is less than 20%. It protects the lender if you default.</p>
 
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
@@ -227,11 +206,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateMortgage() {
             const homePrice = parseFloat(document.getElementById('homePrice').value);
@@ -239,14 +214,8 @@
             const rate = parseFloat(document.getElementById('rate').value);
             const years = parseFloat(document.getElementById('years').value);
 
-            if (!homePrice || !rate || !years || homePrice <= 0 || rate < 0 || years <= 0) {
-                alert('Please fill in all fields with valid values');
-                return;
-            }
-            if (downPayment >= homePrice) {
-                alert('Down payment must be less than home price');
-                return;
-            }
+            if (!homePrice || !rate || !years || homePrice <= 0 || rate < 0 || years <= 0) { alert('Please fill in all fields with valid values'); return; }
+            if (downPayment >= homePrice) { alert('Down payment must be less than home price'); return; }
 
             const loanAmount = homePrice - downPayment;
             const monthlyRate = rate / 100 / 12;
@@ -256,7 +225,6 @@
             const totalInterest = totalPayment - loanAmount;
 
             const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
             document.getElementById('monthly').textContent = fmt(monthly);
             document.getElementById('loanAmt').textContent = fmt(loanAmount);
             document.getElementById('totalInterest').textContent = fmt(totalInterest);
