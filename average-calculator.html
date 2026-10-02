@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Average Calculator - Calculate mean, median, mode, range, sum, and count of any set of numbers. Instant and accurate results.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/average-calculator.html">
     <title>Average Calculator - Mean, Median, Mode | CalcMaster</title>
+
+    <meta property="og:title" content="Average Calculator - Mean, Median, Mode">
+    <meta property="og:description" content="Calculate mean, median, mode, range, sum, and count of any set of numbers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/average-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Average Calculator - Mean, Median, Mode">
+    <meta name="twitter:description" content="Calculate mean, median, mode, and other statistics instantly.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/average-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is the difference between mean, median, and mode?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mean is the sum divided by count (average). Median is the middle value when sorted. Mode is the most frequently occurring value."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I calculate the average?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Add all numbers together and divide by how many numbers there are. For example, average of 10, 20, 30 is (10+20+30)/3 = 20."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "When should I use median instead of mean?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use median when your data has extreme outliers. For example, in income data, a few billionaires can skew the mean, but the median is more representative."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What if there is no mode?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "If every number appears only once, there is no mode. If two or more numbers tie for the highest frequency, there can be multiple modes."
-          }
-        }
+        { "@type": "Question", "name": "What is the difference between mean, median, and mode?", "acceptedAnswer": { "@type": "Answer", "text": "Mean is the sum divided by count (average). Median is the middle value when sorted. Mode is the most frequently occurring value." } },
+        { "@type": "Question", "name": "How do I calculate the average?", "acceptedAnswer": { "@type": "Answer", "text": "Add all numbers together and divide by how many numbers there are. For example, average of 10, 20, 30 is (10+20+30)/3 = 20." } },
+        { "@type": "Question", "name": "When should I use median instead of mean?", "acceptedAnswer": { "@type": "Answer", "text": "Use median when your data has extreme outliers. For example, in income data, a few billionaires can skew the mean, but the median is more representative." } },
+        { "@type": "Question", "name": "What if there is no mode?", "acceptedAnswer": { "@type": "Answer", "text": "If every number appears only once, there is no mode. If two or more numbers tie for the highest frequency, there can be multiple modes." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -74,7 +66,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -102,17 +93,12 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Average Calculator</h1>
         <p>Calculate mean, median, mode, range, sum, and count of any set of numbers.</p>
@@ -189,17 +175,13 @@
             <li><strong>Health:</strong> Average heart rate, blood pressure</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>What is the difference between mean, median, and mode?</h3>
         <p>Mean is sum ÷ count. Median is the middle value. Mode is the most frequent value.</p>
-
         <h3>How do I calculate the average?</h3>
         <p>Add all numbers and divide by how many there are. Average of 10, 20, 30 is 20.</p>
-
         <h3>When should I use median instead of mean?</h3>
         <p>Use median when your data has extreme outliers (e.g., income data with billionaires).</p>
-
         <h3>What if there is no mode?</h3>
         <p>If every number appears once, there's no mode. If two or more numbers tie, there can be multiple modes.</p>
 
@@ -214,11 +196,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateAverage() {
             const input = document.getElementById('numbers').value.trim();
