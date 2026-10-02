@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Time Calculator - Add or subtract hours, minutes, and seconds. Calculate the duration between two times instantly.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html">
     <title>Time Calculator - Add, Subtract, Duration | CalcMaster</title>
+
+    <meta property="og:title" content="Time Calculator - Add, Subtract, Duration">
+    <meta property="og:description" content="Add or subtract hours, minutes, and seconds. Calculate the duration between two times.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Time Calculator - Add, Subtract, Duration">
+    <meta name="twitter:description" content="Calculate time duration or add/subtract hours, minutes, seconds.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/time-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I add time?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Switch to the Add/Subtract tab, enter two time values (hours, minutes, seconds), select Add, and click Calculate. The result is your total time."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does the calculator use 12-hour or 24-hour format?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use 24-hour format. For example, 5:00 PM = 17:00. Enter 17 in the hours field."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How is time duration calculated?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The duration between two times is calculated by subtracting the start time from the end time. If the end time is earlier, it assumes next day (24 hours added)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I calculate seconds?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. The calculator supports hours, minutes, and seconds for accurate results."
-          }
-        }
+        { "@type": "Question", "name": "How do I add time?", "acceptedAnswer": { "@type": "Answer", "text": "Switch to the Add/Subtract tab, enter two time values (hours, minutes, seconds), select Add, and click Calculate." } },
+        { "@type": "Question", "name": "Does the calculator use 12-hour or 24-hour format?", "acceptedAnswer": { "@type": "Answer", "text": "Use 24-hour format. For example, 5:00 PM = 17:00. Enter 17 in the hours field." } },
+        { "@type": "Question", "name": "How is time duration calculated?", "acceptedAnswer": { "@type": "Answer", "text": "The duration between two times is calculated by subtracting the start time from the end time. If the end time is earlier, it assumes next day." } },
+        { "@type": "Question", "name": "Can I calculate seconds?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The calculator supports hours, minutes, and seconds for accurate results." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -74,7 +66,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -108,17 +99,12 @@
         .result-item.highlight strong { color: white; font-size: 22px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Time Calculator</h1>
         <p>Add or subtract time values, or calculate the duration between two times.</p>
@@ -222,17 +208,13 @@
             <li><strong>Project Management:</strong> Estimate task durations</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How do I add time?</h3>
         <p>Switch to the Add/Subtract tab, enter two times, select Add, and click Calculate.</p>
-
         <h3>Does the calculator use 12-hour or 24-hour format?</h3>
         <p>Use 24-hour format. For example, 5:00 PM = 17:00.</p>
-
         <h3>How is time duration calculated?</h3>
-        <p>The duration is calculated by subtracting start time from end time. If the end time is earlier, the calculator assumes it's the next day (adds 24 hours).</p>
-
+        <p>The duration is calculated by subtracting start time from end time. If the end time is earlier, the calculator assumes it's the next day.</p>
         <h3>Can I calculate seconds?</h3>
         <p>Yes. The calculator supports hours, minutes, and seconds for accurate results.</p>
 
@@ -247,11 +229,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function switchTab(tab, btn) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -260,7 +238,6 @@
             document.getElementById(tab === 'duration' ? 'durationSection' : 'mathSection').classList.add('active');
             document.getElementById('result').style.display = 'none';
         }
-
         function calculateDuration() {
             const sH = parseInt(document.getElementById('sH').value) || 0;
             const sM = parseInt(document.getElementById('sM').value) || 0;
@@ -288,7 +265,6 @@
             `;
             document.getElementById('result').style.display = 'block';
         }
-
         function calculateMath() {
             const h1 = parseInt(document.getElementById('h1').value) || 0;
             const m1 = parseInt(document.getElementById('m1').value) || 0;
