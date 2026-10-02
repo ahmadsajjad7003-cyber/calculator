@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Fraction Calculator - Add, subtract, multiply, and divide fractions. Get simplified results and decimal equivalents instantly.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/fraction-calculator.html">
     <title>Fraction Calculator - Add, Subtract, Multiply, Divide | CalcMaster</title>
+
+    <meta property="og:title" content="Fraction Calculator - Add, Subtract, Multiply, Divide">
+    <meta property="og:description" content="Add, subtract, multiply, and divide fractions with simplified results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/fraction-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Fraction Calculator - Add, Subtract, Multiply, Divide">
+    <meta name="twitter:description" content="Calculate fractions with simplified results and decimal equivalents.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/fraction-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I add fractions with different denominators?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "To add fractions like a/b + c/d, first find a common denominator. The formula is (a×d + c×b) / (b×d), then simplify."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is a simplified fraction?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A simplified fraction has no common factors between the numerator and denominator except 1. For example, 4/8 simplifies to 1/2."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is a mixed number?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1 3/4. It's used when the numerator is larger than the denominator."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I divide fractions?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "To divide a/b ÷ c/d, multiply by the reciprocal: a/b × d/c = (a×d)/(b×c)."
-          }
-        }
+        { "@type": "Question", "name": "How do I add fractions with different denominators?", "acceptedAnswer": { "@type": "Answer", "text": "To add fractions like a/b + c/d, first find a common denominator. The formula is (a×d + c×b) / (b×d), then simplify." } },
+        { "@type": "Question", "name": "What is a simplified fraction?", "acceptedAnswer": { "@type": "Answer", "text": "A simplified fraction has no common factors between the numerator and denominator except 1. For example, 4/8 simplifies to 1/2." } },
+        { "@type": "Question", "name": "What is a mixed number?", "acceptedAnswer": { "@type": "Answer", "text": "A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1 3/4." } },
+        { "@type": "Question", "name": "How do I divide fractions?", "acceptedAnswer": { "@type": "Answer", "text": "To divide a/b ÷ c/d, multiply by the reciprocal: a/b × d/c = (a×d)/(b×c)." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,11 +63,10 @@
         { "@type": "HowToStep", "name": "Enter first fraction", "text": "Enter the numerator and denominator of the first fraction." },
         { "@type": "HowToStep", "name": "Select operator", "text": "Choose +, −, ×, or ÷." },
         { "@type": "HowToStep", "name": "Enter second fraction", "text": "Enter the numerator and denominator of the second fraction." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see the result as a fraction, decimal, and mixed number." }
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see the result." }
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -105,9 +96,7 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
         @media (max-width: 500px) {
             .fraction-row { grid-template-columns: 1fr; }
@@ -115,10 +104,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Fraction Calculator</h1>
         <p>Add, subtract, multiply, and divide fractions with simplified results.</p>
@@ -206,17 +192,13 @@
             <li>Example: 8/12 → GCD is 4 → 8÷4 / 12÷4 = <strong>2/3</strong>.</li>
         </ol>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How do I add fractions with different denominators?</h3>
         <p>Find a common denominator first. The formula is (a×d + c×b) / (b×d), then simplify.</p>
-
         <h3>What is a simplified fraction?</h3>
-        <p>A simplified fraction has no common factors between numerator and denominator except 1. For example, 4/8 simplifies to 1/2.</p>
-
+        <p>A simplified fraction has no common factors between numerator and denominator except 1.</p>
         <h3>What is a mixed number?</h3>
         <p>A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1 3/4.</p>
-
         <h3>How do I divide fractions?</h3>
         <p>To divide a/b ÷ c/d, multiply by the reciprocal: a/b × d/c = (a×d)/(b×c).</p>
 
@@ -231,11 +213,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function gcd(a, b) {
             a = Math.abs(a); b = Math.abs(b);
@@ -263,10 +241,7 @@
             const d2 = parseInt(document.getElementById('d2').value);
             const op = document.getElementById('operator').value;
 
-            if (isNaN(n1) || isNaN(d1) || isNaN(n2) || isNaN(d2) || d1 === 0 || d2 === 0) {
-                alert('Please enter all values (denominators cannot be 0)');
-                return;
-            }
+            if (isNaN(n1) || isNaN(d1) || isNaN(n2) || isNaN(d2) || d1 === 0 || d2 === 0) { alert('Please enter all values (denominators cannot be 0)'); return; }
 
             let num, den;
             if (op === '+') { num = n1 * d2 + n2 * d1; den = d1 * d2; }
