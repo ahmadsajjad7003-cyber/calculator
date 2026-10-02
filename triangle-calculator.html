@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Triangle Calculator - Calculate area, perimeter, angles, and type of any triangle from three sides. Uses Heron's formula and Law of Cosines.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html">
     <title>Triangle Calculator - Area, Perimeter, Angles | CalcMaster</title>
+
+    <meta property="og:title" content="Triangle Calculator - Area, Perimeter, Angles">
+    <meta property="og:description" content="Calculate area, perimeter, angles, and type of any triangle from three sides.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Triangle Calculator - Area, Perimeter, Angles">
+    <meta name="twitter:description" content="Calculate triangle area, perimeter, and angles instantly.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Heron's formula?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Heron's formula calculates the area of a triangle from its three sides: Area = √(s(s−a)(s−b)(s−c)), where s is the semi-perimeter (a+b+c)/2."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the Triangle Inequality Theorem?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The sum of any two sides of a triangle must be greater than the third side. If not, the triangle is impossible to draw."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What are the types of triangles?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Equilateral (all sides equal), Isosceles (two sides equal), Scalene (all sides different), Right (one angle 90°), Acute (all angles < 90°), Obtuse (one angle > 90°)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I find the angles of a triangle?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use the Law of Cosines: cos(A) = (b² + c² − a²) / (2bc). Then A = arccos(...). The angles always add up to 180°."
-          }
-        }
+        { "@type": "Question", "name": "What is Heron's formula?", "acceptedAnswer": { "@type": "Answer", "text": "Heron's formula calculates the area of a triangle from its three sides: Area = √(s(s−a)(s−b)(s−c)), where s is the semi-perimeter (a+b+c)/2." } },
+        { "@type": "Question", "name": "What is the Triangle Inequality Theorem?", "acceptedAnswer": { "@type": "Answer", "text": "The sum of any two sides of a triangle must be greater than the third side. If not, the triangle is impossible to draw." } },
+        { "@type": "Question", "name": "What are the types of triangles?", "acceptedAnswer": { "@type": "Answer", "text": "Equilateral (all sides equal), Isosceles (two sides equal), Scalene (all sides different), Right (one angle 90°), Acute (all angles < 90°), Obtuse (one angle > 90°)." } },
+        { "@type": "Question", "name": "How do I find the angles of a triangle?", "acceptedAnswer": { "@type": "Answer", "text": "Use the Law of Cosines: cos(A) = (b² + c² − a²) / (2bc). Then A = arccos(...). The angles always add up to 180°." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -74,7 +66,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -102,17 +93,12 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Triangle Calculator</h1>
         <p>Calculate area, perimeter, angles, and type of any triangle from three sides.</p>
@@ -202,17 +188,13 @@
             <li><strong>Science:</strong> Physics of forces and vectors</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>What is Heron's formula?</h3>
         <p>Heron's formula calculates the area from three sides: Area = √(s(s−a)(s−b)(s−c)), where s is the semi-perimeter.</p>
-
         <h3>What is the Triangle Inequality Theorem?</h3>
         <p>The sum of any two sides must be greater than the third side. If not, the triangle is impossible.</p>
-
         <h3>What are the types of triangles?</h3>
         <p>Equilateral, Isosceles, Scalene (by sides); Right, Acute, Obtuse (by angles).</p>
-
         <h3>How do I find the angles of a triangle?</h3>
         <p>Use the Law of Cosines: cos(A) = (b² + c² − a²) / (2bc). The angles always add up to 180°.</p>
 
@@ -227,25 +209,15 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         function calculateTriangle() {
             const a = parseFloat(document.getElementById('sideA').value);
             const b = parseFloat(document.getElementById('sideB').value);
             const c = parseFloat(document.getElementById('sideC').value);
 
-            if (!a || !b || !c || a <= 0 || b <= 0 || c <= 0) {
-                alert('Please enter valid values for all three sides');
-                return;
-            }
-            if (a + b <= c || a + c <= b || b + c <= a) {
-                alert('This is not a valid triangle (Triangle Inequality Theorem fails)');
-                return;
-            }
+            if (!a || !b || !c || a <= 0 || b <= 0 || c <= 0) { alert('Please enter valid values for all three sides'); return; }
+            if (a + b <= c || a + c <= b || b + c <= a) { alert('This is not a valid triangle (Triangle Inequality Theorem fails)'); return; }
 
             const perimeter = a + b + c;
             const s = perimeter / 2;
