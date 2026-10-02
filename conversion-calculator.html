@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QQDMKGRX78');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Unit Converter - Convert length, weight, temperature, area, volume, speed, and time units instantly. Accurate and easy to use.">
@@ -8,6 +16,16 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/conversion-calculator.html">
     <title>Unit Converter - Length, Weight, Temperature | CalcMaster</title>
+
+    <meta property="og:title" content="Unit Converter - Length, Weight, Temperature">
+    <meta property="og:description" content="Convert length, weight, temperature, area, volume, speed, and time units instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/conversion-calculator.html">
+    <meta property="og:site_name" content="CalcMaster">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Unit Converter - Length, Weight, Temperature">
+    <meta name="twitter:description" content="Convert units instantly — length, weight, temperature, and more.">
 
     <script type="application/ld+json">
     {
@@ -17,51 +35,25 @@
       "url": "https://ahmadsajjad7003-cyber.github.io/calculator/conversion-calculator.html",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@type": "Organization", "name": "CalcMaster" },
+      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
+      "datePublished": "2025-01-01",
+      "dateModified": "2025-01-15"
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I convert units?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Select the category (length, weight, temperature, etc.), enter the value, choose the from and to units, and click Convert. The result appears instantly."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I convert Celsius to Fahrenheit?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Use the formula: °F = (°C × 9/5) + 32. For example, 25°C = 77°F. Our temperature converter does this automatically."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many cm are in an inch?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "1 inch = 2.54 centimeters. So 10 inches = 25.4 cm."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the difference between mass and weight?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mass is the amount of matter (kg, lb). Weight is the force of gravity on that mass (Newtons). In everyday use, people often use them interchangeably."
-          }
-        }
+        { "@type": "Question", "name": "How do I convert units?", "acceptedAnswer": { "@type": "Answer", "text": "Select the category (length, weight, temperature, etc.), enter the value, choose the from and to units, and click Convert." } },
+        { "@type": "Question", "name": "How do I convert Celsius to Fahrenheit?", "acceptedAnswer": { "@type": "Answer", "text": "Use the formula: °F = (°C × 9/5) + 32. For example, 25°C = 77°F." } },
+        { "@type": "Question", "name": "How many cm are in an inch?", "acceptedAnswer": { "@type": "Answer", "text": "1 inch = 2.54 centimeters. So 10 inches = 25.4 cm." } },
+        { "@type": "Question", "name": "What is the difference between mass and weight?", "acceptedAnswer": { "@type": "Answer", "text": "Mass is the amount of matter (kg, lb). Weight is the force of gravity on that mass (Newtons)." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -75,7 +67,6 @@
       ]
     }
     </script>
-
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
@@ -107,9 +98,7 @@
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
-        .other-tools li { margin-bottom: 10px; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
         footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
         @media (max-width: 500px) {
             .conv-row { grid-template-columns: 1fr; }
@@ -117,10 +106,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">CalcMaster</a>
-    </header>
-
+    <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
         <h1>Unit Converter</h1>
         <p>Convert length, weight, temperature, area, volume, speed, and time units instantly.</p>
@@ -205,17 +191,13 @@
             <li><strong>Imperial System:</strong> Used mainly in the United States, UK (partially), and a few other countries. Uses inch, foot, pound, gallon.</li>
         </ul>
 
-        <h2>Frequently Asked Questions (FAQ)</h2>
-
+        <h2>Frequently Asked Questions</h2>
         <h3>How do I convert units?</h3>
         <p>Select the category, enter the value, choose from and to units, and click Convert.</p>
-
         <h3>How do I convert Celsius to Fahrenheit?</h3>
         <p>°F = (°C × 9/5) + 32. For example, 25°C = 77°F.</p>
-
         <h3>How many cm are in an inch?</h3>
         <p>1 inch = 2.54 centimeters. So 10 inches = 25.4 cm.</p>
-
         <h3>What is the difference between mass and weight?</h3>
         <p>Mass is the amount of matter (kg, lb). Weight is the force of gravity on that mass (Newtons). In everyday use, they're often used interchangeably.</p>
 
@@ -230,11 +212,7 @@
             </ul>
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 CalcMaster. All rights reserved.
-    </footer>
-
+    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
         const units = {
             length: {
