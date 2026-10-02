@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Free Online Calculators | CalcMaster">
     <meta name="twitter:description" content="20+ free calculators for health, finance, math, and daily use.">
 
-    <!-- Schema: WebSite with Author + Date + sameAs -->
+    <!-- Schema 1: WebSite with Author + Date + sameAs -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -59,6 +59,48 @@
         "target": "https://ahmadsajjad7003-cyber.github.io/calculator/?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
+    }
+    </script>
+
+    <!-- Schema 2: FAQPage for Homepage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is CalcMaster free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, CalcMaster is 100% free. All 20+ calculators are available without sign-up, registration, or hidden fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many calculators does CalcMaster have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CalcMaster offers 20+ free calculators across four categories: Fitness & Health, Financial, Math, and Other. Popular ones include BMI, Age, Loan, Mortgage, and Scientific Calculator."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data safe on CalcMaster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All calculators run entirely in your browser. No calculation data is ever sent to any server, ensuring 100% privacy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most popular calculator on CalcMaster?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The BMI Calculator and Age Calculator are among the most popular, followed by the Loan Calculator and Percentage Calculator."
+          }
+        }
+      ]
     }
     </script>
     <style>
