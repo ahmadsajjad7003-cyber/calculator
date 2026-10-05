@@ -3,21 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online calculators for health, finance, math, and everyday use.">
+    <meta name="description" content="Free online calculators for health, finance, math, and everyday use. 20+ tools including BMI, Age, Loan, Mortgage, and Scientific Calculator.">
     <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Free Online Calculators | CalcMaster</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.5; font-size: 14px; }
-        header { background: #1a5490; color: white; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header { background: #1a5490; color: white; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; }
         header .logo img { height: 36px; }
         header .signin { background: #7cb342; color: white; padding: 6px 16px; border-radius: 3px; text-decoration: none; font-weight: 600; font-size: 13px; }
-        .hero { background: #e8f1f8; padding: 25px 20px; text-align: center; }
-        .hero h1 { color: #1a5490; font-size: 28px; margin-bottom: 15px; }
-        .hero form { display: flex; gap: 8px; max-width: 500px; margin: 0 auto; }
-        .hero input { flex: 1; padding: 12px 15px; border: 2px solid #b0c4de; border-radius: 5px; font-size: 15px; }
-        .hero button { padding: 12px 25px; background: #1a5490; color: white; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; }
+        
+        .hero { background: #e8f1f8; padding: 20px; }
+        .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 460px 1fr; gap: 30px; align-items: start; }
+        
+        /* Scientific Calculator */
+        .sci-calc { background: #dfe9f3; border: 2px solid #b0c4de; border-radius: 5px; padding: 8px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+        .sci-display { background: #1a3a5c; color: white; padding: 8px 12px; border-radius: 3px; text-align: right; margin-bottom: 7px; min-height: 42px; }
+        .sci-display .expression { font-size: 11px; color: #a8c5e0; min-height: 14px; word-wrap: break-word; }
+        .sci-display .result { font-size: 20px; font-weight: bold; }
+        .sci-buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+        .sci-buttons button { padding: 8px 2px; border: 1px solid #95a5a6; border-radius: 3px; font-size: 12px; font-weight: 600; cursor: pointer; background: linear-gradient(180deg, #ffffff, #e8eef5); color: #2c3e50; }
+        .sci-buttons button:hover { background: linear-gradient(180deg, #e8f1f8, #d4e2f0); }
+        .sci-buttons button.fn { background: linear-gradient(180deg, #f0f4f8, #d8e2ec); font-size: 11px; }
+        .sci-buttons button.op { background: linear-gradient(180deg, #d4e2f0, #b8cde0); color: #1a5490; }
+        .sci-buttons button.equal { background: linear-gradient(180deg, #3498db, #2980b9); color: white; border-color: #1a5490; }
+        .sci-buttons button.clear { background: linear-gradient(180deg, #e74c3c, #c0392b); color: white; border-color: #a93226; }
+        .sci-mode { display: flex; justify-content: flex-end; gap: 12px; margin-bottom: 5px; font-size: 11px; color: #555; }
+        .sci-mode label { cursor: pointer; display: flex; align-items: center; gap: 3px; }
+        
+        /* Search Area */
+        .search-area { padding-top: 5px; }
+        .search-area h1 { color: #1a5490; font-size: 24px; margin-bottom: 12px; font-weight: 700; }
+        .search-form { display: flex; gap: 6px; }
+        .search-form input { flex: 1; padding: 10px 12px; border: 2px solid #b0c4de; border-radius: 4px; font-size: 14px; outline: none; }
+        .search-form button { padding: 10px 20px; background: #1a5490; color: white; border: none; border-radius: 4px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        .search-area .hint { margin-top: 12px; color: #666; font-size: 13px; }
+        .quick-links { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+        .quick-links span { color: #666; font-size: 12px; margin-right: 4px; }
+        .quick-links a { background: white; color: #1a5490; padding: 4px 10px; border-radius: 12px; text-decoration: none; font-size: 12px; border: 1px solid #b0c4de; }
+        .quick-links a:hover { background: #1a5490; color: white; }
+        
+        /* Categories */
         .categories { max-width: 1100px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
         .cat { background: white; padding: 20px 15px; border-radius: 8px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         .cat .icon { width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; }
@@ -30,16 +57,26 @@
         .cat li { margin-bottom: 6px; }
         .cat a { color: #1a5490; text-decoration: none; font-size: 14px; }
         .cat a:hover { color: #3498db; text-decoration: underline; }
+        
+        /* View All Section */
         .view-all-section { text-align: center; margin: 40px auto; padding: 0 20px; }
         .view-all-btn { display: inline-block; background: #1a5490; color: white; padding: 16px 50px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 17px; box-shadow: 0 4px 12px rgba(26,84,144,0.3); }
         .view-all-btn:hover { background: #123b6b; }
+        
+        /* About */
         .about { background: #e8e8e8; padding: 30px 20px; margin-top: 40px; }
         .about-inner { max-width: 1100px; margin: 0 auto; }
         .about h3 { color: #2c3e50; font-size: 18px; margin: 20px 0 10px; }
         .about p { margin-bottom: 12px; color: #333; }
+        .about ul { margin: 8px 0 12px 25px; }
+        .about ul li { margin-bottom: 5px; }
+        .about ul li a { color: #1a5490; text-decoration: none; }
+        
+        /* Footer */
         .footer-links { text-align: center; padding: 20px; background: #e8e8e8; border-top: 1px solid #ccc; font-size: 13px; color: #555; }
         .footer-links a { color: #1a5490; text-decoration: none; margin: 0 5px; }
-        @media (max-width: 850px) { .categories { grid-template-columns: repeat(2, 1fr); } }
+        
+        @media (max-width: 850px) { .hero-inner { grid-template-columns: 1fr; } .categories { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 500px) { .categories { grid-template-columns: 1fr 1fr; gap: 10px; } }
     </style>
 </head>
@@ -50,11 +87,76 @@
     </header>
 
     <section class="hero">
-        <h1>Free Online Calculators</h1>
-        <form onsubmit="event.preventDefault();">
-            <input type="text" placeholder="Search for a calculator...">
-            <button type="button">Search</button>
-        </form>
+        <div class="hero-inner">
+            <!-- Scientific Calculator -->
+            <div class="sci-calc">
+                <div class="sci-mode">
+                    <label><input type="radio" name="mode" value="deg" checked> Deg</label>
+                    <label><input type="radio" name="mode" value="rad"> Rad</label>
+                </div>
+                <div class="sci-display">
+                    <div class="expression" id="expression"></div>
+                    <div class="result" id="result">0</div>
+                </div>
+                <div class="sci-buttons">
+                    <button class="fn" onclick="addFunc('sin(')">sin</button>
+                    <button class="fn" onclick="addFunc('cos(')">cos</button>
+                    <button class="fn" onclick="addFunc('tan(')">tan</button>
+                    <button onclick="addNum('7')">7</button>
+                    <button onclick="addNum('8')">8</button>
+                    <button class="fn" onclick="addFunc('asin(')">sin⁻¹</button>
+                    <button class="fn" onclick="addFunc('acos(')">cos⁻¹</button>
+                    <button class="fn" onclick="addFunc('atan(')">tan⁻¹</button>
+                    <button onclick="addNum('9')">9</button>
+                    <button class="op" onclick="addOp('/')">÷</button>
+                    <button class="fn" onclick="addFunc('pi')">π</button>
+                    <button class="fn" onclick="addFunc('e')">e</button>
+                    <button class="fn" onclick="addFunc('^')">xʸ</button>
+                    <button onclick="addNum('4')">4</button>
+                    <button onclick="addNum('5')">5</button>
+                    <button class="fn" onclick="addFunc('log(')">log</button>
+                    <button class="fn" onclick="addFunc('ln(')">ln</button>
+                    <button class="fn" onclick="addFunc('sqrt(')">√</button>
+                    <button onclick="addNum('6')">6</button>
+                    <button class="op" onclick="addOp('*')">×</button>
+                    <button class="fn" onclick="addFunc('(')">(</button>
+                    <button class="fn" onclick="addFunc(')')">)</button>
+                    <button class="fn" onclick="addFunc('!')">n!</button>
+                    <button onclick="addNum('1')">1</button>
+                    <button onclick="addNum('2')">2</button>
+                    <button class="fn" onclick="addFunc('abs(')">|x|</button>
+                    <button class="fn" onclick="addFunc('%')">%</button>
+                    <button class="fn" onclick="toggleSign()">±</button>
+                    <button onclick="addNum('3')">3</button>
+                    <button class="op" onclick="addOp('-')">−</button>
+                    <button class="clear" onclick="clearAll()">AC</button>
+                    <button class="clear" onclick="backspace()">⌫</button>
+                    <button onclick="addNum('0')">0</button>
+                    <button onclick="addNum('.')">.</button>
+                    <button class="op" onclick="addOp('+')">+</button>
+                    <button class="equal" onclick="calculate()" style="grid-column: span 5;">=</button>
+                </div>
+            </div>
+
+            <!-- Search Area -->
+            <div class="search-area">
+                <h1>Free Online Calculators</h1>
+                <form class="search-form" onsubmit="event.preventDefault(); searchCalc();">
+                    <input type="text" id="searchInput" placeholder="Search for a calculator...">
+                    <button type="submit">Search</button>
+                </form>
+                <p class="hint">Use the scientific calculator on the left, or search from 20+ other calculators below.</p>
+                <div class="quick-links">
+                    <span>Popular:</span>
+                    <a href="bmi-calculator.html">BMI</a>
+                    <a href="age-calculator.html">Age</a>
+                    <a href="loan-calculator.html">Loan</a>
+                    <a href="percentage-calculator.html">Percentage</a>
+                    <a href="calorie-calculator.html">Calorie</a>
+                    <a href="date-calculator.html">Date</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="categories">
@@ -115,6 +217,20 @@
 
             <h3>What calculators does CalcMaster offer?</h3>
             <p>CalcMaster offers 20+ calculators across four categories: Fitness & Health (BMI, Age, Calorie, Body Fat, BMR), Financial (Mortgage, Loan, Auto Loan, Interest, Retirement), Math (Percentage, Scientific, Fraction, Average, Triangle), and Other (Date, Time, Password, Random Number, Unit Converter).</p>
+
+            <h3>Why Choose CalcMaster?</h3>
+            <p>CalcMaster makes calculations fast, accurate, and completely free. Whether you're a student working on math homework, a professional planning a mortgage, or someone tracking their fitness goals, our calculators are built to help.</p>
+            <p>All of our calculators run entirely in your browser. This means your data never leaves your device — your privacy is 100% protected. No sign-ups, no hidden fees, no ads interrupting your work. Just fast, reliable results.</p>
+
+            <h3>Trusted Sources & References</h3>
+            <p>Our calculators are based on formulas and standards from trusted sources, including:</p>
+            <ul>
+                <li><a href="https://www.who.int/" target="_blank">World Health Organization (WHO)</a> — BMI classification standards</li>
+                <li><a href="https://www.cdc.gov/" target="_blank">Centers for Disease Control and Prevention (CDC)</a> — Health guidelines</li>
+                <li><a href="https://www.nih.gov/" target="_blank">National Institutes of Health (NIH)</a> — Nutrition research</li>
+                <li><a href="https://www.consumerfinance.gov/" target="_blank">Consumer Financial Protection Bureau (CFPB)</a> — Loan standards</li>
+                <li><a href="https://www.federalreserve.gov/" target="_blank">Federal Reserve</a> — Interest rate references</li>
+            </ul>
         </div>
     </section>
 
@@ -126,5 +242,65 @@
         <a href="privacy.html">privacy policy</a>
         &nbsp;&copy; 2025 CalcMaster
     </div>
+
+    <script>
+        let expr = '';
+        function updateDisplay() {
+            document.getElementById('expression').textContent = expr || '';
+            if (expr === '') document.getElementById('result').textContent = '0';
+        }
+        function addNum(n) { expr += n; updateDisplay(); }
+        function addOp(op) { expr += op; updateDisplay(); }
+        function addFunc(f) { expr += f; updateDisplay(); }
+        function clearAll() { expr = ''; document.getElementById('result').textContent = '0'; updateDisplay(); }
+        function backspace() { expr = expr.slice(0, -1); updateDisplay(); }
+        function toggleSign() { expr += '-'; updateDisplay(); }
+        function factorial(n) {
+            if (n < 0) return NaN;
+            if (n === 0 || n === 1) return 1;
+            let r = 1;
+            for (let i = 2; i <= n; i++) r *= i;
+            return r;
+        }
+        function isDeg() { return document.querySelector('input[name="mode"]:checked').value === 'deg'; }
+        function calculate() {
+            if (!expr) return;
+            try {
+                let e = expr;
+                if (isDeg()) {
+                    e = e.replace(/sin\(/g, 'Math.sin(Math.PI/180*').replace(/cos\(/g, 'Math.cos(Math.PI/180*').replace(/tan\(/g, 'Math.tan(Math.PI/180*');
+                } else {
+                    e = e.replace(/sin\(/g, 'Math.sin(').replace(/cos\(/g, 'Math.cos(').replace(/tan\(/g, 'Math.tan(');
+                }
+                if (isDeg()) {
+                    e = e.replace(/asin\(/g, '(180/Math.PI)*Math.asin(').replace(/acos\(/g, '(180/Math.PI)*Math.acos(').replace(/atan\(/g, '(180/Math.PI)*Math.atan(');
+                } else {
+                    e = e.replace(/asin\(/g, 'Math.asin(').replace(/acos\(/g, 'Math.acos(').replace(/atan\(/g, 'Math.atan(');
+                }
+                e = e.replace(/pi/g, 'Math.PI').replace(/e(?![a-z])/g, 'Math.E').replace(/log\(/g, 'Math.log10(').replace(/ln\(/g, 'Math.log(').replace(/sqrt\(/g, 'Math.sqrt(').replace(/abs\(/g, 'Math.abs(').replace(/\^/g, '**').replace(/(\d+)!/g, 'factorial($1)').replace(/(\d+(\.\d+)?)%/g, '($1/100)');
+                const result = eval(e);
+                document.getElementById('result').textContent = result;
+                document.getElementById('expression').textContent = expr + ' =';
+                expr = result.toString();
+            } catch (err) { document.getElementById('result').textContent = 'Error'; }
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT') return;
+            if (e.key >= '0' && e.key <= '9') addNum(e.key);
+            else if (['+', '-', '*', '/', '.', '(', ')', '^'].includes(e.key)) addOp(e.key);
+            else if (e.key === 'Enter') calculate();
+            else if (e.key === 'Backspace') backspace();
+            else if (e.key === 'Escape') clearAll();
+        });
+        function searchCalc() {
+            const q = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!q) return;
+            const links = document.querySelectorAll('.cat a, .quick-links a');
+            let found = null;
+            links.forEach(link => { if (link.textContent.toLowerCase().includes(q) && !found) found = link.href; });
+            if (found) window.location.href = found;
+            else alert('Calculator not found. Try keywords like "BMI", "loan", "age", "percentage"...');
+        }
+    </script>
 </body>
 </html>
