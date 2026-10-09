@@ -11,28 +11,28 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free BMI Calculator - Calculate your Body Mass Index instantly. Find out if you're underweight, normal, overweight, or obese. Includes BMI chart, formula, and healthy weight range.">
-    <meta name="keywords" content="BMI calculator, body mass index, BMI chart, healthy weight calculator, obesity calculator, BMI formula">
+    <meta name="description" content="Free BMR Calculator - Calculate your Basal Metabolic Rate (BMR) using the Mifflin-St Jeor equation. Find out how many calories your body burns at rest.">
+    <meta name="keywords" content="BMR calculator, basal metabolic rate, BMR formula, how many calories at rest, metabolism calculator">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html">
-    <title>BMI Calculator - Free Body Mass Index Calculator | CalcMaster</title>
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/bmr-calculator.html">
+    <title>BMR Calculator - Basal Metabolic Rate | CalcMaster</title>
 
-    <meta property="og:title" content="BMI Calculator - Free Body Mass Index Calculator">
-    <meta property="og:description" content="Calculate your BMI instantly. Find out if you're underweight, normal, overweight, or obese.">
+    <meta property="og:title" content="BMR Calculator - Basal Metabolic Rate">
+    <meta property="og:description" content="Calculate your Basal Metabolic Rate (BMR) and find out how many calories your body burns at rest.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html">
+    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/bmr-calculator.html">
     <meta property="og:site_name" content="CalcMaster">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="BMI Calculator - Free Body Mass Index Calculator">
-    <meta name="twitter:description" content="Calculate your BMI instantly. Find out if you're at a healthy weight.">
+    <meta name="twitter:title" content="BMR Calculator - Basal Metabolic Rate">
+    <meta name="twitter:description" content="Calculate your Basal Metabolic Rate and daily calorie needs.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "BMI Calculator",
-      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/bmi-calculator.html",
+      "name": "BMR Calculator",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/bmr-calculator.html",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "All",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -47,10 +47,10 @@
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "Is BMI accurate for everyone?", "acceptedAnswer": { "@type": "Answer", "text": "BMI is a general screening tool and may not be accurate for athletes, pregnant women, elderly people, or children." } },
-        { "@type": "Question", "name": "What is a healthy BMI range?", "acceptedAnswer": { "@type": "Answer", "text": "A BMI between 18.5 and 24.9 is considered healthy for most adults." } },
-        { "@type": "Question", "name": "How is BMI calculated?", "acceptedAnswer": { "@type": "Answer", "text": "BMI = weight (kg) / height (m)². In imperial units: BMI = 703 × weight (lb) / height (in)²." } },
-        { "@type": "Question", "name": "What is BMI Prime?", "acceptedAnswer": { "@type": "Answer", "text": "BMI Prime is your BMI divided by 25. A value below 1.0 indicates a healthy weight." } }
+        { "@type": "Question", "name": "What is BMR?", "acceptedAnswer": { "@type": "Answer", "text": "BMR (Basal Metabolic Rate) is the number of calories your body burns at complete rest to maintain basic functions like breathing, heartbeat, and body temperature." } },
+        { "@type": "Question", "name": "What is the difference between BMR and TDEE?", "acceptedAnswer": { "@type": "Answer", "text": "BMR is the calories your body burns at rest. TDEE is BMR plus all the calories you burn through daily activities and exercise." } },
+        { "@type": "Question", "name": "What is a normal BMR?", "acceptedAnswer": { "@type": "Answer", "text": "For most adults, BMR ranges from 1,200 to 2,000 calories per day. Men typically have higher BMR than women due to greater muscle mass." } },
+        { "@type": "Question", "name": "How can I increase my BMR?", "acceptedAnswer": { "@type": "Answer", "text": "You can increase BMR by building muscle through strength training, eating enough protein, getting adequate sleep, and avoiding extreme calorie restriction." } }
       ]
     }
     </script>
@@ -58,12 +58,12 @@
     {
       "@context": "https://schema.org",
       "@type": "HowTo",
-      "name": "How to Use the BMI Calculator",
+      "name": "How to Use the BMR Calculator",
       "step": [
-        { "@type": "HowToStep", "name": "Enter your details", "text": "Select your gender and enter your age." },
-        { "@type": "HowToStep", "name": "Enter weight", "text": "Enter your weight and select kg or lb." },
-        { "@type": "HowToStep", "name": "Enter height", "text": "Enter your height and select cm, inches, or feet." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click 'Calculate BMI' to see your result." }
+        { "@type": "HowToStep", "name": "Enter age and gender", "text": "Enter your age and select your gender." },
+        { "@type": "HowToStep", "name": "Enter weight and height", "text": "Enter your weight in kg and height in cm." },
+        { "@type": "HowToStep", "name": "Select activity level", "text": "Select your typical activity level." },
+        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your BMR and TDEE." }
       ]
     }
     </script>
@@ -82,20 +82,16 @@
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
         input:focus, select:focus { border-color: #3498db; outline: none; }
-        button { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
-        button:hover { background: #2980b9; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
         .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
         .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
-        .bmi-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
-        .bmi-table th, .bmi-table td { padding: 12px; text-align: left; border: 1px solid #ddd; }
-        .bmi-table th { background: #2c3e50; color: white; }
-        .bmi-table tr:nth-child(even) { background: #f8f9fa; }
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
-        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 13px; }
         .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
         .other-tools ul { list-style: none; padding: 0; }
         .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
@@ -105,81 +101,154 @@
 <body>
     <header><a href="index.html">CalcMaster</a></header>
     <div class="container">
-        <h1>BMI Calculator</h1>
-        <p>Calculate your Body Mass Index (BMI) and find out if you are at a healthy weight.</p>
-        <div class="input-group"><label for="gender">Gender:</label><select id="gender"><option value="male">Male</option><option value="female">Female</option></select></div>
-        <div class="input-group"><label for="age">Age (Years):</label><input type="number" id="age" placeholder="e.g. 30" min="1" max="120"></div>
-        <div class="input-group"><label for="weight">Weight:</label><input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1"></div>
-        <div class="input-group"><label for="weightUnit">Weight Unit:</label><select id="weightUnit"><option value="kg">Kilograms (kg)</option><option value="lb">Pounds (lb)</option></select></div>
-        <div class="input-group"><label for="height">Height:</label><input type="number" id="height" placeholder="e.g. 175" min="1" step="0.1"></div>
-        <div class="input-group"><label for="heightUnit">Height Unit:</label><select id="heightUnit"><option value="cm">Centimeters (cm)</option><option value="in">Inches (in)</option><option value="ft">Feet (ft)</option></select></div>
-        <button onclick="calculateBMI()">Calculate BMI</button>
+        <h1>BMR Calculator</h1>
+        <p>Calculate your Basal Metabolic Rate — the calories your body burns at rest.</p>
+
+        <div class="input-group">
+            <label for="age">Age (Years):</label>
+            <input type="number" id="age" placeholder="e.g. 30" min="1" max="120">
+        </div>
+        <div class="input-group">
+            <label for="gender">Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="e.g. 70" min="1" step="0.1">
+        </div>
+        <div class="input-group">
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="e.g. 175" min="50" step="0.1">
+        </div>
+        <div class="input-group">
+            <label for="activity">Activity Level:</label>
+            <select id="activity">
+                <option value="1.2">Sedentary (Little or no exercise)</option>
+                <option value="1.375">Lightly Active (1-3 days/week)</option>
+                <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
+                <option value="1.725">Very Active (6-7 days/week)</option>
+                <option value="1.9">Extra Active (Athlete)</option>
+            </select>
+        </div>
+
+        <button class="calc-btn" onclick="calculateBMR()">Calculate BMR</button>
+
         <div class="result" id="result">
-            <h2>Your BMI Results:</h2>
-            <div class="result-item highlight">BMI: <strong id="bmiValue">0</strong></div>
-            <div class="result-item">Category: <strong id="category">-</strong></div>
-            <div class="result-item">Healthy Weight Range: <strong id="healthyRange">-</strong></div>
-            <div class="result-item">BMI Prime: <strong id="bmiPrime">-</strong></div>
+            <h2>Your BMR Results:</h2>
+            <div class="result-item highlight">BMR: <strong id="bmr">0 cal/day</strong></div>
+            <div class="result-item">TDEE (Maintain Weight): <strong id="tdee">0 cal/day</strong></div>
+            <div class="result-item">Weight Loss (0.5 kg/week): <strong id="loss">0 cal/day</strong></div>
+            <div class="result-item">Weight Gain (0.5 kg/week): <strong id="gain">0 cal/day</strong></div>
+            <div class="result-item">BMR per Hour: <strong id="bmrHour">0 cal/hr</strong></div>
         </div>
-        <h2>What is BMI?</h2>
-        <p>BMI stands for <strong>Body Mass Index</strong>. It's a numerical value calculated from a person's weight and height. BMI is widely used as a screening tool to categorize adults into weight ranges: underweight, normal, overweight, and obese.</p>
-        <h2>BMI Formula</h2>
+
+        <h2>What is BMR?</h2>
+        <p>BMR stands for <strong>Basal Metabolic Rate</strong>. It's the number of calories your body needs to perform basic life-sustaining functions while at complete rest. These functions include breathing, circulating blood, controlling body temperature, cell growth, and brain and nerve function.</p>
+        <p>BMR typically accounts for 60-70% of your total daily calorie expenditure. Even if you lay in bed all day without moving, your body would still burn your BMR in calories.</p>
+
+        <h2>How to Use This BMR Calculator</h2>
+        <ol>
+            <li><strong>Enter your age</strong> in years.</li>
+            <li><strong>Select your gender</strong>.</li>
+            <li><strong>Enter your weight</strong> in kilograms.</li>
+            <li><strong>Enter your height</strong> in centimeters.</li>
+            <li><strong>Select your activity level</strong>.</li>
+            <li><strong>Click "Calculate BMR"</strong> to see your BMR and TDEE.</li>
+        </ol>
+
+        <h2>BMR Formula (Mifflin-St Jeor)</h2>
         <div class="formula-box">
-            <p><strong>Metric:</strong> <code>BMI = weight (kg) / [height (m)]²</code></p>
-            <p style="margin-top:10px;"><strong>Imperial:</strong> <code>BMI = 703 × weight (lb) / [height (in)]²</code></p>
+            <p><strong>Men:</strong> <code>BMR = 10 × weight + 6.25 × height − 5 × age + 5</code></p>
+            <p style="margin-top:8px;"><strong>Women:</strong> <code>BMR = 10 × weight + 6.25 × height − 5 × age − 161</code></p>
+            <p style="margin-top:8px;"><strong>TDEE:</strong> BMR × Activity Multiplier</p>
         </div>
-        <h2>BMI Categories (WHO)</h2>
-        <table class="bmi-table">
-            <thead><tr><th>BMI Range</th><th>Category</th></tr></thead>
-            <tbody>
-                <tr><td>Below 18.5</td><td>Underweight</td></tr>
-                <tr><td>18.5 – 24.9</td><td>Normal Weight</td></tr>
-                <tr><td>25.0 – 29.9</td><td>Overweight</td></tr>
-                <tr><td>30.0 and above</td><td>Obese</td></tr>
-            </tbody>
-        </table>
+
+        <h3>Worked Example</h3>
+        <p>A 30-year-old male, 70 kg, 175 cm:</p>
+        <ol>
+            <li>BMR = 10(70) + 6.25(175) − 5(30) + 5</li>
+            <li>BMR = 700 + 1093.75 − 150 + 5</li>
+            <li>BMR = <strong>1,648.75 cal/day</strong></li>
+        </ol>
+        <p>If moderately active (×1.55), TDEE = 1,648.75 × 1.55 = <strong>2,555 cal/day</strong>.</p>
+
+        <h2>BMR vs TDEE</h2>
+        <ul>
+            <li><strong>BMR:</strong> Calories burned at complete rest (60-70% of daily total).</li>
+            <li><strong>TEF:</strong> Thermic Effect of Food — calories burned digesting food (10%).</li>
+            <li><strong>EAT:</strong> Exercise Activity Thermogenesis — calories burned during exercise (5-10%).</li>
+            <li><strong>NEAT:</strong> Non-Exercise Activity Thermogenesis — calories burned from daily movement (15-20%).</li>
+            <li><strong>TDEE:</strong> Total Daily Energy Expenditure = BMR + TEF + EAT + NEAT.</li>
+        </ul>
+
+        <h2>Factors That Affect BMR</h2>
+        <ul>
+            <li><strong>Age:</strong> BMR decreases by ~2% per decade after age 20.</li>
+            <li><strong>Gender:</strong> Men have higher BMR due to greater muscle mass.</li>
+            <li><strong>Muscle Mass:</strong> Muscle burns more calories than fat at rest.</li>
+            <li><strong>Weight:</strong> Heavier people have higher BMR.</li>
+            <li><strong>Genetics:</strong> Some people naturally have higher metabolism.</li>
+            <li><strong>Hormones:</strong> Thyroid problems can affect BMR significantly.</li>
+        </ul>
+
+        <h2>How to Increase Your BMR</h2>
+        <ul>
+            <li><strong>Build muscle:</strong> Strength training 3-4 times per week.</li>
+            <li><strong>Eat protein:</strong> Protein has a high thermic effect.</li>
+            <li><strong>Sleep well:</strong> 7-9 hours of quality sleep supports metabolism.</li>
+            <li><strong>Stay active:</strong> Take the stairs, walk more, fidget.</li>
+            <li><strong>Avoid crash diets:</strong> Extreme calorie restriction lowers BMR.</li>
+            <li><strong>Drink water:</strong> Staying hydrated supports metabolism.</li>
+        </ul>
+
         <h2>Frequently Asked Questions</h2>
-        <h3>Is BMI accurate for everyone?</h3>
-        <p>BMI may not be accurate for athletes, pregnant women, elderly people, or children.</p>
-        <h3>What is a healthy BMI range?</h3>
-        <p>A BMI between 18.5 and 24.9 is considered healthy.</p>
+        <h3>What is BMR?</h3>
+        <p>BMR is the number of calories your body burns at complete rest to maintain basic functions like breathing and heartbeat.</p>
+        <h3>What is the difference between BMR and TDEE?</h3>
+        <p>BMR is calories burned at rest. TDEE is BMR plus all calories burned through daily activities and exercise.</p>
+        <h3>What is a normal BMR?</h3>
+        <p>For most adults, BMR ranges from 1,200 to 2,000 calories per day. Men typically have higher BMR than women.</p>
+        <h3>How can I increase my BMR?</h3>
+        <p>Build muscle through strength training, eat enough protein, get adequate sleep, and avoid extreme calorie restriction.</p>
+
         <div class="other-tools">
             <h2>Other Popular Calculators:</h2>
             <ul>
-                <li><a href="age-calculator.html">Age Calculator</a></li>
+                <li><a href="bmi-calculator.html">BMI Calculator</a></li>
                 <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
                 <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
-                <li><a href="bmr-calculator.html">BMR Calculator</a></li>
+                <li><a href="age-calculator.html">Age Calculator</a></li>
                 <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
             </ul>
         </div>
     </div>
     <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
-        function calculateBMI() {
+        function calculateBMR() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
             const weight = parseFloat(document.getElementById('weight').value);
             const height = parseFloat(document.getElementById('height').value);
-            const weightUnit = document.getElementById('weightUnit').value;
-            const heightUnit = document.getElementById('heightUnit').value;
-            if (!weight || !height || weight <= 0 || height <= 0) { alert('Please enter valid weight and height'); return; }
-            let weightKg = weightUnit === 'kg' ? weight : weight * 0.453592;
-            let heightM;
-            if (heightUnit === 'cm') heightM = height / 100;
-            else if (heightUnit === 'in') heightM = height * 0.0254;
-            else heightM = height * 0.3048;
-            const bmi = weightKg / (heightM * heightM);
-            const bmiPrime = bmi / 25;
-            let category;
-            if (bmi < 18.5) category = 'Underweight';
-            else if (bmi < 25) category = 'Normal weight';
-            else if (bmi < 30) category = 'Overweight';
-            else category = 'Obese';
-            const minHealthy = 18.5 * heightM * heightM;
-            const maxHealthy = 24.9 * heightM * heightM;
-            document.getElementById('bmiValue').textContent = bmi.toFixed(2);
-            document.getElementById('category').textContent = category;
-            document.getElementById('healthyRange').textContent = minHealthy.toFixed(1) + ' - ' + maxHealthy.toFixed(1) + ' kg';
-            document.getElementById('bmiPrime').textContent = bmiPrime.toFixed(2);
+            const activity = parseFloat(document.getElementById('activity').value);
+            if (!age || !weight || !height) { alert('Please fill in all fields with valid values'); return; }
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+            const tdee = bmr * activity;
+            const loss = tdee - 550;
+            const gain = tdee + 550;
+            const bmrHour = bmr / 24;
+            document.getElementById('bmr').textContent = Math.round(bmr) + ' cal/day';
+            document.getElementById('tdee').textContent = Math.round(tdee) + ' cal/day';
+            document.getElementById('loss').textContent = Math.round(loss) + ' cal/day';
+            document.getElementById('gain').textContent = Math.round(gain) + ' cal/day';
+            document.getElementById('bmrHour').textContent = Math.round(bmrHour) + ' cal/hr';
             document.getElementById('result').style.display = 'block';
         }
     </script>
