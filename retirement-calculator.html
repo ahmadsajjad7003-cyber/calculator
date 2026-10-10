@@ -1,103 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QQDMKGRX78');
-    </script>
+    <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free Retirement Calculator - Calculate how much you need to save for retirement. See your retirement corpus and monthly income after retirement.">
-    <meta name="keywords" content="retirement calculator, retirement savings calculator, pension calculator, retirement planning, how much to save for retirement">
+    <meta name="keywords" content="retirement calculator, retirement savings calculator, pension calculator, retirement planning">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html">
     <title>Retirement Calculator - Plan Your Retirement Savings | CalcMaster</title>
-
-    <meta property="og:title" content="Retirement Calculator - Plan Your Retirement Savings">
-    <meta property="og:description" content="Calculate how much you need to save for retirement. See your retirement corpus and monthly income.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html">
-    <meta property="og:site_name" content="CalcMaster">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Retirement Calculator - Plan Your Retirement Savings">
-    <meta name="twitter:description" content="Calculate how much you need to save for retirement.">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Retirement Calculator",
-      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/retirement-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "author": { "@type": "Organization", "name": "CalcMaster" },
-      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
-      "datePublished": "2025-01-01",
-      "dateModified": "2025-01-15"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "How much should I save for retirement?", "acceptedAnswer": { "@type": "Answer", "text": "Most experts recommend saving 15% of your income for retirement. The exact amount depends on your current age, retirement age, expected expenses, and lifestyle." } },
-        { "@type": "Question", "name": "What is a retirement corpus?", "acceptedAnswer": { "@type": "Answer", "text": "A retirement corpus is the total amount of money you accumulate by the time you retire. It includes your current savings, future monthly savings, and investment growth." } },
-        { "@type": "Question", "name": "At what age should I start saving for retirement?", "acceptedAnswer": { "@type": "Answer", "text": "The earlier, the better. Starting in your 20s gives compound interest more time to work. However, it's never too late to start." } },
-        { "@type": "Question", "name": "How long will my retirement corpus last?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your retirement corpus, monthly expenses, and life expectancy. Our calculator estimates monthly income based on these factors." } }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Use the Retirement Calculator",
-      "step": [
-        { "@type": "HowToStep", "name": "Enter current age", "text": "Enter your current age in years." },
-        { "@type": "HowToStep", "name": "Enter retirement age", "text": "Enter the age at which you plan to retire." },
-        { "@type": "HowToStep", "name": "Enter current savings", "text": "Enter the amount you have already saved for retirement." },
-        { "@type": "HowToStep", "name": "Enter monthly savings", "text": "Enter how much you save each month for retirement." },
-        { "@type": "HowToStep", "name": "Enter expected return", "text": "Enter the expected annual return on your investments." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your retirement corpus and monthly income." }
-      ]
-    }
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { background: #2c3e50; color: white; padding: 15px 20px; }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
         .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
         h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
         p, li { color: #555; margin-bottom: 10px; }
         ul, ol { padding-left: 25px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-        input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        input[type="number"]:focus { border-color: #3498db; outline: none; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools ul { list-style: none; padding: 0; }
-        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -106,35 +41,16 @@
         <h1>Retirement Calculator</h1>
         <p>Calculate how much you need to save for retirement and your monthly income after retirement.</p>
 
-        <div class="input-group">
-            <label for="currentAge">Current Age (Years):</label>
-            <input type="number" id="currentAge" placeholder="e.g. 30" min="18" max="80">
-        </div>
-        <div class="input-group">
-            <label for="retireAge">Retirement Age (Years):</label>
-            <input type="number" id="retireAge" placeholder="e.g. 65" min="30" max="90">
-        </div>
-        <div class="input-group">
-            <label for="currentSavings">Current Savings ($):</label>
-            <input type="number" id="currentSavings" placeholder="e.g. 50000" min="0">
-        </div>
-        <div class="input-group">
-            <label for="monthlySave">Monthly Savings ($):</label>
-            <input type="number" id="monthlySave" placeholder="e.g. 1000" min="0">
-        </div>
-        <div class="input-group">
-            <label for="rate">Expected Annual Return (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 7" min="0" step="0.01">
-        </div>
-        <div class="input-group">
-            <label for="lifeExpect">Life Expectancy (Years):</label>
-            <input type="number" id="lifeExpect" placeholder="e.g. 85" min="50" max="120">
-        </div>
+        <div class="input-group"><label>Current Age (Years):</label><input type="number" id="currentAge" placeholder="e.g. 30"></div>
+        <div class="input-group"><label>Retirement Age (Years):</label><input type="number" id="retireAge" placeholder="e.g. 65"></div>
+        <div class="input-group"><label>Current Savings ($):</label><input type="number" id="currentSavings" placeholder="e.g. 50000"></div>
+        <div class="input-group"><label>Monthly Savings ($):</label><input type="number" id="monthlySave" placeholder="e.g. 1000"></div>
+        <div class="input-group"><label>Expected Annual Return (%):</label><input type="number" id="rate" placeholder="e.g. 7" step="0.01"></div>
+        <div class="input-group"><label>Life Expectancy (Years):</label><input type="number" id="lifeExpect" placeholder="e.g. 85"></div>
 
         <button class="calc-btn" onclick="calculateRetirement()">Calculate Retirement</button>
 
         <div class="result" id="result">
-            <h2>Your Retirement Summary:</h2>
             <div class="result-item highlight">Corpus at Retirement: <strong id="corpus">$0</strong></div>
             <div class="result-item">Total Contributions: <strong id="totalContrib">$0</strong></div>
             <div class="result-item">Investment Growth: <strong id="growth">$0</strong></div>
@@ -144,46 +60,32 @@
         </div>
 
         <h2>What is Retirement Planning?</h2>
-        <p>Retirement planning is the process of determining your retirement income goals and the actions needed to achieve them. It involves identifying sources of income, estimating expenses, and implementing a savings program to build a retirement corpus that will support you after you stop working.</p>
-        <p>With rising life expectancy, people now spend 20-30 years in retirement. Proper planning is essential to maintain your lifestyle without financial stress.</p>
+        <p>Retirement planning is the process of determining your retirement income goals and the actions needed to achieve them. It involves identifying sources of income, estimating expenses, and implementing a savings program.</p>
 
         <h2>How to Use This Retirement Calculator</h2>
         <ol>
-            <li><strong>Enter your current age</strong>.</li>
-            <li><strong>Enter your desired retirement age</strong>.</li>
-            <li><strong>Enter your current retirement savings</strong>.</li>
-            <li><strong>Enter your monthly savings amount</strong>.</li>
-            <li><strong>Enter expected annual return</strong> on your investments.</li>
-            <li><strong>Enter life expectancy</strong> for retirement duration.</li>
-            <li><strong>Click "Calculate Retirement"</strong> to see your corpus and monthly income.</li>
+            <li>Enter your current age</li>
+            <li>Enter your desired retirement age</li>
+            <li>Enter your current retirement savings</li>
+            <li>Enter your monthly savings amount</li>
+            <li>Enter expected annual return on your investments</li>
+            <li>Enter life expectancy for retirement duration</li>
+            <li>Click "Calculate Retirement"</li>
         </ol>
 
         <h2>Retirement Formula</h2>
         <div class="formula-box">
             <p><strong>Future Value of Current Savings:</strong> <code>FV = PV × (1+r)^n</code></p>
             <p style="margin-top:10px;"><strong>Future Value of Monthly Savings:</strong> <code>FV = PMT × [(1+r)^n − 1] / r</code></p>
-            <p style="margin-top:10px;"><strong>Total Corpus:</strong> FV of current savings + FV of monthly savings</p>
-            <p style="margin-top:10px;"><strong>Where:</strong> PV = Present savings, PMT = Monthly savings, r = Monthly rate, n = Total months</p>
         </div>
-
-        <h3>Worked Example</h3>
-        <p>Age 30, retiring at 65, $50,000 saved, $1,000/month savings, 7% return:</p>
-        <ol>
-            <li>Years to retirement: 65 − 30 = <strong>35 years</strong></li>
-            <li>Monthly rate: 7 ÷ 12 ÷ 100 = <strong>0.005833</strong></li>
-            <li>Total months: 35 × 12 = <strong>420</strong></li>
-            <li>Future value of $50,000: <strong>$557,000+</strong></li>
-            <li>Future value of $1,000/month: <strong>$1,560,000+</strong></li>
-            <li>Total corpus: <strong>~$2.1 million</strong></li>
-        </ol>
 
         <h2>Key Retirement Planning Rules</h2>
         <ul>
-            <li><strong>Save 15% of income:</strong> A common rule for retirement savings.</li>
-            <li><strong>Rule of 25:</strong> Multiply desired annual retirement income by 25 to estimate needed corpus.</li>
-            <li><strong>4% Rule:</strong> Withdraw 4% of your corpus annually — historically sustainable for 30 years.</li>
-            <li><strong>Start early:</strong> Compound interest rewards those who start saving in their 20s.</li>
-            <li><strong>Diversify:</strong> Mix stocks, bonds, and other investments.</li>
+            <li><strong>Save 15% of income:</strong> A common rule for retirement savings</li>
+            <li><strong>Rule of 25:</strong> Multiply desired annual retirement income by 25</li>
+            <li><strong>4% Rule:</strong> Withdraw 4% of your corpus annually</li>
+            <li><strong>Start early:</strong> Compound interest rewards those who start saving in their 20s</li>
+            <li><strong>Diversify:</strong> Mix stocks, bonds, and other investments</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
@@ -195,17 +97,6 @@
         <p>The earlier, the better. Starting in your 20s gives compound interest more time to work.</p>
         <h3>How long will my retirement corpus last?</h3>
         <p>It depends on your corpus, monthly expenses, and life expectancy.</p>
-
-        <div class="other-tools">
-            <h2>Other Popular Calculators:</h2>
-            <ul>
-                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
-                <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
-                <li><a href="interest-calculator.html">Interest Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-            </ul>
-        </div>
     </div>
     <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
@@ -216,15 +107,12 @@
             const monthlySave = parseFloat(document.getElementById('monthlySave').value) || 0;
             const rate = parseFloat(document.getElementById('rate').value);
             const lifeExpect = parseFloat(document.getElementById('lifeExpect').value);
-
-            if (!currentAge || !retireAge || !rate || !lifeExpect) { alert('Please fill in all fields with valid values'); return; }
+            if (!currentAge || !retireAge || !rate || !lifeExpect) { alert('Please fill all fields'); return; }
             if (retireAge <= currentAge) { alert('Retirement age must be greater than current age'); return; }
             if (lifeExpect <= retireAge) { alert('Life expectancy must be greater than retirement age'); return; }
-
             const yearsToRetire = retireAge - currentAge;
             const monthsToRetire = yearsToRetire * 12;
             const monthlyRate = rate / 100 / 12;
-
             const fvCurrent = currentSavings * Math.pow(1 + monthlyRate, monthsToRetire);
             let fvMonthly;
             if (monthlyRate > 0) {
@@ -237,14 +125,12 @@
             const growth = corpus - totalContrib;
             const retireDuration = lifeExpect - retireAge;
             const monthsAfterRetire = retireDuration * 12;
-
             let monthlyIncome;
             if (monthlyRate > 0) {
                 monthlyIncome = corpus * monthlyRate / (1 - Math.pow(1 + monthlyRate, -monthsAfterRetire));
             } else {
                 monthlyIncome = corpus / monthsAfterRetire;
             }
-
             const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             document.getElementById('corpus').textContent = fmt(corpus);
             document.getElementById('totalContrib').textContent = fmt(totalContrib);
