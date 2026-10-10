@@ -1,102 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QQDMKGRX78');
-    </script>
+    <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Interest Calculator - Calculate simple and compound interest on savings, investments, and loans. See how your money grows over time.">
-    <meta name="keywords" content="interest calculator, simple interest calculator, compound interest calculator, savings calculator, investment calculator">
+    <meta name="description" content="Free Interest Calculator - Calculate simple and compound interest on savings, investments, and loans.">
+    <meta name="keywords" content="interest calculator, simple interest calculator, compound interest calculator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html">
     <title>Interest Calculator - Simple & Compound Interest | CalcMaster</title>
-
-    <meta property="og:title" content="Interest Calculator - Simple & Compound Interest">
-    <meta property="og:description" content="Calculate simple and compound interest on your savings and investments.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html">
-    <meta property="og:site_name" content="CalcMaster">
-
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Interest Calculator - Simple & Compound Interest">
-    <meta name="twitter:description" content="Calculate simple and compound interest on your savings.">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Interest Calculator",
-      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-      "author": { "@type": "Organization", "name": "CalcMaster" },
-      "publisher": { "@type": "Organization", "name": "CalcMaster", "url": "https://ahmadsajjad7003-cyber.github.io/calculator/" },
-      "datePublished": "2025-01-01",
-      "dateModified": "2025-01-15"
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What is the difference between simple and compound interest?", "acceptedAnswer": { "@type": "Answer", "text": "Simple interest is calculated only on the principal amount. Compound interest is calculated on the principal plus accumulated interest, so it grows faster over time." } },
-        { "@type": "Question", "name": "How is compound interest calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Compound interest uses the formula A = P × (1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency, and t is time in years." } },
-        { "@type": "Question", "name": "What is the rule of 72?", "acceptedAnswer": { "@type": "Answer", "text": "The rule of 72 estimates how long it takes for an investment to double. Divide 72 by the annual interest rate." } },
-        { "@type": "Question", "name": "Which is better: simple or compound interest?", "acceptedAnswer": { "@type": "Answer", "text": "For savers and investors, compound interest is better. For borrowers, compound interest is worse because you pay more over time." } }
-      ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HowTo",
-      "name": "How to Use the Interest Calculator",
-      "step": [
-        { "@type": "HowToStep", "name": "Enter principal", "text": "Enter the principal amount." },
-        { "@type": "HowToStep", "name": "Enter interest rate", "text": "Enter the annual interest rate." },
-        { "@type": "HowToStep", "name": "Enter time period", "text": "Enter the time period in years." },
-        { "@type": "HowToStep", "name": "Choose interest type", "text": "Select simple or compound interest." },
-        { "@type": "HowToStep", "name": "Click Calculate", "text": "Click Calculate to see your total amount and interest." }
-      ]
-    }
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header { background: #2c3e50; color: white; padding: 15px 20px; }
         header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
         .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
         h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
+        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
         h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
         p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
+        ul { padding-left: 25px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-        input[type="number"], select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; background: white; }
-        input:focus, select:focus { border-color: #3498db; outline: none; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 5px; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result h2 { color: #2c3e50; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
+        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; }
         .result-item strong { color: #3498db; font-size: 18px; }
         .result-item.highlight { background: #3498db; color: white; }
         .result-item.highlight strong { color: white; font-size: 22px; }
         .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
         .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools ul { list-style: none; padding: 0; }
-        .other-tools a { color: #3498db; text-decoration: none; font-weight: 500; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
+        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -105,30 +41,17 @@
         <h1>Interest Calculator</h1>
         <p>Calculate simple and compound interest on your savings or investments.</p>
 
-        <div class="input-group">
-            <label for="principal">Principal Amount ($):</label>
-            <input type="number" id="principal" placeholder="e.g. 10000" min="1">
-        </div>
-        <div class="input-group">
-            <label for="rate">Annual Interest Rate (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 6" min="0" step="0.01">
-        </div>
-        <div class="input-group">
-            <label for="years">Time Period (Years):</label>
-            <input type="number" id="years" placeholder="e.g. 5" min="0.1" step="0.1">
-        </div>
-        <div class="input-group">
-            <label for="type">Interest Type:</label>
-            <select id="type">
-                <option value="compound">Compound Interest (Monthly Compounded)</option>
-                <option value="simple">Simple Interest</option>
-            </select>
-        </div>
+        <div class="input-group"><label>Principal Amount ($):</label><input type="number" id="principal" placeholder="e.g. 10000"></div>
+        <div class="input-group"><label>Annual Interest Rate (%):</label><input type="number" id="rate" placeholder="e.g. 6" step="0.01"></div>
+        <div class="input-group"><label>Time Period (Years):</label><input type="number" id="years" placeholder="e.g. 5" step="0.1"></div>
+        <div class="input-group"><label>Interest Type:</label><select id="type">
+            <option value="compound">Compound Interest (Monthly)</option>
+            <option value="simple">Simple Interest</option>
+        </select></div>
 
         <button class="calc-btn" onclick="calculateInterest()">Calculate Interest</button>
 
         <div class="result" id="result">
-            <h2>Your Interest Summary:</h2>
             <div class="result-item highlight">Total Amount: <strong id="totalAmount">$0</strong></div>
             <div class="result-item">Interest Earned: <strong id="interest">$0</strong></div>
             <div class="result-item">Principal: <strong id="principalOut">$0</strong></div>
@@ -136,38 +59,22 @@
         </div>
 
         <h2>What is Interest?</h2>
-        <p>Interest is the cost of borrowing money, or the reward for saving money. When you deposit money in a savings account, the bank pays you interest. When you take a loan, you pay interest to the lender. There are two main types: simple interest and compound interest.</p>
+        <p>Interest is the cost of borrowing money, or the reward for saving money. When you deposit money in a savings account, the bank pays you interest. When you take a loan, you pay interest to the lender.</p>
 
         <h2>How to Use This Interest Calculator</h2>
         <ol>
-            <li><strong>Enter the principal amount</strong> — your initial investment or loan.</li>
-            <li><strong>Enter the annual interest rate</strong> — as a percentage.</li>
-            <li><strong>Enter the time period</strong> — in years.</li>
-            <li><strong>Select interest type</strong> — simple or compound.</li>
-            <li><strong>Click "Calculate Interest"</strong> to see your results.</li>
+            <li>Enter the principal amount — your initial investment</li>
+            <li>Enter the annual interest rate as a percentage</li>
+            <li>Enter the time period in years</li>
+            <li>Select interest type — simple or compound</li>
+            <li>Click "Calculate Interest"</li>
         </ol>
 
         <h2>Interest Formulas</h2>
         <div class="formula-box">
             <p><strong>Simple Interest:</strong> <code>A = P × (1 + rt)</code></p>
             <p style="margin-top:10px;"><strong>Compound Interest:</strong> <code>A = P × (1 + r/n)^(nt)</code></p>
-            <p style="margin-top:10px;"><strong>Where:</strong></p>
-            <ul style="margin:8px 0 0 0;">
-                <li><strong>P</strong> = Principal amount</li>
-                <li><strong>r</strong> = Annual interest rate (as decimal)</li>
-                <li><strong>t</strong> = Time in years</li>
-                <li><strong>n</strong> = Compounding frequency per year (12 for monthly)</li>
-            </ul>
         </div>
-
-        <h3>Worked Examples</h3>
-        <p><strong>Simple Interest:</strong> $10,000 at 6% for 5 years</p>
-        <p>Interest = 10,000 × 0.06 × 5 = <strong>$3,000</strong> (Total: $13,000)</p>
-
-        <p><strong>Compound Interest (Monthly):</strong> $10,000 at 6% for 5 years</p>
-        <p>A = 10,000 × (1 + 0.06/12)^(12×5) = <strong>$13,488.50</strong> (Interest: $3,488.50)</p>
-
-        <p><strong>Notice:</strong> Compound interest earned $488.50 more than simple interest!</p>
 
         <h2>Simple vs. Compound Interest</h2>
         <ul>
@@ -178,33 +85,20 @@
         </ul>
 
         <h2>The Rule of 72</h2>
-        <p>The Rule of 72 is a quick way to estimate how long it will take for an investment to double. Simply divide 72 by the annual interest rate:</p>
+        <p>The Rule of 72 is a quick way to estimate how long it will take for an investment to double. Divide 72 by the annual interest rate.</p>
         <ul>
-            <li>At 6% interest: 72 ÷ 6 = <strong>12 years to double</strong></li>
-            <li>At 8% interest: 72 ÷ 8 = <strong>9 years to double</strong></li>
-            <li>At 12% interest: 72 ÷ 12 = <strong>6 years to double</strong></li>
+            <li>At 6% interest: 72 ÷ 6 = 12 years to double</li>
+            <li>At 8% interest: 72 ÷ 8 = 9 years to double</li>
+            <li>At 12% interest: 72 ÷ 12 = 6 years to double</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
         <h3>What is the difference between simple and compound interest?</h3>
         <p>Simple interest is calculated only on the principal. Compound interest is calculated on principal plus accumulated interest, so it grows faster.</p>
-        <h3>How is compound interest calculated?</h3>
-        <p>Compound interest uses A = P × (1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency, and t is time.</p>
         <h3>What is the rule of 72?</h3>
         <p>Divide 72 by the interest rate to estimate how many years it takes for your money to double.</p>
         <h3>Which is better: simple or compound interest?</h3>
         <p>For savers, compound interest is better. For borrowers, compound interest costs more.</p>
-
-        <div class="other-tools">
-            <h2>Other Popular Calculators:</h2>
-            <ul>
-                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
-                <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
-                <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-            </ul>
-        </div>
     </div>
     <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
     <script>
@@ -213,9 +107,7 @@
             const rate = parseFloat(document.getElementById('rate').value);
             const years = parseFloat(document.getElementById('years').value);
             const type = document.getElementById('type').value;
-
-            if (!principal || !rate || !years || principal <= 0 || rate < 0 || years <= 0) { alert('Please fill in all fields with valid values'); return; }
-
+            if (!principal || !rate || !years) { alert('Please fill all fields'); return; }
             let totalAmount, interest;
             if (type === 'simple') {
                 interest = (principal * rate * years) / 100;
@@ -226,7 +118,6 @@
                 totalAmount = principal * Math.pow(1 + r/n, n * years);
                 interest = totalAmount - principal;
             }
-
             const fmt = (n) => '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             document.getElementById('totalAmount').textContent = fmt(totalAmount);
             document.getElementById('interest').textContent = fmt(interest);
