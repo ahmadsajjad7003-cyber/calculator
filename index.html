@@ -9,123 +9,222 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/">
     <title>Free Online Calculators - Health, Finance, Math | CalcMaster</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "CalcMaster",
-      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/",
-      "description": "Free online calculators for health, finance, math and everyday use."
-    }
-    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.6; }
-        header { background: #2c3e50; color: white; padding: 18px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
-        .hero { background: linear-gradient(135deg, #3498db, #2c3e50); color: white; padding: 50px 20px; text-align: center; }
-        .hero h1 { font-size: 34px; margin-bottom: 10px; }
-        .hero p { font-size: 17px; opacity: 0.9; }
-        .search-box { max-width: 500px; margin: 25px auto 0; }
-        .search-box input { width: 100%; padding: 15px 22px; border: none; border-radius: 30px; font-size: 16px; outline: none; box-shadow: 0 3px 10px rgba(0,0,0,0.15); }
-        .container { max-width: 1200px; margin: 35px auto; padding: 0 20px; }
-        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .category { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        .category h2 { color: #2c3e50; font-size: 20px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #3498db; }
-        .category ul { list-style: none; }
+        
+        /* HEADER */
+        header { background: #1a3a5c; color: white; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+        header .logo { color: white; text-decoration: none; font-size: 26px; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        header .logo::before { content: "🔢"; font-size: 24px; }
+        header .logo span { color: #7cb342; }
+        header .signin { background: #27ae60; color: white; padding: 9px 22px; border-radius: 5px; text-decoration: none; font-weight: 600; font-size: 14px; transition: 0.2s; }
+        header .signin:hover { background: #229954; }
+        
+        /* MAIN WRAPPER */
+        .main-wrapper { display: flex; gap: 35px; max-width: 1400px; margin: 30px auto; padding: 0 25px; align-items: flex-start; flex-wrap: wrap; }
+        
+        /* SCIENTIFIC CALCULATOR */
+        .calc-container { background: #d8e3ee; border-radius: 10px; padding: 18px; box-shadow: 0 3px 15px rgba(0,0,0,0.12); flex: 0 0 420px; }
+        .calc-display { background: #0d2842; color: white; padding: 18px 20px; border-radius: 6px; margin-bottom: 12px; text-align: right; min-height: 85px; display: flex; flex-direction: column; justify-content: space-between; }
+        .calc-display .small-row { display: flex; justify-content: flex-start; margin-bottom: 8px; }
+        .toggle-btn { background: transparent; border: 1.5px solid #3498db; color: #3498db; padding: 3px 12px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 12px; margin-right: 6px; }
+        .toggle-btn.active { background: #3498db; color: white; }
+        .calc-display .current { font-size: 32px; font-weight: bold; word-wrap: break-word; overflow-wrap: break-word; }
+        
+        .calc-buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; }
+        .calc-buttons button { padding: 15px 4px; font-size: 15px; font-weight: 600; border: none; border-radius: 5px; cursor: pointer; transition: 0.12s; background: #f0f3f7; color: #2c3e50; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+        .calc-buttons button:hover { background: #e0e6ed; }
+        .calc-buttons button:active { transform: scale(0.97); }
+        .calc-buttons .btn-fn { background: #e6ecf2; color: #2c3e50; font-size: 13px; }
+        .calc-buttons .btn-fn:hover { background: #d5dde5; }
+        .calc-buttons .btn-op { background: #c9d6e2; color: #2c3e50; }
+        .calc-buttons .btn-op:hover { background: #b8c9d9; }
+        .calc-buttons .btn-clr { background: #e74c3c; color: white; }
+        .calc-buttons .btn-clr:hover { background: #c0392b; }
+        .calc-buttons .btn-eq { grid-column: span 5; background: #3498db; color: white; font-size: 20px; padding: 14px; }
+        .calc-buttons .btn-eq:hover { background: #2980b9; }
+        
+        /* RIGHT SIDE */
+        .right-side { flex: 1; min-width: 340px; }
+        .right-side h1 { color: #2c3e50; font-size: 32px; margin-bottom: 20px; font-weight: 700; }
+        
+        .search-row { display: flex; gap: 10px; margin-bottom: 15px; }
+        .search-row input { flex: 1; padding: 14px 20px; border: 2px solid #ddd; border-radius: 5px; font-size: 15px; outline: none; background: white; }
+        .search-row input:focus { border-color: #3498db; }
+        .search-row button { background: #1a3a5c; color: white; padding: 14px 32px; border: none; border-radius: 5px; font-weight: 600; cursor: pointer; font-size: 15px; }
+        .search-row button:hover { background: #0d2842; }
+        
+        .popular { color: #666; font-size: 14px; margin-bottom: 30px; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+        .popular span { font-weight: 500; }
+        .popular a { display: inline-block; background: white; color: #3498db; padding: 7px 16px; border-radius: 16px; text-decoration: none; font-weight: 500; font-size: 14px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); transition: 0.2s; }
+        .popular a:hover { background: #3498db; color: white; }
+        
+        /* CATEGORIES */
+        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        .category { background: white; border-radius: 10px; padding: 25px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); text-align: center; transition: 0.2s; }
+        .category:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.12); transform: translateY(-2px); }
+        .cat-icon { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 30px; color: white; }
+        .cat-icon.green { background: #27ae60; }
+        .cat-icon.red { background: #e74c3c; }
+        .cat-icon.blue { background: #3498db; }
+        .cat-icon.purple { background: #9b59b6; }
+        .category h3 { color: #2c3e50; font-size: 18px; margin-bottom: 15px; }
+        .category ul { list-style: none; text-align: left; }
         .category li { margin-bottom: 8px; }
-        .category a { color: #3498db; text-decoration: none; font-size: 15px; display: block; padding: 7px 0; transition: 0.2s; border-radius: 4px; }
-        .category a:hover { color: #2c3e50; padding-left: 8px; background: #f0f8ff; }
-        .info-section { margin-top: 45px; background: white; padding: 35px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        .info-section h2 { color: #2c3e50; margin-bottom: 15px; font-size: 24px; }
-        .info-section h3 { color: #34495e; margin: 20px 0 10px; font-size: 19px; }
-        .info-section p { color: #555; margin-bottom: 12px; }
-        .info-section ul { padding-left: 25px; color: #555; }
-        .info-section li { margin-bottom: 8px; }
-        footer { text-align: center; padding: 30px; color: #ccc; font-size: 14px; margin-top: 50px; background: #2c3e50; }
-        footer a { color: #3498db; text-decoration: none; }
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 26px; }
-            .hero p { font-size: 15px; }
+        .category a { color: #3498db; text-decoration: none; font-size: 14px; transition: 0.2s; display: block; padding: 3px 0; }
+        .category a:hover { color: #2c3e50; padding-left: 4px; }
+        .category a.disabled { color: #bbb; cursor: not-allowed; }
+        .category a.disabled:hover { padding-left: 0; color: #bbb; }
+        
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 50px; background: #1a3a5c; color: #ccc; }
+        footer a { color: #7cb342; text-decoration: none; }
+        
+        @media (max-width: 900px) {
+            .calc-container { flex: 1 1 100%; }
+            .right-side h1 { font-size: 24px; }
+            .search-row { flex-direction: column; }
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">CalcMaster</a>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+        <a href="#" class="signin">Sign In</a>
     </header>
 
-    <div class="hero">
-        <h1>Free Online Calculators</h1>
-        <p>Health, Finance, Math aur daily use ke liye 19+ free calculators</p>
-        <div class="search-box">
-            <input type="text" placeholder="Search calculator... (e.g. BMI, loan, age)" id="searchInput">
+    <div class="main-wrapper">
+        <!-- SCIENTIFIC CALCULATOR -->
+        <div class="calc-container">
+            <div class="calc-display">
+                <div class="small-row">
+                    <button class="toggle-btn active" id="degBtn" onclick="setMode('deg')">Deg</button>
+                    <button class="toggle-btn" id="radBtn" onclick="setMode('rad')">Rad</button>
+                </div>
+                <div class="current" id="calcDisplay">0</div>
+            </div>
+            <div class="calc-buttons">
+                <!-- Row 1 -->
+                <button class="btn-fn" onclick="press('sin(')">sin</button>
+                <button class="btn-fn" onclick="press('cos(')">cos</button>
+                <button class="btn-fn" onclick="press('tan(')">tan</button>
+                <button onclick="press('7')">7</button>
+                <button onclick="press('8')">8</button>
+
+                <!-- Row 2 -->
+                <button class="btn-fn" onclick="press('asin(')">sin⁻¹</button>
+                <button class="btn-fn" onclick="press('acos(')">cos⁻¹</button>
+                <button class="btn-fn" onclick="press('atan(')">tan⁻¹</button>
+                <button onclick="press('9')">9</button>
+                <button class="btn-op" onclick="press('/')">÷</button>
+
+                <!-- Row 3 -->
+                <button class="btn-fn" onclick="press('pi')">π</button>
+                <button class="btn-fn" onclick="press('e')">e</button>
+                <button class="btn-fn" onclick="press('^')">xʸ</button>
+                <button onclick="press('4')">4</button>
+                <button onclick="press('5')">5</button>
+
+                <!-- Row 4 -->
+                <button class="btn-fn" onclick="press('log(')">log</button>
+                <button class="btn-fn" onclick="press('ln(')">ln</button>
+                <button class="btn-fn" onclick="press('sqrt(')">√</button>
+                <button onclick="press('6')">6</button>
+                <button class="btn-op" onclick="press('*')">×</button>
+
+                <!-- Row 5 -->
+                <button class="btn-fn" onclick="press('(')">(</button>
+                <button class="btn-fn" onclick="press(')')">)</button>
+                <button class="btn-fn" onclick="press('!')">n!</button>
+                <button onclick="press('1')">1</button>
+                <button onclick="press('2')">2</button>
+
+                <!-- Row 6 -->
+                <button class="btn-fn" onclick="press('abs(')">|x|</button>
+                <button class="btn-fn" onclick="press('%')">%</button>
+                <button class="btn-fn" onclick="press('±')">±</button>
+                <button onclick="press('3')">3</button>
+                <button class="btn-op" onclick="press('-')">−</button>
+
+                <!-- Row 7 -->
+                <button class="btn-clr" onclick="clearAll()">AC</button>
+                <button class="btn-clr" onclick="backspace()">⌫</button>
+                <button onclick="press('0')">0</button>
+                <button onclick="press('.')">.</button>
+                <button class="btn-op" onclick="press('+')">+</button>
+
+                <!-- Row 8 (Equal spans all) -->
+                <button class="btn-eq" onclick="calculate()">=</button>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="categories">
-            <div class="category">
-                <h2>🏥 Fitness & Health</h2>
-                <ul>
-                    <li><a href="bmi-calculator.html">BMI Calculator</a></li>
-                    <li><a href="bmr-calculator.html">BMR Calculator</a></li>
-                    <li><a href="age-calculator.html">Age Calculator</a></li>
-                    <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
-                    <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
-                </ul>
+        <!-- RIGHT SIDE CONTENT -->
+        <div class="right-side">
+            <h1>Free Online Calculators</h1>
+            
+            <div class="search-row">
+                <input type="text" placeholder="Search for a calculator..." id="searchInput">
+                <button onclick="doSearch()">Search</button>
+            </div>
+            
+            <div class="popular">
+                <span>Popular:</span>
+                <a href="bmi-calculator.html">BMI</a>
+                <a href="age-calculator.html">Age</a>
+                <a href="loan-calculator.html">Loan</a>
+                <a href="percentage-calculator.html">Percentage</a>
+                <a href="calorie-calculator.html">Calorie</a>
+                <a href="date-calculator.html">Date</a>
             </div>
 
-            <div class="category">
-                <h2>💰 Financial</h2>
-                <ul>
-                    <li><a href="loan-calculator.html">Loan Calculator</a></li>
-                    <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
-                    <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
-                    <li><a href="interest-calculator.html">Interest Calculator</a></li>
-                    <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
-                </ul>
+            <div class="categories">
+                <div class="category">
+                    <div class="cat-icon green">💰</div>
+                    <h3>Financial</h3>
+                    <ul>
+                        <li><a href="loan-calculator.html">Loan Calculator</a></li>
+                        <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+                        <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+                        <li><a href="interest-calculator.html">Interest Calculator</a></li>
+                        <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="cat-icon red">🏥</div>
+                    <h3>Fitness & Health</h3>
+                    <ul>
+                        <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+                        <li><a href="bmr-calculator.html">BMR Calculator</a></li>
+                        <li><a href="age-calculator.html">Age Calculator</a></li>
+                        <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+                        <li><a href="calorie-calculator.html">Calorie Calculator</a></li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="cat-icon blue">📐</div>
+                    <h3>Math</h3>
+                    <ul>
+                        <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+                        <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+                        <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+                        <li><a href="average-calculator.html">Average Calculator</a></li>
+                        <li><a href="triangle-calculator.html">Triangle Calculator</a></li>
+                    </ul>
+                </div>
+
+                <div class="category">
+                    <div class="cat-icon purple">🔧</div>
+                    <h3>Other</h3>
+                    <ul>
+                        <li><a href="date-calculator.html">Date Calculator</a></li>
+                        <li><a href="time-calculator.html">Time Calculator</a></li>
+                        <li><a href="#" class="disabled">Password Generator (Soon)</a></li>
+                        <li><a href="#" class="disabled">Unit Converter (Soon)</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="category">
-                <h2>📐 Math</h2>
-                <ul>
-                    <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-                    <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
-                    <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
-                    <li><a href="average-calculator.html">Average Calculator</a></li>
-                    <li><a href="triangle-calculator.html">Triangle Calculator</a></li>
-                </ul>
-            </div>
-
-            <div class="category">
-                <h2>🔧 Other</h2>
-                <ul>
-                    <li><a href="date-calculator.html">Date Calculator</a></li>
-                    <li><a href="time-calculator.html">Time Calculator</a></li>
-                    <li><a href="#" style="color:#aaa; cursor:not-allowed;">Password Generator (Coming Soon)</a></li>
-                    <li><a href="#" style="color:#aaa; cursor:not-allowed;">Random Number Generator (Coming Soon)</a></li>
-                    <li><a href="#" style="color:#aaa; cursor:not-allowed;">Unit Converter (Coming Soon)</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="info-section">
-            <h2>About CalcMaster</h2>
-            <p>CalcMaster provides free, accurate, and easy-to-use online calculators for health, finance, math, and everyday conversions. Our tools are designed to give you instant, reliable results without any sign-ups or hidden fees.</p>
-            <p>Har calculator browser mein hi chalta hai — koi data server par nahi jata. Aapki privacy 100% safe hai.</p>
-
-            <h3>Why Choose CalcMaster?</h3>
-            <ul>
-                <li>100% Free - No sign-up required</li>
-                <li>Fast & Accurate results</li>
-                <li>Mobile-friendly design</li>
-                <li>Privacy-focused (client-side calculations)</li>
-                <li>19+ calculators across health, finance, math, and more</li>
-            </ul>
-
-            <h3>Popular Categories</h3>
-            <p>Our most-used calculators include the <a href="bmi-calculator.html" style="color:#3498db;">BMI Calculator</a> for health tracking, the <a href="loan-calculator.html" style="color:#3498db;">Loan Calculator</a> for financial planning, the <a href="percentage-calculator.html" style="color:#3498db;">Percentage Calculator</a> for quick math, and the <a href="age-calculator.html" style="color:#3498db;">Age Calculator</a> for everyday use.</p>
         </div>
     </div>
 
@@ -134,18 +233,114 @@
     </footer>
 
     <script>
-        // Live search filter
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            const query = e.target.value.toLowerCase().trim();
-            document.querySelectorAll('.category li').forEach(function(li) {
-                const text = li.textContent.toLowerCase();
-                li.style.display = text.includes(query) ? 'block' : 'none';
-            });
-            // Hide empty categories
-            document.querySelectorAll('.category').forEach(function(cat) {
-                const visibleItems = Array.from(cat.querySelectorAll('li')).filter(li => li.style.display !== 'none');
-                cat.style.display = visibleItems.length > 0 ? 'block' : 'none';
-            });
+        let expression = '';
+        let angleMode = 'deg';
+
+        function setMode(m) {
+            angleMode = m;
+            document.getElementById('degBtn').classList.toggle('active', m === 'deg');
+            document.getElementById('radBtn').classList.toggle('active', m === 'rad');
+        }
+
+        function press(val) {
+            if (val === 'pi') expression += 'Math.PI';
+            else if (val === 'e') expression += 'Math.E';
+            else if (val === 'sin(') expression += (angleMode === 'deg' ? 'Math.sin((Math.PI/180)*' : 'Math.sin(');
+            else if (val === 'cos(') expression += (angleMode === 'deg' ? 'Math.cos((Math.PI/180)*' : 'Math.cos(');
+            else if (val === 'tan(') expression += (angleMode === 'deg' ? 'Math.tan((Math.PI/180)*' : 'Math.tan(');
+            else if (val === 'asin(') expression += 'Math.asin(';
+            else if (val === 'acos(') expression += 'Math.acos(';
+            else if (val === 'atan(') expression += 'Math.atan(';
+            else if (val === 'log(') expression += 'Math.log10(';
+            else if (val === 'ln(') expression += 'Math.log(';
+            else if (val === 'sqrt(') expression += 'Math.sqrt(';
+            else if (val === 'abs(') expression += 'Math.abs(';
+            else if (val === '^') expression += '**';
+            else if (val === '±') expression += '-';
+            else expression += val;
+            updateDisplay();
+        }
+
+        function factorial(n) {
+            n = Math.floor(n);
+            if (n < 0) return NaN;
+            if (n === 0 || n === 1) return 1;
+            let r = 1;
+            for (let i = 2; i <= n; i++) r *= i;
+            return r;
+        }
+
+        function calculate() {
+            try {
+                let expr = expression;
+                // Handle factorial
+                expr = expr.replace(/(\d+)!/g, (m, n) => factorial(parseInt(n)));
+                // Handle percentage: convert 50% to 0.5
+                expr = expr.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
+                const result = eval(expr);
+                if (!isFinite(result)) throw new Error('Invalid');
+                document.getElementById('calcDisplay').textContent = parseFloat(result.toFixed(10));
+                expression = result.toString();
+            } catch (err) {
+                document.getElementById('calcDisplay').textContent = 'Error';
+                expression = '';
+            }
+        }
+
+        function clearAll() {
+            expression = '';
+            document.getElementById('calcDisplay').textContent = '0';
+        }
+
+        function backspace() {
+            expression = expression.slice(0, -1);
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const display = expression
+                .replace(/Math\.PI/g, 'π')
+                .replace(/Math\.E/g, 'e')
+                .replace(/Math\.sin\(/g, 'sin(')
+                .replace(/Math\.cos\(/g, 'cos(')
+                .replace(/Math\.tan\(/g, 'tan(')
+                .replace(/Math\.asin\(/g, 'sin⁻¹(')
+                .replace(/Math\.acos\(/g, 'cos⁻¹(')
+                .replace(/Math\.atan\(/g, 'tan⁻¹(')
+                .replace(/Math\.log10\(/g, 'log(')
+                .replace(/Math\.log\(/g, 'ln(')
+                .replace(/Math\.sqrt\(/g, '√(')
+                .replace(/Math\.abs\(/g, '|')
+                .replace(/\*\*/g, '^')
+                .replace(/\(Math\.PI\/180\)\*/g, '');
+            document.getElementById('calcDisplay').textContent = display || '0';
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '0' && e.key <= '9') press(e.key);
+            else if (['+', '-', '*', '/', '.', '(', ')'].includes(e.key)) press(e.key);
+            else if (e.key === 'Enter') { e.preventDefault(); calculate(); }
+            else if (e.key === 'Backspace') { e.preventDefault(); backspace(); }
+            else if (e.key === 'Escape') clearAll();
+        });
+
+        // Search functionality
+        function doSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) return;
+            const links = document.querySelectorAll('.category a');
+            for (let link of links) {
+                if (link.textContent.toLowerCase().includes(query) && !link.classList.contains('disabled')) {
+                    window.location.href = link.href;
+                    return;
+                }
+            }
+            alert('Calculator not found. Try another keyword.');
+        }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') doSearch();
         });
     </script>
 </body>
