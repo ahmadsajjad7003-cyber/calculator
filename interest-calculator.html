@@ -9,52 +9,87 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/interest-calculator.html">
     <title>Interest Calculator - Simple & Compound Interest | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is compound interest?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods. It grows faster than simple interest because you earn interest on interest." }
+        },
+        {
+          "@type": "Question",
+          "name": "How often should interest compound?",
+          "acceptedAnswer": { "@type": "Answer", "text": "More frequent compounding (daily vs. annually) yields slightly higher returns. Monthly is common for savings accounts; daily is common for credit cards." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Rule of 72?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Divide 72 by your interest rate to estimate how many years it takes to double your money. At 6%, it takes about 12 years (72 ÷ 6 = 12)." }
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; }
-        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        select { background: white; cursor: pointer; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; }
-        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
         .result-item.highlight { background: #3498db; color: white; }
-        .result-item.highlight strong { color: white; font-size: 22px; }
-        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
-        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
-    <header><a href="index.html">CalcMaster</a></header>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
     <div class="container">
         <h1>Interest Calculator</h1>
-        <p>Calculate simple or compound interest on your savings or investments.</p>
+        <p>Calculate simple or compound interest on your savings, investments, or loans.</p>
 
         <div class="input-group">
             <label>Interest Type:</label>
-            <select id="interestType">
+            <select id="type">
                 <option value="compound">Compound Interest</option>
                 <option value="simple">Simple Interest</option>
             </select>
         </div>
-        <div class="input-group"><label>Principal Amount ($):</label><input type="number" id="principal" placeholder="e.g. 10000"></div>
+        <div class="input-group"><label>Principal Amount ($):</label><input type="number" id="principal" placeholder="e.g. 10000" step="0.01"></div>
         <div class="input-group"><label>Annual Interest Rate (%):</label><input type="number" id="rate" placeholder="e.g. 5" step="0.01"></div>
         <div class="input-group"><label>Time Period (Years):</label><input type="number" id="years" placeholder="e.g. 10" step="0.1"></div>
-        <div class="input-group">
-            <label>Compounding Frequency (for compound only):</label>
-            <select id="compoundFreq">
+        <div class="input-group" id="freqGroup">
+            <label>Compounding Frequency:</label>
+            <select id="freq">
                 <option value="1">Annually</option>
                 <option value="2">Semi-Annually</option>
                 <option value="4">Quarterly</option>
@@ -74,52 +109,146 @@
         </div>
 
         <h2>What is Interest?</h2>
-        <p>Interest is the cost of borrowing money or the reward for saving/investing money. It is calculated as a percentage of the principal amount over time.</p>
+        <p>Interest is the cost of borrowing money, or the reward for saving and investing. When you deposit money in a savings account, the bank pays you interest. When you take a loan, you pay interest to the lender. Interest is usually expressed as a percentage per year (annual percentage rate).</p>
 
         <h2>Simple vs Compound Interest</h2>
-        <ul>
-            <li><strong>Simple Interest:</strong> Calculated only on the principal amount. Grows linearly.</li>
-            <li><strong>Compound Interest:</strong> Calculated on principal + accumulated interest. Grows exponentially — "interest on interest."</li>
-        </ul>
+        <p><strong>Simple Interest:</strong> Calculated only on the original principal. The interest does not earn interest. It grows linearly.</p>
+        <p><strong>Compound Interest:</strong> Calculated on the principal plus any previously earned interest. You earn "interest on interest," which makes it grow exponentially. Albert Einstein reportedly called compound interest "the eighth wonder of the world."</p>
 
         <h2>Interest Formulas</h2>
         <div class="formula-box">
-            <p><strong>Simple Interest:</strong> <code>A = P(1 + rt)</code></p>
-            <p style="margin-top:10px;"><strong>Compound Interest:</strong> <code>A = P(1 + r/n)^(nt)</code></p>
-            <p style="margin-top:10px;">Where <strong>P</strong> = principal, <strong>r</strong> = annual rate (decimal), <strong>t</strong> = years, <strong>n</strong> = compounds per year</p>
+            <p><strong>Simple Interest:</strong></p>
+            <p><code>A = P(1 + rt)</code></p>
+            <p style="margin-top:15px;"><strong>Compound Interest:</strong></p>
+            <p><code>A = P(1 + r/n)^(nt)</code></p>
+            <p style="margin-top:15px;">Where:</p>
+            <ul style="margin-top:8px;">
+                <li><strong>A</strong> = final amount</li>
+                <li><strong>P</strong> = principal</li>
+                <li><strong>r</strong> = annual rate (decimal)</li>
+                <li><strong>t</strong> = time in years</li>
+                <li><strong>n</strong> = compounding periods per year</li>
+            </ul>
         </div>
 
-        <h2>How to Use This Interest Calculator</h2>
+        <h2>Compounding Frequency Comparison</h2>
+        <table>
+            <thead>
+                <tr><th>Frequency</th><th>Periods per Year (n)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Annually</td><td>1</td></tr>
+                <tr><td>Semi-Annually</td><td>2</td></tr>
+                <tr><td>Quarterly</td><td>4</td></tr>
+                <tr><td>Monthly</td><td>12</td></tr>
+                <tr><td>Daily</td><td>365</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Example:</strong> $10,000 at 5% for 10 years, compounded monthly.</p>
+            <p>A = 10,000 × (1 + 0.05/12)^(12×10)</p>
+            <p>A = 10,000 × (1.004167)^120</p>
+            <p><strong>A ≈ $16,470.09</strong></p>
+            <p>Total interest = $16,470.09 − $10,000 = <strong>$6,470.09</strong></p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
         <ol>
-            <li>Select interest type (simple or compound)</li>
-            <li>Enter your principal amount</li>
+            <li>Select simple or compound interest</li>
+            <li>Enter the principal amount</li>
             <li>Enter the annual interest rate</li>
             <li>Enter the time period in years</li>
-            <li>For compound, select compounding frequency</li>
+            <li>For compound, choose the compounding frequency</li>
             <li>Click "Calculate Interest"</li>
         </ol>
 
+        <h2>The Rule of 72</h2>
+        <p>A quick way to estimate how long it takes for your money to double: divide 72 by the annual interest rate. For example, at 6% interest, your money doubles in approximately 72 ÷ 6 = 12 years. This rule works best for rates between 6% and 10%.</p>
+
         <h2>Frequently Asked Questions</h2>
-        <h3>What is compound interest?</h3>
-        <p>Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods.</p>
-        <h3>How often should interest compound?</h3>
-        <p>More frequent compounding (daily vs. annually) yields slightly higher returns. Monthly is common for savings accounts.</p>
-        <h3>What is the Rule of 72?</h3>
-        <p>Divide 72 by your interest rate to estimate how many years it takes to double your money. E.g., at 6% — 72/6 = 12 years.</p>
-        <h3>What is the difference between APR and APY?</h3>
-        <p>APR is the nominal annual rate. APY (Effective Annual Rate) accounts for compounding and is always higher.</p>
+
+        <div class="faq-item">
+            <h3>What is compound interest?</h3>
+            <p>Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods. It grows faster than simple interest because you earn interest on interest.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How often should interest compound?</h3>
+            <p>More frequent compounding (daily vs. annually) yields slightly higher returns. Monthly is common for savings accounts; daily is common for credit cards.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the Rule of 72?</h3>
+            <p>Divide 72 by your interest rate to estimate how many years it takes to double your money. At 6%, it takes about 12 years (72 ÷ 6 = 12).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between APR and APY?</h3>
+            <p>APR (Annual Percentage Rate) is the nominal annual rate. APY (Annual Percentage Yield, or Effective Annual Rate) accounts for compounding and is always higher than APR.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is compound interest better for saving or borrowing?</h3>
+            <p>Compound interest works in your favor when saving (you earn more) and against you when borrowing (you owe more). Credit card debt compounds daily, which is why it grows so fast.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is continuous compounding?</h3>
+            <p>Continuous compounding is the theoretical limit of compounding at infinitely small intervals. Formula: A = Pe^(rt). It gives the highest possible return for a given rate.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How does inflation affect interest?</h3>
+            <p>Inflation reduces the real value of interest earned. If you earn 5% but inflation is 3%, your real return is about 2%. Always consider "real" (inflation-adjusted) returns.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the time value of money?</h3>
+            <p>The time value of money is the concept that a dollar today is worth more than a dollar tomorrow, because today's dollar can be invested and earn interest.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I use this for loan interest too?</h3>
+            <p>This calculator is designed for savings and investments. For loans, use our Loan Calculator, which uses amortization instead of simple accumulation.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this interest calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="loan-calculator.html">Loan Calculator</a></li>
+            <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+            <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
+            <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+        </ul>
     </div>
-    <footer>© 2025 CalcMaster. All rights reserved.</footer>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
     <script>
+        document.getElementById('type').addEventListener('change', function() {
+            document.getElementById('freqGroup').style.display = this.value === 'compound' ? 'block' : 'none';
+            document.getElementById('result').style.display = 'none';
+        });
+
         function calculateInterest() {
-            const type = document.getElementById('interestType').value;
+            const type = document.getElementById('type').value;
             const P = parseFloat(document.getElementById('principal').value);
             const rate = parseFloat(document.getElementById('rate').value);
             const t = parseFloat(document.getElementById('years').value);
-            const n = parseFloat(document.getElementById('compoundFreq').value);
+            const n = parseFloat(document.getElementById('freq').value);
+
             if (!P || !rate || !t) { alert('Please fill all fields'); return; }
+            if (P <= 0 || rate < 0 || t <= 0) { alert('Values must be valid'); return; }
+
             const r = rate / 100;
             let finalBalance, ear;
+
             if (type === 'simple') {
                 finalBalance = P * (1 + r * t);
                 ear = rate;
@@ -127,8 +256,10 @@
                 finalBalance = P * Math.pow(1 + r / n, n * t);
                 ear = (Math.pow(1 + r / n, n) - 1) * 100;
             }
+
             const totalInterest = finalBalance - P;
             const fmt = (num) => '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
             document.getElementById('finalBalance').textContent = fmt(finalBalance);
             document.getElementById('totalInterest').textContent = fmt(totalInterest);
             document.getElementById('principalDisplay').textContent = fmt(P);
