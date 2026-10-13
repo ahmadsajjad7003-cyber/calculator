@@ -1,203 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQDMKGRX78"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QQDMKGRX78');
-    </script>
+    <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Loan Calculator - Calculate monthly payments, total interest, and amortization schedule for any loan. Includes formula and examples.">
-    <meta name="keywords" content="loan calculator, monthly payment calculator, loan interest calculator, amortization schedule, personal loan calculator">
+    <meta name="description" content="Free Loan Calculator - Calculate monthly payments, total interest, and total cost of any loan. Supports any loan amount, interest rate, and term.">
+    <meta name="keywords" content="loan calculator, monthly payment calculator, loan interest calculator, personal loan calculator, loan repayment calculator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="manifest" href="site.webmanifest">
-    <title>Loan Calculator - Free Monthly Payment Calculator | CalcMaster</title>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Loan Calculator",
-      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/loan-calculator.html",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-    }
-    </script>
+    <title>Loan Calculator - Calculate Monthly Payments & Interest | CalcMaster</title>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        { "@type": "Question", "name": "How is monthly loan payment calculated?", "acceptedAnswer": { "@type": "Answer", "text": "Monthly payment = P × r × (1+r)^n / ((1+r)^n − 1), where P is principal, r is monthly interest rate, and n is total number of payments." } },
-        { "@type": "Question", "name": "What is amortization?", "acceptedAnswer": { "@type": "Answer", "text": "Amortization is the process of paying off a loan through regular installments. Early payments are mostly interest; later payments are mostly principal." } },
-        { "@type": "Question", "name": "Does a longer loan term mean lower payments?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, a longer term lowers monthly payments but increases total interest paid over the life of the loan." } },
-        { "@type": "Question", "name": "Can I pay off my loan early?", "acceptedAnswer": { "@type": "Answer", "text": "Most loans allow early payoff, but some charge a prepayment penalty. Check with your lender." } }
+        {
+          "@type": "Question",
+          "name": "How is a monthly loan payment calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Monthly payment is calculated using the amortization formula: M = P × [r(1+r)^n] / [(1+r)^n − 1], where P is principal, r is monthly interest rate, and n is number of payments." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between simple and amortized loans?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Simple interest loans charge interest only on the principal. Amortized loans (like mortgages and auto loans) charge interest on the remaining balance, so early payments are mostly interest." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a longer loan term mean lower payments?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, monthly payments are lower with longer terms, but you pay much more total interest over the life of the loan." }
+        }
       ]
     }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #1a5490; color: white; padding: 12px 25px; display: flex; justify-content: space-between; align-items: center; }
-        header .logo img { height: 36px; }
-        header a.back { color: white; text-decoration: none; font-size: 14px; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #1a5490; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #1a5490; margin: 30px 0 12px; font-size: 22px; padding-bottom: 8px; border-bottom: 2px solid #eaf4fc; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
-        input[type="number"] { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        input[type="number"]:focus { border-color: #1a5490; outline: none; }
-        button.calc-btn { background: #1a5490; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
-        button.calc-btn:hover { background: #123b6b; }
-        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #1a5490; border-radius: 5px; display: none; }
-        .result h2 { color: #1a5490; margin-bottom: 15px; font-size: 22px; border: none; padding: 0; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; display: flex; justify-content: space-between; }
-        .result-item strong { color: #1a5490; font-size: 18px; }
-        .result-item.highlight { background: #1a5490; color: white; }
-        .result-item.highlight strong { color: white; font-size: 22px; }
-        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #1a5490; margin: 15px 0; border-radius: 4px; }
-        .formula-box code { background: #1a5490; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        .other-tools { margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; }
-        .other-tools ul { list-style: none; padding: 0; }
-        .other-tools a { color: #1a5490; text-decoration: none; font-weight: 500; }
-        .other-tools a:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; margin-top: 30px; }
-        footer a { color: #1a5490; text-decoration: none; margin: 0 5px; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
+        button.calc-btn:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 15px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo"><img src="logo.svg" alt="CalcMaster"></a>
-        <a href="index.html" class="back">← Back to Home</a>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
     </header>
     <div class="container">
         <h1>Loan Calculator</h1>
-        <p>Calculate your monthly loan payment, total interest, and full amortization schedule.</p>
+        <p>Calculate your monthly payment, total interest, and total cost for any loan.</p>
 
-        <div class="input-group">
-            <label for="amount">Loan Amount ($):</label>
-            <input type="number" id="amount" placeholder="e.g. 20000" min="1" step="0.01">
-        </div>
-        <div class="input-group">
-            <label for="rate">Annual Interest Rate (%):</label>
-            <input type="number" id="rate" placeholder="e.g. 7.5" min="0" step="0.01">
-        </div>
-        <div class="input-group">
-            <label for="years">Loan Term (Years):</label>
-            <input type="number" id="years" placeholder="e.g. 5" min="1" max="40" step="1">
-        </div>
+        <div class="input-group"><label>Loan Amount ($):</label><input type="number" id="loanAmount" placeholder="e.g. 20000" step="0.01"></div>
+        <div class="input-group"><label>Annual Interest Rate (%):</label><input type="number" id="rate" placeholder="e.g. 7.5" step="0.01"></div>
+        <div class="input-group"><label>Loan Term (Years):</label><input type="number" id="years" placeholder="e.g. 5" step="0.1"></div>
+
         <button class="calc-btn" onclick="calculateLoan()">Calculate Loan</button>
 
         <div class="result" id="result">
-            <h2>Your Loan Results:</h2>
-            <div class="result-item highlight">Monthly Payment: <strong id="monthly">$0</strong></div>
-            <div class="result-item">Total Payment: <strong id="total">$0</strong></div>
-            <div class="result-item">Total Interest: <strong id="interest">$0</strong></div>
-            <div class="result-item">Total Payments Count: <strong id="count">0</strong></div>
+            <div class="result-item highlight">Monthly Payment: <strong id="monthlyPayment">$0</strong></div>
+            <div class="result-item">Total Payment: <strong id="totalPayment">$0</strong></div>
+            <div class="result-item">Total Interest: <strong id="totalInterest">$0</strong></div>
+            <div class="result-item">Number of Payments: <strong id="numPayments">0</strong></div>
+            <div class="result-item">Interest as % of Loan: <strong id="interestPct">0%</strong></div>
         </div>
 
-        <h2>What is a Loan Calculator?</h2>
-        <p>A loan calculator helps you estimate the monthly payment, total interest, and total cost of a loan. It's useful for personal loans, student loans, business loans, and any fixed-rate installment loan.</p>
+        <h2>What is a Loan?</h2>
+        <p>A loan is a sum of money borrowed from a lender (bank, credit union, or individual) that is paid back with interest over a set period. The loan amount is called the <strong>principal</strong>. The cost of borrowing is the <strong>interest</strong>. The agreed time to repay is the <strong>term</strong>.</p>
+        <p>Loans come in many forms — personal loans, student loans, auto loans, mortgages, and business loans. The formulas and calculations used here apply to any amortized loan.</p>
 
         <h2>Loan Payment Formula</h2>
         <div class="formula-box">
-            <p><strong>Monthly Payment:</strong> <code>M = P × r × (1+r)^n / ((1+r)^n − 1)</code></p>
-            <p style="margin-top:8px;">Where:</p>
-            <ul style="margin:8px 0 0 0;">
+            <p><strong>Monthly Payment:</strong></p>
+            <p><code>M = P × [r(1+r)^n] / [(1+r)^n − 1]</code></p>
+            <p style="margin-top:15px;">Where:</p>
+            <ul style="margin-top:8px;">
                 <li><strong>M</strong> = monthly payment</li>
-                <li><strong>P</strong> = principal loan amount</li>
+                <li><strong>P</strong> = principal (loan amount)</li>
                 <li><strong>r</strong> = monthly interest rate (annual rate ÷ 12 ÷ 100)</li>
                 <li><strong>n</strong> = total number of payments (years × 12)</li>
             </ul>
         </div>
 
-        <h3>Worked Example</h3>
-        <p>Loan: $20,000 at 7.5% for 5 years</p>
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Loan:</strong> $20,000 at 7.5% for 5 years</p>
+            <p>r = 7.5 ÷ 12 ÷ 100 = 0.00625</p>
+            <p>n = 5 × 12 = 60</p>
+            <p>M = 20000 × [0.00625 × (1.00625)^60] / [(1.00625)^60 − 1]</p>
+            <p><strong>M ≈ $400.76 per month</strong></p>
+            <p>Total payment = $400.76 × 60 = $24,045.60</p>
+            <p>Total interest = $24,045.60 − $20,000 = <strong>$4,045.60</strong></p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
         <ol>
-            <li>r = 7.5 / 12 / 100 = 0.00625</li>
-            <li>n = 5 × 12 = 60</li>
-            <li>M = 20000 × 0.00625 × (1.00625)^60 / ((1.00625)^60 − 1)</li>
-            <li>M ≈ <strong>$400.76/month</strong></li>
-            <li>Total paid ≈ <strong>$24,045.60</strong></li>
-            <li>Total interest ≈ <strong>$4,045.60</strong></li>
+            <li>Enter the loan amount</li>
+            <li>Enter the annual interest rate</li>
+            <li>Enter the loan term in years</li>
+            <li>Click "Calculate Loan"</li>
+            <li>See your monthly payment, total interest, and total cost</li>
         </ol>
 
         <h2>Types of Loans</h2>
+        <table>
+            <thead>
+                <tr><th>Type</th><th>Typical Term</th><th>Typical Rate</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Personal Loan</td><td>1–7 years</td><td>6–36%</td></tr>
+                <tr><td>Auto Loan</td><td>3–6 years</td><td>3–15%</td></tr>
+                <tr><td>Student Loan</td><td>5–20 years</td><td>4–8%</td></tr>
+                <tr><td>Mortgage</td><td>15–30 years</td><td>3–7%</td></tr>
+                <tr><td>Business Loan</td><td>1–10 years</td><td>5–20%</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Factors That Affect Your Loan</h2>
         <ul>
-            <li><strong>Personal Loan:</strong> Unsecured, fixed rate, 1–7 years.</li>
-            <li><strong>Student Loan:</strong> For education, low interest, flexible repayment.</li>
-            <li><strong>Auto Loan:</strong> Secured by vehicle, 3–7 years.</li>
-            <li><strong>Mortgage:</strong> For homes, 15–30 years, lowest rates.</li>
-            <li><strong>Business Loan:</strong> For companies, varies widely.</li>
+            <li><strong>Credit Score:</strong> Higher scores get lower rates.</li>
+            <li><strong>Loan Term:</strong> Longer terms = lower monthly payment but higher total interest.</li>
+            <li><strong>Down Payment:</strong> Larger down payments reduce the loan amount and total interest.</li>
+            <li><strong>Collateral:</strong> Secured loans (backed by assets) usually have lower rates.</li>
+            <li><strong>Lender:</strong> Banks, credit unions, and online lenders offer different rates.</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>How is monthly loan payment calculated?</h3>
-        <p>Using the amortization formula: M = P × r × (1+r)^n / ((1+r)^n − 1).</p>
-        <h3>What is amortization?</h3>
-        <p>Amortization is paying off a loan through regular installments. Early payments are mostly interest; later payments are mostly principal.</p>
-        <h3>Does a longer loan term mean lower payments?</h3>
-        <p>Yes, but you'll pay more total interest.</p>
 
-        <div class="other-tools">
-            <h2>Other Popular Calculators:</h2>
-            <ul>
-                <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
-                <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
-                <li><a href="interest-calculator.html">Interest Calculator</a></li>
-                <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
-                <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
-            </ul>
+        <div class="faq-item">
+            <h3>How is a monthly loan payment calculated?</h3>
+            <p>Monthly payment is calculated using the amortization formula: M = P × [r(1+r)^n] / [(1+r)^n − 1], where P is principal, r is monthly interest rate, and n is number of payments.</p>
         </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between simple and amortized loans?</h3>
+            <p>Simple interest loans charge interest only on the principal. Amortized loans (like mortgages and auto loans) charge interest on the remaining balance, so early payments are mostly interest.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does a longer loan term mean lower payments?</h3>
+            <p>Yes, monthly payments are lower with longer terms, but you pay much more total interest over the life of the loan.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is amortization?</h3>
+            <p>Amortization is the process of paying off a loan through scheduled payments. Each payment covers both interest and principal. Over time, the interest portion decreases and the principal portion increases.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I pay off my loan early?</h3>
+            <p>Most loans allow early repayment, but some charge a prepayment penalty. Check your loan agreement. Paying early reduces total interest.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is APR vs interest rate?</h3>
+            <p>The interest rate is the cost of borrowing the principal. APR (Annual Percentage Rate) includes the interest rate plus fees and other costs, giving a fuller picture of the loan's cost.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What happens if I miss a payment?</h3>
+            <p>Missing payments can lead to late fees, a lower credit score, and in serious cases, default and legal action. Contact your lender immediately if you can't make a payment.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How much can I borrow?</h3>
+            <p>The amount you can borrow depends on your income, credit score, existing debts, and the lender's policies. Lenders use a debt-to-income ratio to decide.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Should I choose a fixed or variable rate?</h3>
+            <p>Fixed rates stay the same for the loan's life, giving predictable payments. Variable rates can go up or down, so payments may change. Fixed is safer for most borrowers.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this loan calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser — no data is sent to any server.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="mortgage-calculator.html">Mortgage Calculator</a></li>
+            <li><a href="auto-loan-calculator.html">Auto Loan Calculator</a></li>
+            <li><a href="interest-calculator.html">Interest Calculator</a></li>
+            <li><a href="retirement-calculator.html">Retirement Calculator</a></li>
+        </ul>
     </div>
     <footer>
-        <a href="about.html">About</a> |
-        <a href="contact.html">Contact</a> |
-        <a href="sitemap.html">Sitemap</a> |
-        <a href="privacy.html">Privacy</a>
-        &nbsp;&copy; 2025 CalcMaster
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
     </footer>
     <script>
         function calculateLoan() {
-            const P = parseFloat(document.getElementById('amount').value);
+            const P = parseFloat(document.getElementById('loanAmount').value);
             const annualRate = parseFloat(document.getElementById('rate').value);
-            const years = parseInt(document.getElementById('years').value);
+            const years = parseFloat(document.getElementById('years').value);
 
-            if (!P || P <= 0 || isNaN(annualRate) || annualRate < 0 || !years || years <= 0) {
-                alert('Please enter valid loan amount, interest rate, and term.');
-                return;
-            }
+            if (!P || !annualRate || !years) { alert('Please fill all fields'); return; }
+            if (P <= 0 || annualRate <= 0 || years <= 0) { alert('All values must be positive'); return; }
 
             const r = annualRate / 100 / 12;
-            const n = years * 12;
-            let monthly;
+            const n = Math.round(years * 12);
+            const monthly = P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            const totalPayment = monthly * n;
+            const totalInterest = totalPayment - P;
+            const interestPct = (totalInterest / P) * 100;
 
-            if (r === 0) {
-                monthly = P / n;
-            } else {
-                monthly = P * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
-            }
+            const fmt = (num) => '$' + num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-            const total = monthly * n;
-            const interest = total - P;
-
-            document.getElementById('monthly').textContent = '$' + monthly.toFixed(2);
-            document.getElementById('total').textContent = '$' + total.toFixed(2);
-            document.getElementById('interest').textContent = '$' + interest.toFixed(2);
-            document.getElementById('count').textContent = n;
+            document.getElementById('monthlyPayment').textContent = fmt(monthly);
+            document.getElementById('totalPayment').textContent = fmt(totalPayment);
+            document.getElementById('totalInterest').textContent = fmt(totalInterest);
+            document.getElementById('numPayments').textContent = n;
+            document.getElementById('interestPct').textContent = interestPct.toFixed(2) + '%';
             document.getElementById('result').style.display = 'block';
         }
     </script>
