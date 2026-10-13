@@ -4,56 +4,82 @@
     <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Triangle Calculator - Calculate area, perimeter, and angles of any triangle. Supports base-height, Heron's formula, and right triangle calculations.">
-    <meta name="keywords" content="triangle calculator, area of triangle, perimeter calculator, heron's formula, right triangle calculator, geometry calculator">
+    <meta name="description" content="Free Triangle Calculator - Calculate area, perimeter, and angles of any triangle using three sides. Uses Heron's formula and the Law of Cosines.">
+    <meta name="keywords" content="triangle calculator, area of triangle, perimeter calculator, heron's formula, triangle angles, geometry calculator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/triangle-calculator.html">
     <title>Triangle Calculator - Area, Perimeter & Angles | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Heron's formula?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Heron's formula calculates the area of a triangle using only the three side lengths: A = √[s(s−a)(s−b)(s−c)], where s is the semi-perimeter." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if three sides form a triangle?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Check the triangle inequality: a + b > c, b + c > a, and a + c > b. If all three are true, a valid triangle exists." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the sum of angles in a triangle?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Always 180° in Euclidean geometry — regardless of the triangle's shape or size." }
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; }
-        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
         input:focus { border-color: #3498db; outline: none; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; }
-        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
         .result-item.highlight { background: #3498db; color: white; }
-        .result-item.highlight strong { color: white; font-size: 22px; }
-        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
-        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
-    <header><a href="index.html">CalcMaster</a></header>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
     <div class="container">
         <h1>Triangle Calculator</h1>
-        <p>Calculate area, perimeter, and angles of any triangle using three sides (SSS).</p>
+        <p>Calculate the area, perimeter, and angles of any triangle using three side lengths.</p>
 
-        <div class="input-group">
-            <label>Side A:</label>
-            <input type="number" id="sideA" placeholder="e.g. 5" step="0.01">
-        </div>
-        <div class="input-group">
-            <label>Side B:</label>
-            <input type="number" id="sideB" placeholder="e.g. 6" step="0.01">
-        </div>
-        <div class="input-group">
-            <label>Side C:</label>
-            <input type="number" id="sideC" placeholder="e.g. 7" step="0.01">
-        </div>
+        <div class="input-group"><label>Side A:</label><input type="number" id="sideA" placeholder="e.g. 5" step="0.01"></div>
+        <div class="input-group"><label>Side B:</label><input type="number" id="sideB" placeholder="e.g. 6" step="0.01"></div>
+        <div class="input-group"><label>Side C:</label><input type="number" id="sideC" placeholder="e.g. 7" step="0.01"></div>
 
         <button class="calc-btn" onclick="calculateTriangle()">Calculate Triangle</button>
 
@@ -68,47 +94,121 @@
         </div>
 
         <h2>What is a Triangle?</h2>
-        <p>A triangle is a three-sided polygon. The sum of its interior angles is always 180°. Triangles are classified by their sides (equilateral, isosceles, scalene) or angles (acute, right, obtuse).</p>
+        <p>A triangle is a three-sided polygon with three vertices. It's the simplest polygon and one of the most important shapes in geometry, engineering, and design. The sum of its interior angles is always 180°.</p>
+        <p>Triangles can be classified by their sides (equilateral, isosceles, scalene) or by their angles (acute, right, obtuse).</p>
 
-        <h2>How to Use This Triangle Calculator</h2>
+        <h2>Triangle Formulas</h2>
+        <div class="formula-box">
+            <p><strong>Perimeter:</strong> <code>P = a + b + c</code></p>
+            <p style="margin-top:10px;"><strong>Heron's Formula (Area):</strong> <code>A = √[s(s−a)(s−b)(s−c)]</code></p>
+            <p style="margin-top:10px;">Where <strong>s</strong> = semi-perimeter = (a + b + c) / 2</p>
+            <p style="margin-top:10px;"><strong>Law of Cosines (Angles):</strong> <code>cos(A) = (b² + c² − a²) / 2bc</code></p>
+        </div>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Example:</strong> Sides 3, 4, 5 (a classic right triangle).</p>
+            <p>Perimeter = 3 + 4 + 5 = 12</p>
+            <p>Semi-perimeter = 12 ÷ 2 = 6</p>
+            <p>Area = √[6(6−3)(6−4)(6−5)] = √[6 × 3 × 2 × 1] = √36 = <strong>6</strong></p>
+            <p>Angles: A = 36.87°, B = 53.13°, C = 90°</p>
+            <p>Triangle type: Scalene + Right</p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
         <ol>
             <li>Enter the lengths of all three sides</li>
             <li>Click "Calculate Triangle"</li>
             <li>See the area, perimeter, angles, and triangle type</li>
         </ol>
 
-        <h2>Triangle Formulas</h2>
-        <div class="formula-box">
-            <p><strong>Perimeter:</strong> <code>P = a + b + c</code></p>
-            <p style="margin-top:8px;"><strong>Heron's Formula (Area):</strong> <code>A = √[s(s−a)(s−b)(s−c)]</code></p>
-            <p style="margin-top:8px;">Where <strong>s</strong> = semi-perimeter = (a + b + c) / 2</p>
-            <p style="margin-top:8px;"><strong>Law of Cosines (Angles):</strong> <code>cos(A) = (b² + c² − a²) / 2bc</code></p>
-        </div>
-
         <h2>Triangle Inequality Theorem</h2>
-        <p>For any triangle, the sum of the lengths of any two sides must be greater than the length of the third side. If this rule is violated, the triangle cannot exist.</p>
+        <p>For any triangle, the sum of any two sides must be greater than the third side:</p>
+        <ul>
+            <li>a + b &gt; c</li>
+            <li>b + c &gt; a</li>
+            <li>a + c &gt; b</li>
+        </ul>
+        <p>If any of these fails, the three sides cannot form a triangle.</p>
 
         <h2>Triangle Types</h2>
-        <ul>
-            <li><strong>Equilateral:</strong> All three sides equal</li>
-            <li><strong>Isosceles:</strong> Two sides equal</li>
-            <li><strong>Scalene:</strong> All sides different</li>
-            <li><strong>Right:</strong> One angle is 90° (a² + b² = c²)</li>
-            <li><strong>Acute:</strong> All angles less than 90°</li>
-            <li><strong>Obtuse:</strong> One angle greater than 90°</li>
-        </ul>
+        <table>
+            <thead>
+                <tr><th>Type</th><th>Definition</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Equilateral</td><td>All three sides equal</td></tr>
+                <tr><td>Isosceles</td><td>Two sides equal</td></tr>
+                <tr><td>Scalene</td><td>All sides different</td></tr>
+                <tr><td>Right</td><td>One angle = 90° (a² + b² = c²)</td></tr>
+                <tr><td>Acute</td><td>All angles &lt; 90°</td></tr>
+                <tr><td>Obtuse</td><td>One angle &gt; 90°</td></tr>
+            </tbody>
+        </table>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>What is Heron's formula?</h3>
-        <p>Heron's formula calculates the area of a triangle using only the three side lengths — no height needed.</p>
-        <h3>How do I know if three sides form a triangle?</h3>
-        <p>Check the triangle inequality: a + b > c, b + c > a, and a + c > b. If all three are true, a valid triangle exists.</p>
-        <h3>What is the sum of angles in a triangle?</h3>
-        <p>Always 180° in Euclidean geometry — regardless of the triangle's shape or size.</p>
-        <h3>What is a right triangle?</h3>
-        <p>A triangle with one 90° angle. It satisfies the Pythagorean theorem: a² + b² = c², where c is the hypotenuse.</p>
+
+        <div class="faq-item">
+            <h3>What is Heron's formula?</h3>
+            <p>Heron's formula calculates the area of a triangle using only the three side lengths: A = √[s(s−a)(s−b)(s−c)], where s is the semi-perimeter.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I know if three sides form a triangle?</h3>
+            <p>Check the triangle inequality: a + b > c, b + c > a, and a + c > b. If all three are true, a valid triangle exists.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the sum of angles in a triangle?</h3>
+            <p>Always 180° in Euclidean geometry — regardless of the triangle's shape or size.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a right triangle?</h3>
+            <p>A triangle with one 90° angle. It satisfies the Pythagorean theorem: a² + b² = c², where c is the hypotenuse (the longest side).</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How is the area of a triangle calculated?</h3>
+            <p>With base and height: Area = ½ × base × height. With three sides: use Heron's formula. Both give the same result.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the Law of Cosines?</h3>
+            <p>The Law of Cosines relates side lengths to angles: c² = a² + b² − 2ab·cos(C). It's used to find angles when all three sides are known.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can a triangle have a 0° angle?</h3>
+            <p>No. In a non-degenerate triangle, all angles are greater than 0° and less than 180°. A 0° angle would mean the sides are collinear — not a triangle.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is an equilateral triangle?</h3>
+            <p>A triangle with all three sides equal. All three angles are 60°. It's the most symmetric triangle.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the altitude of a triangle?</h3>
+            <p>The altitude is a perpendicular line from a vertex to the opposite side. Area = ½ × base × height, where height is the altitude.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this triangle calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser — no data is sent to any server.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+            <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+            <li><a href="average-calculator.html">Average Calculator</a></li>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+        </ul>
     </div>
-    <footer>© 2025 CalcMaster. All rights reserved.</footer>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
     <script>
         function calculateTriangle() {
             const a = parseFloat(document.getElementById('sideA').value);
@@ -118,7 +218,6 @@
             if (!a || !b || !c) { alert('Please enter all three sides'); return; }
             if (a <= 0 || b <= 0 || c <= 0) { alert('Sides must be positive'); return; }
 
-            // Triangle inequality
             if (a + b <= c || b + c <= a || a + c <= b) {
                 alert('These sides cannot form a triangle. Triangle inequality violated.');
                 return;
@@ -128,20 +227,17 @@
             const s = perimeter / 2;
             const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
 
-            // Angles using law of cosines
             const rad2deg = (rad) => rad * 180 / Math.PI;
             const angleA = rad2deg(Math.acos((b * b + c * c - a * a) / (2 * b * c)));
             const angleB = rad2deg(Math.acos((a * a + c * c - b * b) / (2 * a * c)));
             const angleC = 180 - angleA - angleB;
 
-            // Triangle type
             let triType = '';
             const eps = 0.01;
             if (Math.abs(a - b) < eps && Math.abs(b - c) < eps) triType = 'Equilateral';
             else if (Math.abs(a - b) < eps || Math.abs(b - c) < eps || Math.abs(a - c) < eps) triType = 'Isosceles';
             else triType = 'Scalene';
 
-            // Angle classification
             const maxAngle = Math.max(angleA, angleB, angleC);
             if (Math.abs(maxAngle - 90) < 0.5) triType += ' + Right';
             else if (maxAngle > 90) triType += ' + Obtuse';
