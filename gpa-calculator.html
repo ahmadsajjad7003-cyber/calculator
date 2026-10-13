@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free GPA Calculator - Calculate your Grade Point Average from course grades and credit hours. Supports 4.0 and 5.0 scales.">
+    <meta name="keywords" content="GPA calculator, grade point average, college GPA, high school GPA, weighted GPA, credit hours, semester GPA">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/gpa-calculator.html">
+    <title>GPA Calculator - Calculate Your Grade Point Average | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is GPA calculated?",
+          "acceptedAnswer": { "@type": "Answer", "text": "GPA is calculated by multiplying each course grade by its credit hours, summing those products, and dividing by total credit hours." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good GPA?",
+          "acceptedAnswer": { "@type": "Answer", "text": "On a 4.0 scale, 3.5+ is considered excellent, 3.0-3.5 is good, 2.0-3.0 is average, and below 2.0 may cause academic probation." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between weighted and unweighted GPA?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Unweighted GPA uses a 4.0 scale regardless of course difficulty. Weighted GPA gives extra points for honors, AP, or IB courses, often on a 5.0 scale." }
+        }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
+        .course-row { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 10px; margin-bottom: 10px; align-items: center; }
+        .course-row input, .course-row select { padding: 10px; border: 2px solid #ddd; border-radius: 5px; font-size: 15px; }
+        .remove-btn { background: #e74c3c; color: white; border: none; padding: 10px 14px; border-radius: 5px; cursor: pointer; font-weight: 600; }
+        .remove-btn:hover { background: #c0392b; }
+        .add-btn { background: #27ae60; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 15px; margin-top: 10px; }
+        .add-btn:hover { background: #229954; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 15px; }
+        button.calc-btn:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
+        @media (max-width: 600px) {
+            .course-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <p>Calculate your Grade Point Average from your course grades and credit hours.</p>
+
+        <h3>Your Courses:</h3>
+        <div id="courses">
+            <!-- Course rows will be added here -->
+        </div>
+
+        <button class="add-btn" onclick="addCourse()">+ Add Course</button>
+
+        <button class="calc-btn" onclick="calculateGPA()">Calculate GPA</button>
+
+        <div class="result" id="result">
+            <div class="result-item highlight">Your GPA: <strong id="gpaValue">0.00</strong></div>
+            <div class="result-item">Total Credits: <strong id="totalCredits">0</strong></div>
+            <div class="result-item">Total Grade Points: <strong id="totalPoints">0</strong></div>
+            <div class="result-item">Number of Courses: <strong id="numCourses">0</strong></div>
+        </div>
+
+        <h2>What is GPA?</h2>
+        <p>GPA stands for Grade Point Average. It's a standardized way of measuring academic achievement in the United States and many other countries. GPA is calculated on a scale — most commonly 4.0 (unweighted) or 5.0 (weighted for honors and AP courses).</p>
+        <p>Your GPA is used by colleges, universities, scholarship committees, and employers to evaluate academic performance.</p>
+
+        <h2>GPA Formula</h2>
+        <div class="formula-box">
+            <p><strong>GPA = Sum of (Grade Points × Credit Hours) ÷ Total Credit Hours</strong></p>
+            <p style="margin-top:15px;">On a 4.0 scale:</p>
+            <ul style="margin-top:8px;">
+                <li>A = 4.0</li>
+                <li>B = 3.0</li>
+                <li>C = 2.0</li>
+                <li>D = 1.0</li>
+                <li>F = 0.0</li>
+            </ul>
+        </div>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Courses:</strong></p>
+            <ul style="margin-left:20px;">
+                <li>Math (3 credits) — A (4.0)</li>
+                <li>English (3 credits) — B (3.0)</li>
+                <li>History (3 credits) — A (4.0)</li>
+                <li>Science (4 credits) — B (3.0)</li>
+            </ul>
+            <p style="margin-top:10px;">Grade points = (4×3) + (3×3) + (4×3) + (3×4) = 12 + 9 + 12 + 12 = 45</p>
+            <p>Total credits = 3 + 3 + 3 + 4 = 13</p>
+            <p><strong>GPA = 45 ÷ 13 = 3.46</strong></p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
+        <ol>
+            <li>Enter the course name (optional)</li>
+            <li>Select the letter grade you received</li>
+            <li>Enter the credit hours (usually 1–4)</li>
+            <li>Click "+ Add Course" for additional courses</li>
+            <li>Click "Calculate GPA"</li>
+        </ol>
+
+        <h2>GPA Scale Reference</h2>
+        <table>
+            <thead>
+                <tr><th>Letter Grade</th><th>Grade Points (4.0 scale)</th><th>Percentage</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>A / A+</td><td>4.0</td><td>90–100%</td></tr>
+                <tr><td>A−</td><td>3.7</td><td>85–89%</td></tr>
+                <tr><td>B+</td><td>3.3</td><td>80–84%</td></tr>
+                <tr><td>B</td><td>3.0</td><td>75–79%</td></tr>
+                <tr><td>B−</td><td>2.7</td><td>70–74%</td></tr>
+                <tr><td>C+</td><td>2.3</td><td>65–69%</td></tr>
+                <tr><td>C</td><td>2.0</td><td>60–64%</td></tr>
+                <tr><td>D</td><td>1.0</td><td>50–59%</td></tr>
+                <tr><td>F</td><td>0.0</td><td>Below 50%</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How is GPA calculated?</h3>
+            <p>GPA is calculated by multiplying each course grade by its credit hours, summing those products, and dividing by total credit hours.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a good GPA?</h3>
+            <p>On a 4.0 scale, 3.5+ is considered excellent, 3.0–3.5 is good, 2.0–3.0 is average, and below 2.0 may cause academic probation.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between weighted and unweighted GPA?</h3>
+            <p>Unweighted GPA uses a 4.0 scale regardless of course difficulty. Weighted GPA gives extra points for honors, AP, or IB courses, often on a 5.0 scale.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Does this calculator support weighted GPA?</h3>
+            <p>This calculator uses a standard unweighted 4.0 scale. For weighted GPA, add 0.5 to 1.0 point for honors/AP courses before entering grades.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I calculate cumulative GPA?</h3>
+            <p>Use the same formula but include all courses from all semesters. Multiply each course grade by credit hours, sum, and divide by total credits across all semesters.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I raise my GPA?</h3>
+            <p>Focus on high-credit courses (they affect GPA more), retake courses where you did poorly (if allowed), and take courses where you excel. Even one A can raise a low GPA.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do P/F (Pass/Fail) courses affect GPA?</h3>
+            <p>Usually no. Pass/Fail courses typically don't affect GPA, but they do count toward credits earned. Check your school's policy.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between GPA and CGPA?</h3>
+            <p>GPA usually refers to a single semester or term. CGPA (Cumulative GPA) is the average across all semesters completed.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a 3.5 GPA in percentage?</h3>
+            <p>On a 4.0 scale, 3.5 GPA is roughly 87–89%. Exact percentage varies by institution.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this GPA calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser — no data is sent to any server.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="average-calculator.html">Average Calculator</a></li>
+            <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+            <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+        </ul>
+    </div>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
+    <script>
+        const gradePoints = {
+            'A+': 4.0, 'A': 4.0, 'A-': 3.7,
+            'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+            'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+            'D+': 1.3, 'D': 1.0, 'F': 0.0
+        };
+
+        let courseCount = 0;
+
+        function addCourse() {
+            courseCount++;
+            const div = document.createElement('div');
+            div.className = 'course-row';
+            div.innerHTML = `
+                <input type="text" placeholder="Course name (optional)" class="course-name">
+                <select class="course-grade">
+                    ${Object.keys(gradePoints).map(g => `<option value="${g}">${g}</option>`).join('')}
+                </select>
+                <input type="number" placeholder="Credits" class="course-credits" value="3" min="0.5" step="0.5">
+                <button class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+            `;
+            document.getElementById('courses').appendChild(div);
+        }
+
+        function calculateGPA() {
+            const rows = document.querySelectorAll('.course-row');
+            if (rows.length === 0) { alert('Please add at least one course'); return; }
+
+            let totalPoints = 0;
+            let totalCredits = 0;
+            let valid = true;
+
+            rows.forEach(row => {
+                const grade = row.querySelector('.course-grade').value;
+                const credits = parseFloat(row.querySelector('.course-credits').value);
+                if (isNaN(credits) || credits <= 0) { valid = false; return; }
+                totalPoints += gradePoints[grade] * credits;
+                totalCredits += credits;
+            });
+
+            if (!valid || totalCredits === 0) { alert('Please enter valid credits for all courses'); return; }
+
+            const gpa = totalPoints / totalCredits;
+
+            document.getElementById('gpaValue').textContent = gpa.toFixed(2);
+            document.getElementById('totalCredits').textContent = totalCredits;
+            document.getElementById('totalPoints').textContent = totalPoints.toFixed(2);
+            document.getElementById('numCourses').textContent = rows.length;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        // Initialize with 4 courses
+        addCourse();
+        addCourse();
+        addCourse();
+        addCourse();
+    </script>
+</body>
+</html>
