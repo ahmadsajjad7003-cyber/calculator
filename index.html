@@ -4,11 +4,20 @@
     <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online calculators for health, finance, math and everyday use. BMI, Age, Percentage, Loan, Mortgage, Calorie calculators and more. Fast, accurate, 100% free.">
+    <meta name="description" content="Free online calculators for health, finance, math, and everyday use. 17+ calculators including BMI, Age, Percentage, Loan, Mortgage, Calorie, and more. Fast, accurate, 100% free.">
     <meta name="keywords" content="online calculator, free calculator, BMI calculator, age calculator, percentage calculator, mortgage calculator, loan calculator, calorie calculator, math calculator, time calculator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/">
     <title>Free Online Calculators - Health, Finance, Math | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "CalcMaster",
+      "url": "https://ahmadsajjad7003-cyber.github.io/calculator/",
+      "description": "Free online calculators for health, finance, math and everyday use."
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.6; }
@@ -74,10 +83,18 @@
         .category li { margin-bottom: 8px; }
         .category a { color: #3498db; text-decoration: none; font-size: 14px; transition: 0.2s; display: block; padding: 3px 0; }
         .category a:hover { color: #2c3e50; padding-left: 4px; }
-        .category a.disabled { color: #bbb; cursor: not-allowed; }
-        .category a.disabled:hover { padding-left: 0; color: #bbb; }
         
-        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 50px; background: #1a3a5c; color: #ccc; }
+        /* SEO Content Section */
+        .seo-content { max-width: 1400px; margin: 40px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+        .seo-content h2 { color: #2c3e50; margin-bottom: 15px; font-size: 24px; }
+        .seo-content h3 { color: #34495e; margin: 20px 0 10px; font-size: 19px; }
+        .seo-content p { color: #555; margin-bottom: 12px; }
+        .seo-content ul { padding-left: 25px; color: #555; }
+        .seo-content li { margin-bottom: 8px; }
+        .seo-content a { color: #3498db; text-decoration: none; }
+        .seo-content a:hover { text-decoration: underline; }
+        
+        footer { text-align: center; padding: 30px; color: #ccc; font-size: 14px; margin-top: 50px; background: #1a3a5c; }
         footer a { color: #7cb342; text-decoration: none; }
         
         @media (max-width: 900px) {
@@ -104,56 +121,48 @@
                 <div class="current" id="calcDisplay">0</div>
             </div>
             <div class="calc-buttons">
-                <!-- Row 1 -->
                 <button class="btn-fn" onclick="press('sin(')">sin</button>
                 <button class="btn-fn" onclick="press('cos(')">cos</button>
                 <button class="btn-fn" onclick="press('tan(')">tan</button>
                 <button onclick="press('7')">7</button>
                 <button onclick="press('8')">8</button>
 
-                <!-- Row 2 -->
                 <button class="btn-fn" onclick="press('asin(')">sin⁻¹</button>
                 <button class="btn-fn" onclick="press('acos(')">cos⁻¹</button>
                 <button class="btn-fn" onclick="press('atan(')">tan⁻¹</button>
                 <button onclick="press('9')">9</button>
                 <button class="btn-op" onclick="press('/')">÷</button>
 
-                <!-- Row 3 -->
                 <button class="btn-fn" onclick="press('pi')">π</button>
                 <button class="btn-fn" onclick="press('e')">e</button>
                 <button class="btn-fn" onclick="press('^')">xʸ</button>
                 <button onclick="press('4')">4</button>
                 <button onclick="press('5')">5</button>
 
-                <!-- Row 4 -->
                 <button class="btn-fn" onclick="press('log(')">log</button>
                 <button class="btn-fn" onclick="press('ln(')">ln</button>
                 <button class="btn-fn" onclick="press('sqrt(')">√</button>
                 <button onclick="press('6')">6</button>
                 <button class="btn-op" onclick="press('*')">×</button>
 
-                <!-- Row 5 -->
                 <button class="btn-fn" onclick="press('(')">(</button>
                 <button class="btn-fn" onclick="press(')')">)</button>
                 <button class="btn-fn" onclick="press('!')">n!</button>
                 <button onclick="press('1')">1</button>
                 <button onclick="press('2')">2</button>
 
-                <!-- Row 6 -->
                 <button class="btn-fn" onclick="press('abs(')">|x|</button>
                 <button class="btn-fn" onclick="press('%')">%</button>
                 <button class="btn-fn" onclick="press('±')">±</button>
                 <button onclick="press('3')">3</button>
                 <button class="btn-op" onclick="press('-')">−</button>
 
-                <!-- Row 7 -->
                 <button class="btn-clr" onclick="clearAll()">AC</button>
                 <button class="btn-clr" onclick="backspace()">⌫</button>
                 <button onclick="press('0')">0</button>
                 <button onclick="press('.')">.</button>
                 <button class="btn-op" onclick="press('+')">+</button>
 
-                <!-- Row 8 (Equal spans all) -->
                 <button class="btn-eq" onclick="calculate()">=</button>
             </div>
         </div>
@@ -220,12 +229,36 @@
                     <ul>
                         <li><a href="date-calculator.html">Date Calculator</a></li>
                         <li><a href="time-calculator.html">Time Calculator</a></li>
-                        <li><a href="#" class="disabled">Password Generator (Soon)</a></li>
-                        <li><a href="#" class="disabled">Unit Converter (Soon)</a></li>
+                        <li><a href="#" class="disabled" style="color:#bbb; cursor:not-allowed;">Password Generator (Soon)</a></li>
+                        <li><a href="#" class="disabled" style="color:#bbb; cursor:not-allowed;">Unit Converter (Soon)</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- SEO Content Section -->
+    <div class="seo-content">
+        <h2>About CalcMaster</h2>
+        <p>CalcMaster provides free, accurate, and easy-to-use online calculators for health, finance, math, and everyday conversions. Our tools are designed to give you instant, reliable results without any sign-ups or hidden fees. All calculations run directly in your browser, so your data never leaves your device.</p>
+        
+        <h3>Our Most Popular Calculators</h3>
+        <p>Our <a href="bmi-calculator.html">BMI Calculator</a> helps you track your body mass index and understand your health category. The <a href="loan-calculator.html">Loan Calculator</a> is widely used for personal loans, while the <a href="mortgage-calculator.html">Mortgage Calculator</a> helps homebuyers estimate monthly PITI payments. The <a href="percentage-calculator.html">Percentage Calculator</a> is a quick everyday math tool, and the <a href="age-calculator.html">Age Calculator</a> gives your exact age in years, months, and days.</p>
+        
+        <h3>Why Choose CalcMaster?</h3>
+        <ul>
+            <li>100% Free — no sign-up, no hidden fees</li>
+            <li>Fast and accurate results</li>
+            <li>Mobile-friendly design that works on any device</li>
+            <li>Privacy-focused — all calculations happen in your browser</li>
+            <li>17+ calculators across health, finance, math, and everyday categories</li>
+        </ul>
+        
+        <h3>Categories</h3>
+        <p><strong>Financial Calculators:</strong> Loan, Auto Loan, Mortgage, Interest, and Retirement calculators to help you plan finances, compare loans, and save for the future.</p>
+        <p><strong>Fitness & Health Calculators:</strong> BMI, BMR, Body Fat, Calorie, and Age calculators for tracking health, setting fitness goals, and planning nutrition.</p>
+        <p><strong>Math Calculators:</strong> Percentage, Scientific, Fraction, Average, and Triangle calculators for students, engineers, and everyday math tasks.</p>
+        <p><strong>Other Calculators:</strong> Date and Time calculators for scheduling, project planning, and timesheet calculations.</p>
     </div>
 
     <footer>
@@ -273,9 +306,7 @@
         function calculate() {
             try {
                 let expr = expression;
-                // Handle factorial
                 expr = expr.replace(/(\d+)!/g, (m, n) => factorial(parseInt(n)));
-                // Handle percentage: convert 50% to 0.5
                 expr = expr.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
                 const result = eval(expr);
                 if (!isFinite(result)) throw new Error('Invalid');
@@ -316,8 +347,8 @@
             document.getElementById('calcDisplay').textContent = display || '0';
         }
 
-        // Keyboard support
         document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT') return;
             if (e.key >= '0' && e.key <= '9') press(e.key);
             else if (['+', '-', '*', '/', '.', '(', ')'].includes(e.key)) press(e.key);
             else if (e.key === 'Enter') { e.preventDefault(); calculate(); }
@@ -325,7 +356,6 @@
             else if (e.key === 'Escape') clearAll();
         });
 
-        // Search functionality
         function doSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             if (!query) return;
