@@ -4,148 +4,289 @@
     <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Scientific Calculator - Calculate advanced math including trigonometric, logarithmic, exponential, and power functions online. Works on all devices.">
-    <meta name="keywords" content="scientific calculator, online calculator, trigonometry calculator, logarithm calculator, advanced math calculator">
+    <meta name="description" content="Free Scientific Calculator - Perform advanced math including trigonometry, logarithms, powers, roots, and factorials. Works in degrees or radians.">
+    <meta name="keywords" content="scientific calculator, online calculator, trigonometry calculator, logarithm calculator, advanced math calculator, factorial calculator">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/scientific-calculator.html">
     <title>Scientific Calculator - Advanced Math Online | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are trigonometric functions in degrees or radians?",
+          "acceptedAnswer": { "@type": "Answer", "text": "This calculator supports both. Use the Deg/Rad toggle to switch. Degrees are more common in everyday use; radians are used in advanced math and physics." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between log and ln?",
+          "acceptedAnswer": { "@type": "Answer", "text": "log is the base-10 logarithm. ln is the natural logarithm (base e, where e ≈ 2.71828). Both are used in science, engineering, and math." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does factorial (!) mean?",
+          "acceptedAnswer": { "@type": "Answer", "text": "n! = n × (n−1) × (n−2) × ... × 1. For example, 5! = 5×4×3×2×1 = 120. Factorials are used in probability and combinatorics." }
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; }
-        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
-        .calc-display { background: #2c3e50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; text-align: right; }
-        .calc-display .history { font-size: 14px; color: #aaa; min-height: 20px; word-wrap: break-word; }
-        .calc-display .current { font-size: 32px; font-weight: bold; word-wrap: break-word; }
-        .calc-buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 25px; }
-        .calc-buttons button { padding: 18px 5px; font-size: 16px; font-weight: 600; border: none; border-radius: 5px; cursor: pointer; transition: 0.15s; }
-        .calc-buttons button:hover { opacity: 0.85; }
-        .btn-num { background: #ecf0f1; color: #2c3e50; }
-        .btn-op { background: #3498db; color: white; }
-        .btn-fn { background: #95a5a6; color: white; font-size: 13px !important; }
-        .btn-eq { background: #27ae60; color: white; }
-        .btn-clr { background: #e74c3c; color: white; }
-        .formula-box { background: #f8f9fa; padding: 15px 20px; border-left: 4px solid #3498db; margin: 15px 0; border-radius: 4px; }
-        .formula-box code { background: #2c3e50; color: #7cb342; padding: 3px 8px; border-radius: 3px; font-family: 'Courier New', monospace; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
+
+        /* Calculator */
+        .calc-wrapper { max-width: 480px; margin: 0 auto 30px; background: #e8eef5; border-radius: 12px; padding: 20px; box-shadow: 0 3px 15px rgba(0,0,0,0.12); }
+        .calc-display { background: #0d2842; color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px; text-align: right; min-height: 100px; display: flex; flex-direction: column; justify-content: space-between; }
+        .calc-display .mode-row { display: flex; gap: 8px; margin-bottom: 10px; }
+        .calc-display .toggle-btn { background: transparent; border: 1.5px solid #3498db; color: #3498db; padding: 3px 14px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 12px; }
+        .calc-display .toggle-btn.active { background: #3498db; color: white; }
+        .calc-display .current { font-size: 32px; font-weight: bold; word-wrap: break-word; overflow-wrap: break-word; }
+        .calc-buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .calc-buttons button { padding: 16px 5px; font-size: 15px; font-weight: 600; border: none; border-radius: 5px; cursor: pointer; transition: 0.12s; background: #f0f3f7; color: #2c3e50; box-shadow: 0 1px 2px rgba(0,0,0,0.08); }
+        .calc-buttons button:hover { background: #e0e6ed; }
+        .calc-buttons button:active { transform: scale(0.97); }
+        .calc-buttons .btn-fn { background: #e6ecf2; color: #2c3e50; font-size: 13px; }
+        .calc-buttons .btn-clr { background: #e74c3c; color: white; }
+        .calc-buttons .btn-eq { grid-column: span 5; background: #3498db; color: white; font-size: 20px; padding: 14px; }
+
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
         @media (max-width: 500px) {
-            .calc-buttons button { padding: 14px 2px; font-size: 14px; }
+            .calc-buttons button { padding: 13px 2px; font-size: 13px; }
             .calc-display .current { font-size: 24px; }
         }
     </style>
 </head>
 <body>
-    <header><a href="index.html">CalcMaster</a></header>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
     <div class="container">
         <h1>Scientific Calculator</h1>
-        <p>Perform advanced mathematical calculations with trigonometric, logarithmic, and exponential functions.</p>
+        <p>Perform advanced mathematical calculations including trigonometry, logarithms, powers, and factorials.</p>
 
-        <div class="calc-display">
-            <div class="history" id="history"></div>
-            <div class="current" id="current">0</div>
-        </div>
+        <div class="calc-wrapper">
+            <div class="calc-display">
+                <div class="mode-row">
+                    <button class="toggle-btn active" id="degBtn" onclick="setMode('deg')">Deg</button>
+                    <button class="toggle-btn" id="radBtn" onclick="setMode('rad')">Rad</button>
+                </div>
+                <div class="current" id="calcDisplay">0</div>
+            </div>
+            <div class="calc-buttons">
+                <!-- Row 1 -->
+                <button class="btn-fn" onclick="press('sin(')">sin</button>
+                <button class="btn-fn" onclick="press('cos(')">cos</button>
+                <button class="btn-fn" onclick="press('tan(')">tan</button>
+                <button onclick="press('7')">7</button>
+                <button onclick="press('8')">8</button>
 
-        <div class="calc-buttons">
-            <button class="btn-fn" onclick="press('sin(')">sin</button>
-            <button class="btn-fn" onclick="press('cos(')">cos</button>
-            <button class="btn-fn" onclick="press('tan(')">tan</button>
-            <button class="btn-fn" onclick="press('log(')">log</button>
-            <button class="btn-fn" onclick="press('ln(')">ln</button>
+                <!-- Row 2 -->
+                <button class="btn-fn" onclick="press('asin(')">sin⁻¹</button>
+                <button class="btn-fn" onclick="press('acos(')">cos⁻¹</button>
+                <button class="btn-fn" onclick="press('atan(')">tan⁻¹</button>
+                <button onclick="press('9')">9</button>
+                <button onclick="press('/')">÷</button>
 
-            <button class="btn-fn" onclick="press('sqrt(')">√</button>
-            <button class="btn-fn" onclick="press('^')">x^y</button>
-            <button class="btn-fn" onclick="press('(')">(</button>
-            <button class="btn-fn" onclick="press(')')">)</button>
-            <button class="btn-clr" onclick="clearAll()">AC</button>
+                <!-- Row 3 -->
+                <button class="btn-fn" onclick="press('pi')">π</button>
+                <button class="btn-fn" onclick="press('e')">e</button>
+                <button class="btn-fn" onclick="press('^')">xʸ</button>
+                <button onclick="press('4')">4</button>
+                <button onclick="press('5')">5</button>
 
-            <button class="btn-num" onclick="press('7')">7</button>
-            <button class="btn-num" onclick="press('8')">8</button>
-            <button class="btn-num" onclick="press('9')">9</button>
-            <button class="btn-op" onclick="press('/')">÷</button>
-            <button class="btn-clr" onclick="backspace()">⌫</button>
+                <!-- Row 4 -->
+                <button class="btn-fn" onclick="press('log(')">log</button>
+                <button class="btn-fn" onclick="press('ln(')">ln</button>
+                <button class="btn-fn" onclick="press('sqrt(')">√</button>
+                <button onclick="press('6')">6</button>
+                <button onclick="press('*')">×</button>
 
-            <button class="btn-num" onclick="press('4')">4</button>
-            <button class="btn-num" onclick="press('5')">5</button>
-            <button class="btn-num" onclick="press('6')">6</button>
-            <button class="btn-op" onclick="press('*')">×</button>
-            <button class="btn-fn" onclick="press('pi')">π</button>
+                <!-- Row 5 -->
+                <button class="btn-fn" onclick="press('(')">(</button>
+                <button class="btn-fn" onclick="press(')')">)</button>
+                <button class="btn-fn" onclick="press('!')">n!</button>
+                <button onclick="press('1')">1</button>
+                <button onclick="press('2')">2</button>
 
-            <button class="btn-num" onclick="press('1')">1</button>
-            <button class="btn-num" onclick="press('2')">2</button>
-            <button class="btn-num" onclick="press('3')">3</button>
-            <button class="btn-op" onclick="press('-')">−</button>
-            <button class="btn-fn" onclick="press('e')">e</button>
+                <!-- Row 6 -->
+                <button class="btn-fn" onclick="press('abs(')">|x|</button>
+                <button class="btn-fn" onclick="press('%')">%</button>
+                <button class="btn-fn" onclick="press('±')">±</button>
+                <button onclick="press('3')">3</button>
+                <button onclick="press('-')">−</button>
 
-            <button class="btn-num" onclick="press('0')">0</button>
-            <button class="btn-num" onclick="press('.')">.</button>
-            <button class="btn-fn" onclick="press('!')">n!</button>
-            <button class="btn-op" onclick="press('+')">+</button>
-            <button class="btn-eq" onclick="calculate()">=</button>
+                <!-- Row 7 -->
+                <button class="btn-clr" onclick="clearAll()">AC</button>
+                <button class="btn-clr" onclick="backspace()">⌫</button>
+                <button onclick="press('0')">0</button>
+                <button onclick="press('.')">.</button>
+                <button onclick="press('+')">+</button>
+
+                <!-- Row 8 (Equals) -->
+                <button class="btn-eq" onclick="calculate()">=</button>
+            </div>
         </div>
 
         <h2>What is a Scientific Calculator?</h2>
-        <p>A scientific calculator is an advanced calculator capable of performing calculations beyond basic arithmetic — including trigonometry, logarithms, exponentials, and factorials. It's essential for students, engineers, and scientists.</p>
-
-        <h2>How to Use This Scientific Calculator</h2>
-        <ol>
-            <li>Click buttons to enter your expression</li>
-            <li>Use sin, cos, tan for trigonometry (input in radians)</li>
-            <li>Use log for base-10 logarithm, ln for natural log</li>
-            <li>Use √ for square root, x^y for powers</li>
-            <li>Use π for pi, e for Euler's number</li>
-            <li>Click "=" to calculate the result</li>
-        </ol>
+        <p>A scientific calculator is an advanced calculator capable of performing calculations beyond basic arithmetic. It includes trigonometric functions (sin, cos, tan), logarithms (log, ln), powers and roots, factorials, and constants like π and e. It's essential for students, engineers, scientists, and anyone working with advanced math.</p>
 
         <h2>Supported Functions</h2>
-        <div class="formula-box">
-            <p><strong>Trigonometric:</strong> <code>sin(x), cos(x), tan(x)</code></p>
-            <p style="margin-top:8px;"><strong>Logarithmic:</strong> <code>log(x) — base 10, ln(x) — natural</code></p>
-            <p style="margin-top:8px;"><strong>Powers & Roots:</strong> <code>√x, x^y</code></p>
-            <p style="margin-top:8px;"><strong>Constants:</strong> <code>π ≈ 3.14159, e ≈ 2.71828</code></p>
-            <p style="margin-top:8px;"><strong>Factorial:</strong> <code>n!</code></p>
-        </div>
+        <table>
+            <thead>
+                <tr><th>Function</th><th>Description</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>sin, cos, tan</td><td>Trigonometric functions</td><td>sin(30) = 0.5 in Deg mode</td></tr>
+                <tr><td>sin⁻¹, cos⁻¹, tan⁻¹</td><td>Inverse trigonometric functions</td><td>sin⁻¹(0.5) = 30° in Deg mode</td></tr>
+                <tr><td>log</td><td>Base-10 logarithm</td><td>log(100) = 2</td></tr>
+                <tr><td>ln</td><td>Natural logarithm (base e)</td><td>ln(e) = 1</td></tr>
+                <tr><td>√</td><td>Square root</td><td>√(16) = 4</td></tr>
+                <tr><td>xʸ</td><td>Power</td><td>2^10 = 1024</td></tr>
+                <tr><td>π</td><td>Pi (≈ 3.14159)</td><td>π ≈ 3.14159265</td></tr>
+                <tr><td>e</td><td>Euler's number (≈ 2.71828)</td><td>e ≈ 2.71828183</td></tr>
+                <tr><td>n!</td><td>Factorial</td><td>5! = 120</td></tr>
+                <tr><td>|x|</td><td>Absolute value</td><td>|−5| = 5</td></tr>
+                <tr><td>%</td><td>Percentage</td><td>50% = 0.5</td></tr>
+                <tr><td>±</td><td>Sign change</td><td>−5 ↔ 5</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Degrees vs Radians</h2>
+        <p>Angles can be measured in <strong>degrees</strong> or <strong>radians</strong>:</p>
+        <ul>
+            <li><strong>Degrees:</strong> A full circle is 360°. Common in everyday use, navigation, and basic trigonometry.</li>
+            <li><strong>Radians:</strong> A full circle is 2π radians (≈ 6.283). Standard in calculus, physics, and advanced math.</li>
+            <li><strong>Conversion:</strong> 180° = π radians ≈ 3.14159 radians</li>
+        </ul>
+        <p>Use the Deg/Rad toggle at the top of the calculator to switch between modes.</p>
+
+        <h2>How to Use This Calculator</h2>
+        <ol>
+            <li>Click buttons to build your expression</li>
+            <li>Use Deg/Rad toggle for trigonometric functions</li>
+            <li>Use parentheses to group parts of the expression</li>
+            <li>Press "=" to see the result</li>
+            <li>You can also use your keyboard: numbers, operators, Enter (=), Backspace, Escape (clear)</li>
+        </ol>
 
         <h2>Common Uses</h2>
         <ul>
             <li><strong>Students:</strong> Solving physics, chemistry, and math problems</li>
-            <li><strong>Engineers:</strong> Complex calculations for design and analysis</li>
+            <li><strong>Engineers:</strong> Design calculations and signal analysis</li>
             <li><strong>Scientists:</strong> Data analysis and formula evaluation</li>
             <li><strong>Finance:</strong> Compound interest and exponential growth</li>
-            <li><strong>Everyday:</strong> Advanced calculations not possible on basic calculators</li>
+            <li><strong>Programming:</strong> Verifying calculations and algorithms</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>Are trigonometric functions in degrees or radians?</h3>
-        <p>This calculator uses radians. To convert degrees to radians, multiply by π/180.</p>
-        <h3>What is the difference between log and ln?</h3>
-        <p>log is base-10 logarithm. ln is natural logarithm (base e).</p>
-        <h3>What does factorial (!) mean?</h3>
-        <p>n! = n × (n-1) × (n-2) × ... × 1. For example, 5! = 5×4×3×2×1 = 120.</p>
-        <h3>Can I use the keyboard?</h3>
-        <p>Yes — numbers and operators work with your keyboard. Press Enter for "=".</p>
+
+        <div class="faq-item">
+            <h3>Are trigonometric functions in degrees or radians?</h3>
+            <p>This calculator supports both. Use the Deg/Rad toggle to switch. Degrees are more common in everyday use; radians are used in advanced math and physics.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between log and ln?</h3>
+            <p>log is the base-10 logarithm. ln is the natural logarithm (base e, where e ≈ 2.71828). Both are used in science, engineering, and math.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What does factorial (!) mean?</h3>
+            <p>n! = n × (n−1) × (n−2) × ... × 1. For example, 5! = 5×4×3×2×1 = 120. Factorials are used in probability and combinatorics.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I calculate a power like 2^10?</h3>
+            <p>Press 2, then xʸ, then 10, then =. The result is 1024. This is the same as 2 raised to the power of 10.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What does the ± button do?</h3>
+            <p>It changes the sign of the current number or expression. For example, pressing 5 then ± gives −5.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I use my keyboard?</h3>
+            <p>Yes. Numbers and operators (+, −, ×, ÷, ., parentheses) work directly. Press Enter for =, Backspace to delete, and Escape to clear.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How accurate is this scientific calculator?</h3>
+            <p>It uses JavaScript's IEEE 754 double-precision arithmetic, which is accurate to about 15-17 significant digits. This is the same precision used by most desktop calculators.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is pi (π)?</h3>
+            <p>Pi is the ratio of a circle's circumference to its diameter, approximately 3.14159. It's an irrational number, meaning it has an infinite number of non-repeating decimals.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is Euler's number (e)?</h3>
+            <p>e is approximately 2.71828. It's the base of natural logarithms and is used in exponential growth, compound interest, and calculus.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this scientific calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser — no data is sent to any server.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="average-calculator.html">Average Calculator</a></li>
+            <li><a href="triangle-calculator.html">Triangle Calculator</a></li>
+        </ul>
     </div>
-    <footer>© 2025 CalcMaster. All rights reserved.</footer>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
     <script>
         let expression = '';
+        let angleMode = 'deg';
+
+        function setMode(m) {
+            angleMode = m;
+            document.getElementById('degBtn').classList.toggle('active', m === 'deg');
+            document.getElementById('radBtn').classList.toggle('active', m === 'rad');
+        }
 
         function press(val) {
-            if (val === 'pi') { expression += 'Math.PI'; }
-            else if (val === 'e') { expression += 'Math.E'; }
-            else if (val === 'sin(') { expression += 'Math.sin('; }
-            else if (val === 'cos(') { expression += 'Math.cos('; }
-            else if (val === 'tan(') { expression += 'Math.tan('; }
-            else if (val === 'log(') { expression += 'Math.log10('; }
-            else if (val === 'ln(') { expression += 'Math.log('; }
-            else if (val === 'sqrt(') { expression += 'Math.sqrt('; }
-            else if (val === '^') { expression += '**'; }
-            else if (val === '!') { expression += '!'; }
-            else { expression += val; }
+            if (val === 'pi') expression += 'Math.PI';
+            else if (val === 'e') expression += 'Math.E';
+            else if (val === 'sin(') expression += (angleMode === 'deg' ? 'Math.sin((Math.PI/180)*' : 'Math.sin(');
+            else if (val === 'cos(') expression += (angleMode === 'deg' ? 'Math.cos((Math.PI/180)*' : 'Math.cos(');
+            else if (val === 'tan(') expression += (angleMode === 'deg' ? 'Math.tan((Math.PI/180)*' : 'Math.tan(');
+            else if (val === 'asin(') expression += 'Math.asin(';
+            else if (val === 'acos(') expression += 'Math.acos(';
+            else if (val === 'atan(') expression += 'Math.atan(';
+            else if (val === 'log(') expression += 'Math.log10(';
+            else if (val === 'ln(') expression += 'Math.log(';
+            else if (val === 'sqrt(') expression += 'Math.sqrt(';
+            else if (val === 'abs(') expression += 'Math.abs(';
+            else if (val === '^') expression += '**';
+            else if (val === '±') expression += '-';
+            else expression += val;
             updateDisplay();
         }
 
@@ -161,21 +302,21 @@
         function calculate() {
             try {
                 let expr = expression;
-                // Handle factorial
                 expr = expr.replace(/(\d+)!/g, (m, n) => factorial(parseInt(n)));
+                expr = expr.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
                 const result = eval(expr);
-                document.getElementById('history').textContent = expression + ' =';
-                document.getElementById('current').textContent = result;
+                if (!isFinite(result)) throw new Error('Invalid');
+                document.getElementById('calcDisplay').textContent = parseFloat(result.toFixed(10));
                 expression = result.toString();
             } catch (err) {
-                document.getElementById('current').textContent = 'Error';
+                document.getElementById('calcDisplay').textContent = 'Error';
+                expression = '';
             }
         }
 
         function clearAll() {
             expression = '';
-            document.getElementById('history').textContent = '';
-            document.getElementById('current').textContent = '0';
+            document.getElementById('calcDisplay').textContent = '0';
         }
 
         function backspace() {
@@ -190,19 +331,23 @@
                 .replace(/Math\.sin\(/g, 'sin(')
                 .replace(/Math\.cos\(/g, 'cos(')
                 .replace(/Math\.tan\(/g, 'tan(')
+                .replace(/Math\.asin\(/g, 'sin⁻¹(')
+                .replace(/Math\.acos\(/g, 'cos⁻¹(')
+                .replace(/Math\.atan\(/g, 'tan⁻¹(')
                 .replace(/Math\.log10\(/g, 'log(')
                 .replace(/Math\.log\(/g, 'ln(')
                 .replace(/Math\.sqrt\(/g, '√(')
-                .replace(/\*\*/g, '^');
-            document.getElementById('current').textContent = display || '0';
+                .replace(/Math\.abs\(/g, '|')
+                .replace(/\*\*/g, '^')
+                .replace(/\(Math\.PI\/180\)\*/g, '');
+            document.getElementById('calcDisplay').textContent = display || '0';
         }
 
-        // Keyboard support
         document.addEventListener('keydown', function(e) {
             if (e.key >= '0' && e.key <= '9') press(e.key);
             else if (['+', '-', '*', '/', '.', '(', ')'].includes(e.key)) press(e.key);
-            else if (e.key === 'Enter') calculate();
-            else if (e.key === 'Backspace') backspace();
+            else if (e.key === 'Enter') { e.preventDefault(); calculate(); }
+            else if (e.key === 'Backspace') { e.preventDefault(); backspace(); }
             else if (e.key === 'Escape') clearAll();
         });
     </script>
