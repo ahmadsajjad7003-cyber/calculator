@@ -4,151 +4,264 @@
     <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Percentage Calculator - Calculate percentages, percentage increase/decrease, and percentage of a number. Includes formulas and examples.">
-    <meta name="keywords" content="percentage calculator, percent calculator, percentage increase, percentage decrease, percentage of a number">
+    <meta name="description" content="Free Percentage Calculator - Calculate percentages, percentage increase/decrease, and what percent one number is of another. Easy, fast, and accurate.">
+    <meta name="keywords" content="percentage calculator, percent calculator, percentage increase, percentage decrease, percent of a number, percentage change">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/percentage-calculator.html">
-    <title>Percentage Calculator - Free Online Percent Calculator | CalcMaster</title>
+    <title>Percentage Calculator - Calculate Percentages Easily | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate a percentage of a number?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Multiply the number by the percentage and divide by 100. For example, 20% of 150 = (20 × 150) ÷ 100 = 30." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate percentage increase?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Subtract the original from the new value, divide by the original, then multiply by 100. Formula: ((New − Original) ÷ Original) × 100." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between percentage and percent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "They mean the same thing. 'Percent' is the symbol (%). 'Percentage' is the concept. Both refer to a portion out of 100." }
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; }
-        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
-        .tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
-        .tab { flex: 1; padding: 12px 10px; border: 2px solid #ddd; background: white; border-radius: 5px; cursor: pointer; font-size: 13px; font-weight: 600; color: #555; min-width: 120px; }
-        .tab.active { background: #3498db; color: white; border-color: #3498db; }
-        .section { display: none; }
-        .section.active { display: block; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        input:focus { border-color: #3498db; outline: none; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
         button.calc-btn:hover { background: #2980b9; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tab-btn { flex: 1; min-width: 150px; padding: 11px; border: 2px solid #3498db; background: white; color: #3498db; border-radius: 5px; cursor: pointer; font-weight: 600; font-size: 14px; }
+        .tab-btn.active { background: #3498db; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result-item { padding: 15px; margin-bottom: 8px; background: white; border-radius: 5px; font-size: 16px; }
-        .result-item strong { color: #3498db; font-size: 22px; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
         .result-item.highlight { background: #3498db; color: white; }
-        .result-item.highlight strong { color: white; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 15px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
-    <header><a href="index.html">CalcMaster</a></header>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
     <div class="container">
         <h1>Percentage Calculator</h1>
-        <p>Calculate percentages, percentage of a number, and percentage increase/decrease.</p>
+        <p>Calculate percentages, percentage changes, and more with this free online tool.</p>
 
         <div class="tabs">
-            <button class="tab active" onclick="switchTab('p1', this)">X% of Y</button>
-            <button class="tab" onclick="switchTab('p2', this)">X is what % of Y</button>
-            <button class="tab" onclick="switchTab('p3', this)">% Increase/Decrease</button>
+            <button class="tab-btn active" onclick="showTab(1, this)">% of a Number</button>
+            <button class="tab-btn" onclick="showTab(2, this)">X is What % of Y</button>
+            <button class="tab-btn" onclick="showTab(3, this)">% Increase/Decrease</button>
         </div>
 
-        <div class="section active" id="p1">
-            <div class="input-group">
-                <label>What is <input type="number" id="p1_pct" style="width:100px;padding:6px;display:inline-block;" placeholder="20"> % of</label>
-                <input type="number" id="p1_num" placeholder="Enter number (e.g. 150)">
-            </div>
-            <button class="calc-btn" onclick="calcP1()">Calculate</button>
+        <!-- Tab 1 -->
+        <div class="tab-content active" id="tab1">
+            <div class="input-group"><label>Percentage (%):</label><input type="number" id="p1" placeholder="e.g. 20" step="0.01"></div>
+            <div class="input-group"><label>Of Number:</label><input type="number" id="n1" placeholder="e.g. 150" step="0.01"></div>
+            <button class="calc-btn" onclick="calcTab1()">Calculate</button>
         </div>
 
-        <div class="section" id="p2">
-            <div class="input-group">
-                <label>What percent is</label>
-                <input type="number" id="p2_x" placeholder="X (e.g. 25)">
-                <label style="margin-top:10px;">of</label>
-                <input type="number" id="p2_y" placeholder="Y (e.g. 50)">
-            </div>
-            <button class="calc-btn" onclick="calcP2()">Calculate</button>
+        <!-- Tab 2 -->
+        <div class="tab-content" id="tab2">
+            <div class="input-group"><label>First Number (X):</label><input type="number" id="x2" placeholder="e.g. 30" step="0.01"></div>
+            <div class="input-group"><label>Second Number (Y):</label><input type="number" id="y2" placeholder="e.g. 150" step="0.01"></div>
+            <button class="calc-btn" onclick="calcTab2()">Calculate</button>
         </div>
 
-        <div class="section" id="p3">
-            <div class="input-group">
-                <label>From (Old Value):</label>
-                <input type="number" id="p3_old" placeholder="e.g. 100">
-                <label style="margin-top:10px;">To (New Value):</label>
-                <input type="number" id="p3_new" placeholder="e.g. 150">
-            </div>
-            <button class="calc-btn" onclick="calcP3()">Calculate</button>
+        <!-- Tab 3 -->
+        <div class="tab-content" id="tab3">
+            <div class="input-group"><label>Original Value:</label><input type="number" id="orig3" placeholder="e.g. 100" step="0.01"></div>
+            <div class="input-group"><label>New Value:</label><input type="number" id="new3" placeholder="e.g. 125" step="0.01"></div>
+            <button class="calc-btn" onclick="calcTab3()">Calculate</button>
         </div>
 
         <div class="result" id="result">
-            <h2>Result:</h2>
-            <div class="result-item highlight" id="resultText"></div>
+            <div class="result-item highlight">Result: <strong id="mainResult">0</strong></div>
+            <div class="result-item" id="extraRow" style="display:none;">Details: <strong id="extraInfo">-</strong></div>
         </div>
 
         <h2>What is a Percentage?</h2>
-        <p>A percentage is a way of expressing a number as a fraction of 100. The word "percent" comes from the Latin "per centum," meaning "by the hundred." Percentages are used everywhere — in finance, shopping, statistics, and everyday life.</p>
-
-        <h2>How to Use This Percentage Calculator</h2>
-        <ol>
-            <li><strong>X% of Y:</strong> Find a percentage of a given number. Example: What is 20% of 150?</li>
-            <li><strong>X is what % of Y:</strong> Find what percent one number is of another. Example: 25 is what percent of 50?</li>
-            <li><strong>% Increase/Decrease:</strong> Find the percentage change between two values. Example: From 100 to 150.</li>
-        </ol>
+        <p>A percentage is a way of expressing a number as a fraction of 100. The word "percent" comes from the Latin "per centum," meaning "by the hundred." For example, 25% means 25 out of every 100, which is equivalent to the fraction 25/100 or the decimal 0.25.</p>
+        <p>Percentages are used everywhere — from shopping discounts and tax rates to interest rates, statistics, and scientific data.</p>
 
         <h2>Percentage Formulas</h2>
-        <ul>
-            <li><strong>1. X% of Y:</strong> Result = (X / 100) × Y</li>
-            <li><strong>2. X is what % of Y:</strong> Result = (X / Y) × 100</li>
-            <li><strong>3. Percentage Change:</strong> Result = [(New − Old) / Old] × 100</li>
-        </ul>
+        <div class="formula-box">
+            <p><strong>1. Percentage of a Number:</strong></p>
+            <p><code>Result = (Percentage ÷ 100) × Number</code></p>
+            <p style="margin-top:15px;"><strong>2. What Percent is X of Y:</strong></p>
+            <p><code>Percentage = (X ÷ Y) × 100</code></p>
+            <p style="margin-top:15px;"><strong>3. Percentage Increase/Decrease:</strong></p>
+            <p><code>Change % = ((New − Original) ÷ Original) × 100</code></p>
+        </div>
 
-        <h2>Common Percentage Uses</h2>
+        <h2>Worked Examples</h2>
+        <div class="example-box">
+            <p><strong>Example 1:</strong> What is 20% of 150?</p>
+            <p>(20 ÷ 100) × 150 = 0.2 × 150 = <strong>30</strong></p>
+            <p style="margin-top:12px;"><strong>Example 2:</strong> 30 is what percent of 150?</p>
+            <p>(30 ÷ 150) × 100 = 0.2 × 100 = <strong>20%</strong></p>
+            <p style="margin-top:12px;"><strong>Example 3:</strong> Price went from $100 to $125. What is the increase?</p>
+            <p>((125 − 100) ÷ 100) × 100 = <strong>25% increase</strong></p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
+        <ol>
+            <li>Choose the type of calculation from the tabs above</li>
+            <li>Enter the numbers in the input boxes</li>
+            <li>Click "Calculate"</li>
+            <li>The result appears immediately below</li>
+        </ol>
+
+        <h2>Real-World Uses</h2>
         <ul>
-            <li><strong>Shopping Discounts:</strong> A 30% off sale means you pay 70% of the price</li>
-            <li><strong>Tips at Restaurants:</strong> A 15% tip on a $40 bill is $6</li>
-            <li><strong>Interest Rates:</strong> Banks charge or pay interest as a percentage</li>
-            <li><strong>Test Scores:</strong> Getting 45 out of 50 is 90%</li>
-            <li><strong>Statistics:</strong> Polls, surveys, and data are often shown as percentages</li>
+            <li><strong>Shopping:</strong> Calculate discounts and sale prices</li>
+            <li><strong>Finance:</strong> Interest rates, returns, tax</li>
+            <li><strong>Statistics:</strong> Data analysis and reporting</li>
+            <li><strong>School:</strong> Test scores and grades</li>
+            <li><strong>Business:</strong> Profit margins and growth rates</li>
+            <li><strong>Health:</strong> Body fat, nutrition labels</li>
         </ul>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>How do I calculate a percentage?</h3>
-        <p>To find what percent X is of Y, use: (X / Y) × 100.</p>
-        <h3>How do I find the percentage of a number?</h3>
-        <p>Multiply the number by the percentage and divide by 100. For example, 20% of 150 = 30.</p>
-        <h3>How is percentage increase calculated?</h3>
-        <p>Percentage increase = [(New Value − Old Value) / Old Value] × 100.</p>
+
+        <div class="faq-item">
+            <h3>How do I calculate a percentage of a number?</h3>
+            <p>Multiply the number by the percentage and divide by 100. For example, 20% of 150 = (20 × 150) ÷ 100 = 30.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I calculate percentage increase?</h3>
+            <p>Subtract the original from the new value, divide by the original, then multiply by 100. Formula: ((New − Original) ÷ Original) × 100.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between percentage and percent?</h3>
+            <p>They mean the same thing. 'Percent' is the symbol (%). 'Percentage' is the concept. Both refer to a portion out of 100.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I convert a percentage to a decimal?</h3>
+            <p>Divide by 100. For example, 25% = 25 ÷ 100 = 0.25.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I convert a fraction to a percentage?</h3>
+            <p>Divide the numerator by the denominator, then multiply by 100. For example, 3/4 = 0.75 = 75%.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a percentage point?</h3>
+            <p>A percentage point is the difference between two percentages. For example, going from 10% to 15% is a 5 percentage point increase, but a 50% relative increase.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I find the original price after a discount?</h3>
+            <p>Divide the sale price by (1 − discount%). For example, if the sale price is $80 after 20% off: 80 ÷ 0.8 = $100 original.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can percentages be greater than 100?</h3>
+            <p>Yes. A 150% increase means the final value is 2.5 times the original. Percentages above 100 are common in growth metrics and finance.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I calculate a tip percentage?</h3>
+            <p>Multiply the bill by the tip percentage divided by 100. For a 15% tip on a $40 bill: (15 ÷ 100) × 40 = $6.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this percentage calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser, and no data is sent anywhere.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="fraction-calculator.html">Fraction Calculator</a></li>
+            <li><a href="average-calculator.html">Average Calculator</a></li>
+        </ul>
     </div>
-    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
     <script>
-        function switchTab(tab, btn) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        function showTab(n, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab' + n).classList.add('active');
             btn.classList.add('active');
-            document.getElementById(tab).classList.add('active');
             document.getElementById('result').style.display = 'none';
         }
-        function showResult(html) {
-            document.getElementById('resultText').innerHTML = html;
+
+        function formatNumber(n) {
+            return n.toFixed(4).replace(/\.?0+$/, '');
+        }
+
+        function calcTab1() {
+            const p = parseFloat(document.getElementById('p1').value);
+            const n = parseFloat(document.getElementById('n1').value);
+            if (isNaN(p) || isNaN(n)) { alert('Please fill both fields'); return; }
+            const result = (p / 100) * n;
+            document.getElementById('mainResult').textContent = formatNumber(result);
+            document.getElementById('extraInfo').textContent = p + '% of ' + n + ' = ' + formatNumber(result);
+            document.getElementById('extraRow').style.display = 'flex';
             document.getElementById('result').style.display = 'block';
         }
-        function calcP1() {
-            const pct = parseFloat(document.getElementById('p1_pct').value);
-            const num = parseFloat(document.getElementById('p1_num').value);
-            if (isNaN(pct) || isNaN(num)) { alert('Please enter valid numbers'); return; }
-            showResult(`${pct}% of ${num} = <strong>${(pct / 100) * num}</strong>`);
+
+        function calcTab2() {
+            const x = parseFloat(document.getElementById('x2').value);
+            const y = parseFloat(document.getElementById('y2').value);
+            if (isNaN(x) || isNaN(y)) { alert('Please fill both fields'); return; }
+            if (y === 0) { alert('Second number cannot be zero'); return; }
+            const result = (x / y) * 100;
+            document.getElementById('mainResult').textContent = formatNumber(result) + '%';
+            document.getElementById('extraInfo').textContent = x + ' is ' + formatNumber(result) + '% of ' + y;
+            document.getElementById('extraRow').style.display = 'flex';
+            document.getElementById('result').style.display = 'block';
         }
-        function calcP2() {
-            const x = parseFloat(document.getElementById('p2_x').value);
-            const y = parseFloat(document.getElementById('p2_y').value);
-            if (isNaN(x) || isNaN(y) || y === 0) { alert('Please enter valid numbers'); return; }
-            showResult(`${x} is <strong>${((x / y) * 100).toFixed(2)}%</strong> of ${y}`);
-        }
-        function calcP3() {
-            const oldV = parseFloat(document.getElementById('p3_old').value);
-            const newV = parseFloat(document.getElementById('p3_new').value);
-            if (isNaN(oldV) || isNaN(newV) || oldV === 0) { alert('Please enter valid numbers'); return; }
-            const change = ((newV - oldV) / oldV) * 100;
+
+        function calcTab3() {
+            const orig = parseFloat(document.getElementById('orig3').value);
+            const nw = parseFloat(document.getElementById('new3').value);
+            if (isNaN(orig) || isNaN(nw)) { alert('Please fill both fields'); return; }
+            if (orig === 0) { alert('Original value cannot be zero'); return; }
+            const change = ((nw - orig) / orig) * 100;
             const type = change >= 0 ? 'increase' : 'decrease';
-            showResult(`From ${oldV} to ${newV} = <strong>${Math.abs(change).toFixed(2)}% ${type}</strong>`);
+            document.getElementById('mainResult').textContent = formatNumber(Math.abs(change)) + '% ' + type;
+            document.getElementById('extraInfo').textContent = 'From ' + orig + ' to ' + nw + ' = ' + formatNumber(change) + '%';
+            document.getElementById('extraRow').style.display = 'flex';
+            document.getElementById('result').style.display = 'block';
         }
     </script>
 </body>
