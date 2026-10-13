@@ -4,135 +4,275 @@
     <script src="analytics.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free Calorie Calculator - Calculate your daily calorie needs based on age, gender, weight, height, and activity level.">
-    <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, how many calories should I eat">
+    <meta name="description" content="Free Calorie Calculator - Calculate your daily calorie needs to lose, maintain, or gain weight. Based on your age, gender, weight, height, and activity level.">
+    <meta name="keywords" content="calorie calculator, daily calorie needs, TDEE calculator, weight loss calories, weight gain calories, maintenance calories">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/calorie-calculator.html">
-    <title>Calorie Calculator - Daily Calorie Needs | CalcMaster</title>
+    <title>Calorie Calculator - Daily Calorie Needs for Weight Goals | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How many calories should I eat to lose weight?",
+          "acceptedAnswer": { "@type": "Answer", "text": "To lose about 0.5 kg per week, eat 500 calories less than your TDEE. For slower weight loss, use a 250-calorie deficit. Never go below 1,200 calories for women or 1,500 for men without medical supervision." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is TDEE?",
+          "acceptedAnswer": { "@type": "Answer", "text": "TDEE (Total Daily Energy Expenditure) is the total number of calories you burn in a day, including BMR plus all activity. It's the number of calories you need to maintain your current weight." }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate is a calorie calculator?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Calorie calculators give estimates within 10-15% of actual needs. Use the result as a starting point and adjust based on real-world results over 2-3 weeks." }
+        }
+      ]
+    }
+    </script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background: #f5f7fa; color: #333; line-height: 1.7; }
-        header { background: #2c3e50; color: white; padding: 15px 20px; }
-        header a { color: white; text-decoration: none; font-size: 22px; font-weight: bold; }
-        .container { max-width: 820px; margin: 30px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
-        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 28px; }
-        h2 { color: #2c3e50; margin: 30px 0 12px; font-size: 22px; border-bottom: 2px solid #eaf4fc; padding-bottom: 8px; }
-        h3 { color: #34495e; margin: 20px 0 10px; font-size: 18px; }
-        p, li { color: #555; margin-bottom: 10px; }
-        ul, ol { padding-left: 25px; margin-bottom: 15px; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
         .input-group { margin-bottom: 18px; }
         label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
         input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
-        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
         button.calc-btn:hover { background: #2980b9; }
         .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
-        .result-item { padding: 12px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; }
-        .result-item strong { color: #3498db; font-size: 18px; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
         .result-item.highlight { background: #3498db; color: white; }
-        .result-item.highlight strong { color: white; font-size: 22px; }
-        footer { text-align: center; padding: 25px; color: #777; font-size: 14px; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
     </style>
 </head>
 <body>
-    <header><a href="index.html">CalcMaster</a></header>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
     <div class="container">
         <h1>Calorie Calculator</h1>
-        <p>Calculate your daily calorie needs for maintaining, losing, or gaining weight.</p>
+        <p>Calculate your daily calorie needs based on your goals — lose, maintain, or gain weight.</p>
 
-        <div class="input-group"><label>Age (Years):</label><input type="number" id="age" placeholder="e.g. 30"></div>
-        <div class="input-group"><label>Gender:</label><select id="gender"><option value="male">Male</option><option value="female">Female</option></select></div>
+        <div class="input-group">
+            <label>Gender:</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="input-group"><label>Age (years):</label><input type="number" id="age" placeholder="e.g. 30"></div>
         <div class="input-group"><label>Weight (kg):</label><input type="number" id="weight" placeholder="e.g. 70" step="0.1"></div>
         <div class="input-group"><label>Height (cm):</label><input type="number" id="height" placeholder="e.g. 175" step="0.1"></div>
-        <div class="input-group"><label>Activity Level:</label><select id="activity">
-            <option value="1.2">Sedentary (Little or no exercise)</option>
-            <option value="1.375">Lightly Active (1-3 days/week)</option>
-            <option value="1.55" selected>Moderately Active (3-5 days/week)</option>
-            <option value="1.725">Very Active (6-7 days/week)</option>
-            <option value="1.9">Extra Active (Athlete)</option>
-        </select></div>
+        <div class="input-group">
+            <label>Activity Level:</label>
+            <select id="activity">
+                <option value="1.2">Sedentary (little or no exercise)</option>
+                <option value="1.375">Light exercise (1-3 days/week)</option>
+                <option value="1.55" selected>Moderate exercise (3-5 days/week)</option>
+                <option value="1.725">Heavy exercise (6-7 days/week)</option>
+                <option value="1.9">Athlete (2x per day)</option>
+            </select>
+        </div>
 
         <button class="calc-btn" onclick="calculateCalories()">Calculate Calories</button>
 
         <div class="result" id="result">
-            <div class="result-item highlight">Maintain Weight: <strong id="maintain">0 cal/day</strong></div>
-            <div class="result-item">Mild Weight Loss (0.25 kg/week): <strong id="mildLoss">0 cal/day</strong></div>
-            <div class="result-item">Weight Loss (0.5 kg/week): <strong id="loss">0 cal/day</strong></div>
-            <div class="result-item">Extreme Weight Loss (1 kg/week): <strong id="extremeLoss">0 cal/day</strong></div>
-            <div class="result-item">Mild Weight Gain (0.25 kg/week): <strong id="mildGain">0 cal/day</strong></div>
-            <div class="result-item">Weight Gain (0.5 kg/week): <strong id="gain">0 cal/day</strong></div>
-            <div class="result-item">BMR: <strong id="bmr">0 cal/day</strong></div>
+            <div class="result-item highlight">Maintenance Calories: <strong id="maintenance">0</strong> cal/day</div>
+            <div class="result-item">Mild Weight Loss (0.25 kg/week): <strong id="loss1">0</strong> cal/day</div>
+            <div class="result-item">Weight Loss (0.5 kg/week): <strong id="loss2">0</strong> cal/day</div>
+            <div class="result-item">Extreme Weight Loss (1 kg/week): <strong id="loss3">0</strong> cal/day</div>
+            <div class="result-item">Mild Weight Gain (0.25 kg/week): <strong id="gain1">0</strong> cal/day</div>
+            <div class="result-item">Weight Gain (0.5 kg/week): <strong id="gain2">0</strong> cal/day</div>
         </div>
 
-        <h2>What are Calories?</h2>
-        <p>Calories are units of energy. Your body needs calories from food to function. When you eat more calories than you burn, your body stores the excess as fat. When you eat fewer calories than you burn, your body uses stored fat for energy.</p>
+        <h2>What is a Calorie?</h2>
+        <p>A calorie is a unit of energy. In nutrition, when we say "calorie," we usually mean a kilocalorie (kcal) — the amount of energy needed to raise the temperature of 1 kilogram of water by 1°C. Your body uses calories from food for everything: breathing, moving, thinking, and even sleeping.</p>
+        <p>Eat more calories than you burn, and you gain weight. Eat fewer, and you lose weight. Eat the same amount, and you maintain weight.</p>
 
-        <h2>How to Use This Calorie Calculator</h2>
+        <h2>How Daily Calorie Needs Are Calculated</h2>
+        <p>Your daily calorie needs depend on two things:</p>
         <ol>
-            <li>Enter your age in years</li>
+            <li><strong>BMR (Basal Metabolic Rate):</strong> Calories burned at complete rest.</li>
+            <li><strong>Activity Level:</strong> Additional calories burned through daily movement and exercise.</li>
+        </ol>
+        <p>The combined number is your <strong>TDEE (Total Daily Energy Expenditure)</strong> — the calories you need to maintain your current weight.</p>
+
+        <h2>Calorie Formulas</h2>
+        <div class="formula-box">
+            <p><strong>Step 1 — BMR (Mifflin-St Jeor):</strong></p>
+            <p style="margin-top:8px;"><strong>Men:</strong> <code>BMR = 10 × weight(kg) + 6.25 × height(cm) − 5 × age + 5</code></p>
+            <p><strong>Women:</strong> <code>BMR = 10 × weight(kg) + 6.25 × height(cm) − 5 × age − 161</code></p>
+            <p style="margin-top:15px;"><strong>Step 2 — TDEE:</strong></p>
+            <p><code>TDEE = BMR × Activity Multiplier</code></p>
+            <p style="margin-top:15px;"><strong>Step 3 — Goal Calories:</strong></p>
+            <p><code>Weight Loss = TDEE − 250 to 1000 cal</code></p>
+            <p><code>Weight Gain = TDEE + 250 to 500 cal</code></p>
+        </div>
+
+        <h2>Activity Multipliers</h2>
+        <table>
+            <thead>
+                <tr><th>Activity Level</th><th>Multiplier</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Sedentary (little/no exercise)</td><td>1.2</td></tr>
+                <tr><td>Light (1-3 days/week)</td><td>1.375</td></tr>
+                <tr><td>Moderate (3-5 days/week)</td><td>1.55</td></tr>
+                <tr><td>Heavy (6-7 days/week)</td><td>1.725</td></tr>
+                <tr><td>Athlete (2x/day)</td><td>1.9</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Example:</strong> 30-year-old man, 70 kg, 175 cm, moderate activity.</p>
+            <p>BMR = 10 × 70 + 6.25 × 175 − 5 × 30 + 5 = 1,649 cal</p>
+            <p>TDEE = 1,649 × 1.55 = <strong>2,556 cal/day</strong> (maintenance)</p>
+            <p>For 0.5 kg/week weight loss: 2,556 − 500 = <strong>2,056 cal/day</strong></p>
+        </div>
+
+        <h2>How to Use This Calculator</h2>
+        <ol>
             <li>Select your gender</li>
-            <li>Enter your weight in kilograms</li>
-            <li>Enter your height in centimeters</li>
-            <li>Select your activity level</li>
+            <li>Enter age, weight, and height</li>
+            <li>Select your activity level honestly</li>
             <li>Click "Calculate Calories"</li>
+            <li>See maintenance calories and goals for loss/gain</li>
         </ol>
 
-        <h2>Calorie Formula (Mifflin-St Jeor)</h2>
-        <ul>
-            <li><strong>Men:</strong> BMR = 10 × weight + 6.25 × height − 5 × age + 5</li>
-            <li><strong>Women:</strong> BMR = 10 × weight + 6.25 × height − 5 × age − 161</li>
-            <li><strong>TDEE:</strong> BMR × Activity Multiplier</li>
-            <li><strong>Weight Loss:</strong> TDEE − 500 cal/day (for 0.5 kg/week loss)</li>
-        </ul>
-
-        <h2>Activity Level Guide</h2>
-        <ul>
-            <li><strong>Sedentary:</strong> Desk job, little or no exercise</li>
-            <li><strong>Lightly Active:</strong> Light exercise 1-3 days/week</li>
-            <li><strong>Moderately Active:</strong> Moderate exercise 3-5 days/week</li>
-            <li><strong>Very Active:</strong> Hard exercise 6-7 days/week</li>
-            <li><strong>Extra Active:</strong> Very hard exercise or athletic training</li>
-        </ul>
-
-        <h2>Healthy Weight Loss Tips</h2>
-        <ul>
-            <li><strong>Safe rate:</strong> Lose 0.5–1 kg (1–2 lbs) per week</li>
-            <li><strong>Protein:</strong> Eat plenty of protein to preserve muscle</li>
-            <li><strong>Water:</strong> Drink 8+ glasses of water daily</li>
-            <li><strong>Sleep:</strong> 7–9 hours of sleep supports weight loss</li>
-            <li><strong>Exercise:</strong> Combine cardio with strength training</li>
-            <li><strong>Tracking:</strong> Log your food to stay on target</li>
-        </ul>
+        <h2>Calorie Needs by Goal</h2>
+        <table>
+            <thead>
+                <tr><th>Goal</th><th>Calorie Adjustment</th><th>Expected Rate</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Extreme Weight Loss</td><td>−1000 cal/day</td><td>~1 kg/week</td></tr>
+                <tr><td>Weight Loss</td><td>−500 cal/day</td><td>~0.5 kg/week</td></tr>
+                <tr><td>Mild Weight Loss</td><td>−250 cal/day</td><td>~0.25 kg/week</td></tr>
+                <tr><td>Maintain</td><td>TDEE</td><td>0 kg/week</td></tr>
+                <tr><td>Mild Weight Gain</td><td>+250 cal/day</td><td>~0.25 kg/week</td></tr>
+                <tr><td>Weight Gain</td><td>+500 cal/day</td><td>~0.5 kg/week</td></tr>
+            </tbody>
+        </table>
 
         <h2>Frequently Asked Questions</h2>
-        <h3>How many calories should I eat per day?</h3>
-        <p>The average adult needs 1,800–2,500 calories per day, depending on various factors.</p>
-        <h3>What is BMR?</h3>
-        <p>BMR is the number of calories your body burns at rest to maintain basic functions.</p>
-        <h3>How many calories should I eat to lose weight?</h3>
-        <p>To lose about 0.5 kg (1 lb) per week, create a deficit of about 500 calories per day from your TDEE.</p>
-        <h3>What is TDEE?</h3>
-        <p>TDEE is the total calories you burn per day, including BMR plus physical activity.</p>
+
+        <div class="faq-item">
+            <h3>How many calories should I eat to lose weight?</h3>
+            <p>To lose about 0.5 kg per week, eat 500 calories less than your TDEE. For slower weight loss, use a 250-calorie deficit. Never go below 1,200 calories for women or 1,500 for men without medical supervision.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is TDEE?</h3>
+            <p>TDEE (Total Daily Energy Expenditure) is the total number of calories you burn in a day, including BMR plus all activity. It's the number of calories you need to maintain your current weight.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How accurate is a calorie calculator?</h3>
+            <p>Calorie calculators give estimates within 10-15% of actual needs. Use the result as a starting point and adjust based on real-world results over 2-3 weeks.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Do I need to count calories forever?</h3>
+            <p>No. Many people count calories temporarily to learn portion sizes and their body's needs, then transition to intuitive eating.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Are all calories the same?</h3>
+            <p>For weight, mostly yes — 500 calories of chicken and 500 calories of cake affect weight similarly. But they affect health, hunger, and muscle very differently. Protein, fiber, and whole foods are more satisfying and better for body composition.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Why am I not losing weight on a deficit?</h3>
+            <p>Common causes: underestimating portions, not tracking accurately, water retention, muscle gain masking fat loss, or a slower metabolism than expected. Track food precisely for 2 weeks to see the truth.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is a safe rate of weight loss?</h3>
+            <p>0.5 to 1 kg per week is generally safe and sustainable. Faster loss often leads to muscle loss, nutrient deficiency, and rebound weight gain.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Should I eat back exercise calories?</h3>
+            <p>If you set your activity level to include exercise, no. If you set it to sedentary and exercise heavily, you may need to eat some back to avoid excessive deficit.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How much protein do I need?</h3>
+            <p>For weight loss: 1.6-2.2 g per kg of body weight to preserve muscle. For maintenance: 1.2-1.6 g/kg. Protein is the most satiating and muscle-sparing macronutrient.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this calorie calculator free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="bmr-calculator.html">BMR Calculator</a></li>
+            <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+            <li><a href="body-fat-calculator.html">Body Fat Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+        </ul>
     </div>
-    <footer>&copy; 2025 CalcMaster. All rights reserved.</footer>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
     <script>
         function calculateCalories() {
-            const age = parseFloat(document.getElementById('age').value);
             const gender = document.getElementById('gender').value;
+            const age = parseFloat(document.getElementById('age').value);
             const weight = parseFloat(document.getElementById('weight').value);
             const height = parseFloat(document.getElementById('height').value);
             const activity = parseFloat(document.getElementById('activity').value);
-            if (!age || !weight || !height) { alert('Please fill in all fields'); return; }
-            let bmr = gender === 'male' 
-                ? 10 * weight + 6.25 * height - 5 * age + 5 
-                : 10 * weight + 6.25 * height - 5 * age - 161;
+
+            if (!age || !weight || !height) { alert('Please fill all fields'); return; }
+            if (age <= 0 || weight <= 0 || height <= 0) { alert('All values must be positive'); return; }
+
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+
             const tdee = bmr * activity;
-            document.getElementById('maintain').textContent = Math.round(tdee) + ' cal/day';
-            document.getElementById('mildLoss').textContent = Math.round(tdee - 275) + ' cal/day';
-            document.getElementById('loss').textContent = Math.round(tdee - 550) + ' cal/day';
-            document.getElementById('extremeLoss').textContent = Math.round(tdee - 1100) + ' cal/day';
-            document.getElementById('mildGain').textContent = Math.round(tdee + 275) + ' cal/day';
-            document.getElementById('gain').textContent = Math.round(tdee + 550) + ' cal/day';
-            document.getElementById('bmr').textContent = Math.round(bmr) + ' cal/day';
+            const round = (x) => Math.round(x);
+
+            const loss1 = Math.max(tdee - 250, gender === 'male' ? 1500 : 1200);
+            const loss2 = Math.max(tdee - 500, gender === 'male' ? 1500 : 1200);
+            const loss3 = Math.max(tdee - 1000, gender === 'male' ? 1500 : 1200);
+
+            document.getElementById('maintenance').textContent = round(tdee);
+            document.getElementById('loss1').textContent = round(loss1);
+            document.getElementById('loss2').textContent = round(loss2);
+            document.getElementById('loss3').textContent = round(loss3);
+            document.getElementById('gain1').textContent = round(tdee + 250);
+            document.getElementById('gain2').textContent = round(tdee + 500);
             document.getElementById('result').style.display = 'block';
         }
     </script>
