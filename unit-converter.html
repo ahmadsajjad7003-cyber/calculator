@@ -260,4 +260,79 @@
                 'Gallon (US)': 3.78541,
                 'Quart (US)': 0.946353,
                 'Pint (US)': 0.473176,
-               
+                'Cup (US)': 0.236588,
+                'Fluid Ounce (US)': 0.0295735,
+                'Tablespoon': 0.0147868,
+                'Teaspoon': 0.00492892
+            },
+            speed: {
+                'Kilometer/hour (km/h)': 1,
+                'Meter/second (m/s)': 3.6,
+                'Mile/hour (mph)': 1.60934,
+                'Foot/second (ft/s)': 1.09728,
+                'Knot': 1.852
+            }
+        };
+
+        function updateUnits() {
+            const cat = document.getElementById('category').value;
+            const fromSel = document.getElementById('fromUnit');
+            const toSel = document.getElementById('toUnit');
+            fromSel.innerHTML = '';
+            toSel.innerHTML = '';
+
+            if (cat === 'temperature') {
+                ['Celsius (°C)', 'Fahrenheit (°F)', 'Kelvin (K)'].forEach(u => {
+                    fromSel.innerHTML += `<option value="${u}">${u}</option>`;
+                    toSel.innerHTML += `<option value="${u}">${u}</option>`;
+                });
+                toSel.selectedIndex = 1;
+            } else {
+                const keys = Object.keys(units[cat]);
+                keys.forEach(u => {
+                    fromSel.innerHTML += `<option value="${u}">${u}</option>`;
+                    toSel.innerHTML += `<option value="${u}">${u}</option>`;
+                });
+                toSel.selectedIndex = 1;
+            }
+            document.getElementById('result').style.display = 'none';
+        }
+
+        function convert() {
+            const cat = document.getElementById('category').value;
+            const value = parseFloat(document.getElementById('value').value);
+            const from = document.getElementById('fromUnit').value;
+            const to = document.getElementById('toUnit').value;
+
+            if (isNaN(value)) { alert('Please enter a valid number'); return; }
+
+            let result, formula;
+
+            if (cat === 'temperature') {
+                let celsius;
+                if (from.includes('Celsius')) celsius = value;
+                else if (from.includes('Fahrenheit')) celsius = (value - 32) * 5/9;
+                else celsius = value - 273.15;
+
+                if (to.includes('Celsius')) result = celsius;
+                else if (to.includes('Fahrenheit')) result = celsius * 9/5 + 32;
+                else result = celsius + 273.15;
+
+                formula = `${value} ${from} = ${result.toFixed(4)} ${to}`;
+            } else {
+                const fromFactor = units[cat][from];
+                const toFactor = units[cat][to];
+                result = value * fromFactor / toFactor;
+                formula = `${value} ${from} = ${result.toFixed(6).replace(/\.?0+$/, '')} ${to}`;
+            }
+
+            document.getElementById('resultText').textContent = result.toFixed(6).replace(/\.?0+$/, '') + ' ' + to;
+            document.getElementById('formulaText').textContent = formula;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        // Initialize
+        updateUnits();
+    </script>
+</body>
+</html>
