@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Unit Converter - Convert length, weight, temperature, area, volume, and speed instantly. Supports metric and imperial units.">
+    <meta name="keywords" content="unit converter, length converter, weight converter, temperature converter, metric to imperial, unit conversion">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadsajjad7003-cyber.github.io/calculator/unit-converter.html">
+    <title>Unit Converter - Length, Weight, Temperature | CalcMaster</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I convert Celsius to Fahrenheit?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Use the formula: °F = (°C × 9/5) + 32. For example, 25°C = (25 × 9/5) + 32 = 77°F." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many feet are in a meter?",
+          "acceptedAnswer": { "@type": "Answer", "text": "1 meter = 3.28084 feet. To convert meters to feet, multiply by 3.28084." }
+        },
+        {
+          "@type": "Question",
+          "name": "How many grams are in an ounce?",
+          "acceptedAnswer": { "@type": "Answer", "text": "1 ounce = 28.3495 grams. To convert ounces to grams, multiply by 28.3495." }
+        }
+      ]
+    }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background: #f5f7fa; color: #333; line-height: 1.7; }
+        header { background: #1a3a5c; color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        header .logo { color: white; text-decoration: none; font-size: 24px; font-weight: bold; }
+        header .logo span { color: #7cb342; }
+        .container { max-width: 850px; margin: 30px auto; padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        h1 { color: #2c3e50; margin-bottom: 15px; font-size: 30px; }
+        h2 { color: #2c3e50; margin: 35px 0 15px; font-size: 24px; border-bottom: 2px solid #eaf4fc; padding-bottom: 10px; }
+        h3 { color: #34495e; margin: 22px 0 10px; font-size: 19px; }
+        p, li { color: #555; margin-bottom: 12px; }
+        ul, ol { padding-left: 28px; margin-bottom: 15px; }
+        .input-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #555; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 16px; }
+        input:focus, select:focus { border-color: #3498db; outline: none; }
+        button.calc-btn { background: #3498db; color: white; padding: 14px 30px; border: none; border-radius: 5px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px; }
+        button.calc-btn:hover { background: #2980b9; }
+        .result { margin-top: 25px; padding: 20px; background: #eaf4fc; border-left: 4px solid #3498db; border-radius: 5px; display: none; }
+        .result-item { padding: 14px; margin-bottom: 8px; background: white; border-radius: 5px; display: flex; justify-content: space-between; align-items: center; }
+        .result-item strong { color: #3498db; font-size: 20px; }
+        .result-item.highlight { background: #3498db; color: white; }
+        .result-item.highlight strong { color: white; font-size: 24px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; font-size: 15px; }
+        th { background: #2c3e50; color: white; font-weight: 600; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        .formula-box { background: #f8f9fa; padding: 18px 22px; border-left: 4px solid #3498db; margin: 18px 0; border-radius: 4px; }
+        .formula-box code { background: #2c3e50; color: #7cb342; padding: 4px 10px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px; }
+        .example-box { background: #fff9e6; padding: 18px 22px; border-left: 4px solid #f39c12; margin: 18px 0; border-radius: 4px; }
+        .faq-item { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-item h3 { color: #2c3e50; font-size: 17px; margin-bottom: 8px; }
+        footer { text-align: center; padding: 30px; color: #777; font-size: 14px; margin-top: 40px; }
+        footer a { color: #3498db; text-decoration: none; }
+        .unit-row { display: flex; gap: 10px; align-items: flex-end; margin-bottom: 15px; }
+        .unit-row .col { flex: 1; }
+        @media (max-width: 600px) { .unit-row { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">Calc<span>Master</span></a>
+    </header>
+    <div class="container">
+        <h1>Unit Converter</h1>
+        <p>Convert between metric and imperial units of length, weight, temperature, and more.</p>
+
+        <div class="input-group">
+            <label>Category:</label>
+            <select id="category" onchange="updateUnits()">
+                <option value="length">Length</option>
+                <option value="weight">Weight / Mass</option>
+                <option value="temperature">Temperature</option>
+                <option value="area">Area</option>
+                <option value="volume">Volume</option>
+                <option value="speed">Speed</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Value:</label>
+            <input type="number" id="value" placeholder="Enter value" step="any">
+        </div>
+
+        <div class="unit-row">
+            <div class="col">
+                <label>From:</label>
+                <select id="fromUnit"></select>
+            </div>
+            <div class="col">
+                <label>To:</label>
+                <select id="toUnit"></select>
+            </div>
+        </div>
+
+        <button class="calc-btn" onclick="convert()">Convert</button>
+
+        <div class="result" id="result">
+            <div class="result-item highlight">Result: <strong id="resultText">-</strong></div>
+            <div class="result-item">Formula: <strong id="formulaText">-</strong></div>
+        </div>
+
+        <h2>What is Unit Conversion?</h2>
+        <p>Unit conversion is the process of changing a measurement from one unit to another. Different countries and industries use different measurement systems, so conversion is essential for science, engineering, cooking, travel, and everyday life.</p>
+        <p>The two main systems are the <strong>metric system</strong> (meters, kilograms, liters) used in most countries, and the <strong>imperial system</strong> (feet, pounds, gallons) used mainly in the United States.</p>
+
+        <h2>Common Conversion Factors</h2>
+        <table>
+            <thead>
+                <tr><th>Conversion</th><th>Factor</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1 inch</td><td>2.54 cm</td></tr>
+                <tr><td>1 foot</td><td>0.3048 m</td></tr>
+                <tr><td>1 mile</td><td>1.60934 km</td></tr>
+                <tr><td>1 pound</td><td>0.453592 kg</td></tr>
+                <tr><td>1 ounce</td><td>28.3495 g</td></tr>
+                <tr><td>1 gallon (US)</td><td>3.78541 liters</td></tr>
+                <tr><td>1 mile/hour</td><td>1.60934 km/hour</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Temperature Conversions</h2>
+        <div class="formula-box">
+            <p><strong>Celsius to Fahrenheit:</strong> <code>°F = (°C × 9/5) + 32</code></p>
+            <p style="margin-top:10px;"><strong>Fahrenheit to Celsius:</strong> <code>°C = (°F − 32) × 5/9</code></p>
+            <p style="margin-top:10px;"><strong>Celsius to Kelvin:</strong> <code>K = °C + 273.15</code></p>
+        </div>
+
+        <h2>Worked Example</h2>
+        <div class="example-box">
+            <p><strong>Example 1:</strong> Convert 5 miles to kilometers.</p>
+            <p>5 × 1.60934 = <strong>8.047 km</strong></p>
+            <p style="margin-top:12px;"><strong>Example 2:</strong> Convert 25°C to Fahrenheit.</p>
+            <p>(25 × 9/5) + 32 = 45 + 32 = <strong>77°F</strong></p>
+        </div>
+
+        <h2>How to Use This Converter</h2>
+        <ol>
+            <li>Choose the category (length, weight, etc.)</li>
+            <li>Enter the value you want to convert</li>
+            <li>Select the source and target units</li>
+            <li>Click "Convert"</li>
+            <li>See your result instantly</li>
+        </ol>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h3>How do I convert Celsius to Fahrenheit?</h3>
+            <p>Use the formula: °F = (°C × 9/5) + 32. For example, 25°C = (25 × 9/5) + 32 = 77°F.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many feet are in a meter?</h3>
+            <p>1 meter = 3.28084 feet. To convert meters to feet, multiply by 3.28084.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many grams are in an ounce?</h3>
+            <p>1 ounce = 28.3495 grams. To convert ounces to grams, multiply by 28.3495.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What is the difference between mass and weight?</h3>
+            <p>Mass is the amount of matter in an object (kg). Weight is the force of gravity on that mass (Newtons). In everyday use, we often say "weight" when we mean mass.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I convert miles to kilometers?</h3>
+            <p>Multiply miles by 1.60934. For example, 10 miles = 16.0934 km.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How many liters are in a gallon?</h3>
+            <p>1 US gallon = 3.78541 liters. 1 UK (imperial) gallon = 4.54609 liters. This converter uses US gallons.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>How do I convert kg to pounds?</h3>
+            <p>Multiply kilograms by 2.20462. For example, 70 kg = 154.32 pounds.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>What are significant figures?</h3>
+            <p>Significant figures indicate the precision of a measurement. This converter displays up to 6 significant figures.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Can I convert between any unit?</h3>
+            <p>This converter handles common metric and imperial units. For highly specialized units, use a dedicated scientific tool.</p>
+        </div>
+
+        <div class="faq-item">
+            <h3>Is this unit converter free?</h3>
+            <p>Yes, 100% free. All calculations run in your browser — no data is sent to any server.</p>
+        </div>
+
+        <h2>Other Popular Calculators</h2>
+        <ul>
+            <li><a href="percentage-calculator.html">Percentage Calculator</a></li>
+            <li><a href="scientific-calculator.html">Scientific Calculator</a></li>
+            <li><a href="date-calculator.html">Date Calculator</a></li>
+            <li><a href="time-calculator.html">Time Calculator</a></li>
+        </ul>
+    </div>
+    <footer>
+        © 2025 CalcMaster. All rights reserved. | <a href="index.html">Home</a>
+    </footer>
+    <script>
+        const units = {
+            length: {
+                'Meter (m)': 1,
+                'Kilometer (km)': 1000,
+                'Centimeter (cm)': 0.01,
+                'Millimeter (mm)': 0.001,
+                'Mile (mi)': 1609.344,
+                'Yard (yd)': 0.9144,
+                'Foot (ft)': 0.3048,
+                'Inch (in)': 0.0254,
+                'Nautical Mile': 1852
+            },
+            weight: {
+                'Kilogram (kg)': 1,
+                'Gram (g)': 0.001,
+                'Milligram (mg)': 0.000001,
+                'Metric Ton (t)': 1000,
+                'Pound (lb)': 0.45359237,
+                'Ounce (oz)': 0.0283495,
+                'Stone (st)': 6.35029
+            },
+            area: {
+                'Square Meter (m²)': 1,
+                'Square Kilometer (km²)': 1000000,
+                'Square Foot (ft²)': 0.092903,
+                'Square Yard (yd²)': 0.836127,
+                'Square Mile (mi²)': 2589988.11,
+                'Acre': 4046.86,
+                'Hectare': 10000
+            },
+            volume: {
+                'Liter (L)': 1,
+                'Milliliter (mL)': 0.001,
+                'Cubic Meter (m³)': 1000,
+                'Gallon (US)': 3.78541,
+                'Quart (US)': 0.946353,
+                'Pint (US)': 0.473176,
+               
